@@ -13,13 +13,13 @@ namespace Assets.Scripts.Core.Definitions.Loaders
             
         }
 
-        protected override void OnDefinitionsLoaded(List<GameMode> definitions)
+        protected override void OnDefinitionsLoaded(List<GameMode> gameModeDefinitions)
         {
             _ = new GameMode() { IsReferenced = true };
 
-            if (definitions?.Count > 0)
+            if (gameModeDefinitions?.Count > 0)
             {
-                foreach (var loadedGameMode in definitions)
+                foreach (var loadedGameMode in gameModeDefinitions)
                 {
                     var newGameMode = new GameMode()
                     {
