@@ -53,11 +53,11 @@
                 "Planets": [
                     {
                         "Name": "Zenter",
-                        "Size": 1,
-                        "Gravity": 1,
+                        "Size": 2,
+                        "Gravity": 10,
                         "Position": {
-                            "x": 0,
-                            "y": 5
+                            "x": 10,
+                            "y": 0
                         },
                         "Speed": {
                             "x": 0,
@@ -69,13 +69,71 @@
                         },
                         "Layers": [
                             {
-                                "RotationSpeed": 1,
-                                "Texture": "Zenter",
+                                "RotationSpeed": 0.1,
+                                "Texture": "Planet_texture_1",
                                 "Color": {
-                                    "Red": 1,
-                                    "Green": 1,
-                                    "Blue": 1,
-                                    "Alopha": 0
+                                    "Red": 0,
+                                    "Green": 0,
+                                    "Blue": 255,
+                                    "Alpha": 0
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "Name": "SuckSuck",
+                        "Size": 6,
+                        "Gravity": 5,
+                        "Position": {
+                            "x": 0,
+                            "y": 15
+                        },
+                        "Speed": {
+                            "x": 0,
+                            "y": 0
+                        },
+                        "Axis": {
+                            "x": 0,
+                            "y": 30
+                        },
+                        "Layers": [
+                            {
+                                "RotationSpeed": 3,
+                                "Texture": "Planet_texture_2_1",
+                                "Color": {
+                                    "Red": 255,
+                                    "Green": 0,
+                                    "Blue": 0,
+                                    "Alpha": 0
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "Name": "Tut",
+                        "Size": 8,
+                        "Gravity": 5,
+                        "Position": {
+                            "x": -10,
+                            "y": 0
+                        },
+                        "Speed": {
+                            "x": 0,
+                            "y": 0
+                        },
+                        "Axis": {
+                            "x": 5,
+                            "y": 20
+                        },
+                        "Layers": [
+                            {
+                                "RotationSpeed": 1,
+                                "Texture": "Planet_texture_3_1",
+                                "Color": {
+                                    "Red": 255,
+                                    "Green": 255,
+                                    "Blue": 0,
+                                    "Alpha": 0
                                 }
                             }
                         ]

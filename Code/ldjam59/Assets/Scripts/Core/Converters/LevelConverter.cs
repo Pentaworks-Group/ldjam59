@@ -27,37 +27,18 @@ namespace Assets.Scripts.Core
             {
                 foreach (var planetDef in levelDefinition.Planets)
                 {
-                    convertedLevel.Planets.Add(ConvertPlanet(planetDef));
+                    convertedLevel.Planets.Add(ConvertSpaceObject<Planet, PlanetDefinition>(planetDef, PlanetConversion));
                 }
             }
 
-            convertedLevel.Source = Test<SimpleSpaceObject, SimpleSpaceObjectDefinition>(levelDefinition.Source, SimpleObject);
-            convertedLevel.Target = Test<SimpleSpaceObject, SimpleSpaceObjectDefinition>(levelDefinition.Source, SimpleObject);
-            convertedLevel.Signal = Test<SimpleSpaceObject, SimpleSpaceObjectDefinition>(levelDefinition.Source, SimpleObject);
+            convertedLevel.Source = ConvertSpaceObject<SimpleSpaceObject, SimpleSpaceObjectDefinition>(levelDefinition.Source, SimpleObject);
+            convertedLevel.Target = ConvertSpaceObject<SimpleSpaceObject, SimpleSpaceObjectDefinition>(levelDefinition.Target, SimpleObject);
+            convertedLevel.Signal = ConvertSpaceObject<SimpleSpaceObject, SimpleSpaceObjectDefinition>(levelDefinition.Signal, SimpleObject);
 
             return convertedLevel;
         }
 
-        private TSpaceObject ConvertSpaceObject<TSpaceObject, TSpaceObjectDefinition>(TSpaceObjectDefinition spaceObjectDefinition) where TSpaceObject : SpaceObject, new()
-                                                                                                                                    where TSpaceObjectDefinition : SpaceObjectDefinition
-        {
-            if (spaceObjectDefinition != default)
-            {
-                return new TSpaceObject()
-                {
-                    Name = spaceObjectDefinition.Name,
-                    Gravity = spaceObjectDefinition.Gravity,
-                    Id = spaceObjectDefinition.Id,
-                    Position = spaceObjectDefinition.Position,
-                    Size = spaceObjectDefinition.Size,
-                    Speed = spaceObjectDefinition.Speed,
-                };
-            }
-
-            return default;
-        }
-
-        private TModel Test<TModel, TDefinition>(TDefinition definition, Action<TDefinition, TModel> factory) where TModel : SpaceObject, new()
+        private TModel ConvertSpaceObject<TModel, TDefinition>(TDefinition definition, Action<TDefinition, TModel> factory) where TModel : SpaceObject, new()
                                                                                                               where TDefinition : SpaceObjectDefinition
         {
             var result = default(TModel);
@@ -85,27 +66,13 @@ namespace Assets.Scripts.Core
             model.Sprite = definition.Sprite;
         }
 
-        private SimpleSpaceObject ConvertSimpleSpaceObject(SimpleSpaceObjectDefinition source)
+        private static void PlanetConversion(PlanetDefinition planetDef, Planet convertedPlanet)
         {
-            var result = ConvertSpaceObject<SimpleSpaceObject, SimpleSpaceObjectDefinition>(source);
-
-            result.Sprite = source.Sprite;
-
-            return result;
-        }
-
-        private Planet ConvertPlanet(PlanetDefinition planetDef)
-        {
-            var convertedPlanet = ConvertSpaceObject<Planet, PlanetDefinition>(planetDef);
-
             convertedPlanet.Axis = planetDef.Axis;
-
             if (planetDef.Layers?.Count > 0)
             {
                 ConvertLayers(planetDef, convertedPlanet);
             }
-
-            return convertedPlanet;
         }
 
         private static void ConvertLayers(PlanetDefinition planetDef, Planet convertedPlanet)
