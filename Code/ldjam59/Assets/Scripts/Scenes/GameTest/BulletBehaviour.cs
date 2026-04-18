@@ -5,11 +5,14 @@ using System.Text;
 using System.Threading.Tasks;
 
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace Assets.Scripts.Scenes.GameTest
 {
     public class BulletBehaviour : MonoBehaviour
     {
+        public UnityEvent<BulletBehaviour> OnImpact = new UnityEvent<BulletBehaviour>();
+
         private void OnCollisionEnter(Collision collision)
         {
             
