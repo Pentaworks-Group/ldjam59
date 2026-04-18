@@ -8,8 +8,7 @@ namespace Assets.Scripts.Core.Definitions.Loaders
     public class GameModeLoader : BaseLoader<GameMode>
     {
 
-
-        public GameModeLoader(DefinitionCache<GameMode> targetCache) : base(targetCache)
+        public GameModeLoader(DefinitionCache<GameMode> gameModeCache) : base(gameModeCache)
         {
             
         }

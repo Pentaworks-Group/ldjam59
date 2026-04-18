@@ -65,12 +65,6 @@ namespace Assets.Scripts.Core
             RegisterScenes(Constants.Scenes.GetAll());
         }
 
-        [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
-        private static void GameStart()
-        {
-            Base.Core.Game.Startup();
-        }
-
         protected override IEnumerator LoadDefintions()
         {
             yield return new GameModeLoader(this.gameModeCache).LoadDefinitions("GameModes.json");
