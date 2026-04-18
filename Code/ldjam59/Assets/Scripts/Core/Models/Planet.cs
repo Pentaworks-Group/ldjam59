@@ -6,6 +6,6 @@ namespace Assets.Scripts.Core.Models
     public class Planet : SpaceObject
     {        
         public List<PlanetLayer> Layers { get; set; }
-        public Vector3 Axis { get; set; }
+        public Vector2 Axis { get; set; }
     }
 }

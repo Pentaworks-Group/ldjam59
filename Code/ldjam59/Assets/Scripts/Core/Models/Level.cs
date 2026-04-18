@@ -12,11 +12,11 @@ namespace Assets.Scripts.Core.Models
         public string Seed { get; set; }
         public List<Planet> Planets { get; set; }
 
-        public SpaceObject Source { get; set; }
+        public SimpleSpaceObject Source { get; set; }
 
-        public SpaceObject Target { get; set; }
+        public SimpleSpaceObject Target { get; set; }
 
-        public SpaceObject Signal { get; set; }
+        public SimpleSpaceObject Signal { get; set; }
 
         //public List<EventDefinitions> Events { get; set; }
     }

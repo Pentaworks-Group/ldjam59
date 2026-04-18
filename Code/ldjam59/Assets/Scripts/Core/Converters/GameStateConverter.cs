@@ -24,7 +24,17 @@ namespace Assets.Scripts.Core
                 Mode = mode,
             };
 
-            
+            if (this.mode.Levels?.Count > 0)
+            {
+                var firstLevel = this.mode.Levels[0];
+
+                gameState.CurrentLevel = new LevelConverter().Convert(firstLevel);
+
+            }
+            else
+            {
+                throw new Exception("No Levels provided in GameMode!");
+            }
 
             return gameState;
         }

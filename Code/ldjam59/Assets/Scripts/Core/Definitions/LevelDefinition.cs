@@ -11,11 +11,11 @@ namespace Assets.Scripts.Core.Definitions
         public string Seed { get; set; }
         public List<PlanetDefinition> Planets { get; set; }
 
-        public SpaceObjectDefinition Source { get; set; }
+        public SimpleSpaceObjectDefinition Source { get; set; }
 
-        public SpaceObjectDefinition Target { get; set; }
+        public SimpleSpaceObjectDefinition Target { get; set; }
 
-        public SpaceObjectDefinition Signal { get; set; }
+        public SimpleSpaceObjectDefinition Signal { get; set; }
 
         //public List<EventDefinitions> Events { get; set; }
     }

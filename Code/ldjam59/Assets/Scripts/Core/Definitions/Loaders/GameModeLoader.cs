@@ -26,7 +26,7 @@ namespace Assets.Scripts.Core.Definitions.Loaders
                         IsDefault = loadedGameMode.IsDefault,
                         Reference = loadedGameMode.Reference,
                         Name = loadedGameMode.Name,                       
-                        Levels = new List<LevelDefinition>()
+                        Levels = new List<LevelDefinition>(),                 
                     };
 
                     if (loadedGameMode.Levels != default)
@@ -48,12 +48,22 @@ namespace Assets.Scripts.Core.Definitions.Loaders
                     {
                         Reference = loadedItem.Reference,
                         Name = loadedItem.Name,
-                        Description = loadedItem.Description,                        
+                        Description = loadedItem.Description,    
+                        Planets = new List<PlanetDefinition>()
                     };
-               
+
+                    CheckPlanets(loadedItem.Planets, targetLevel.Planets);
 
                     targetItems.Add(targetLevel);
                 }
+            }
+        }
+
+        private void CheckPlanets(List<PlanetDefinition> loadedPlanets, List<PlanetDefinition> targetPlanets)
+        {
+            if (loadedPlanets?.Count > 0)
+            {
+                targetPlanets.AddRange(loadedPlanets);
             }
         }
     }
