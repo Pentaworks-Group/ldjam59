@@ -1,13 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
-
+using System.Linq;
 using GameFrame.Core;
 
 namespace Assets.Scripts.Constants
 {
     public static class Scenes
     {
-        public const String MainMenuName = "MainMenuScene";
+        public const String MainMenuName = "MainMenu";
         private static Scene mainMenu;
         public static Scene MainMenu
         {
@@ -26,7 +26,7 @@ namespace Assets.Scripts.Constants
             }
         }
 
-        public const String CreditsName = "CreditsScene";
+        public const String CreditsName = "Credits";
         private static Scene credits;
         public static Scene Credits
         {
@@ -45,7 +45,7 @@ namespace Assets.Scripts.Constants
             }
         }
 
-        public const String OptionsName = "OptionsScene";
+        public const String OptionsName = "Options";
         private static Scene options;
         public static Scene Options
         {
@@ -64,7 +64,7 @@ namespace Assets.Scripts.Constants
             }
         }
 
-        public const String SavedGamesName = "SavedGamesScene";
+        public const String SavedGamesName = "SavedGames";
         private static Scene savedGames;
         public static Scene SavedGames
         {
@@ -83,7 +83,7 @@ namespace Assets.Scripts.Constants
             }
         }
 
-        public const String GameModeName = "GameModeScene";
+        public const String GameModeName = "GameMode";
         private static Scene gameMode;
         public static Scene GameMode
         {
@@ -107,7 +107,7 @@ namespace Assets.Scripts.Constants
             }
         }
 
-        public const String GameName = "GameScene";
+        public const String GameName = "Game";
         private static Scene game;
         public static Scene Game
         {
@@ -131,7 +131,7 @@ namespace Assets.Scripts.Constants
             }
         }
 
-        public const String LevelCompletedName = "LevelCompletedScene";
+        public const String LevelCompletedName = "LevelCompleted";
         private static Scene levelCompleted;
         public static Scene LevelCompleted
         {
@@ -158,7 +158,7 @@ namespace Assets.Scripts.Constants
             }
         }
 
-        public const String GameOverName = "GameOverScene";
+        public const String GameOverName = "GameOver";
         private static Scene gameOver;
         public static Scene GameOver
         {
@@ -177,7 +177,7 @@ namespace Assets.Scripts.Constants
             }
         }
 
-        public const String ShootingStarsName = "ShootingStarsScene";
+        public const String ShootingStarsName = "ShootingStars";
         private static Scene shootingStars;
         public static Scene ShootingStars
         {
@@ -188,6 +188,28 @@ namespace Assets.Scripts.Constants
                     shootingStars = new Scene()
                     {
                         Name = ShootingStarsName,
+                        BackgroundClips = new List<String>()
+                        {
+                            "ShootingStars"
+                        }
+                    };
+                }
+
+                return shootingStars;
+            }
+        }
+
+        public const String GameTestName = "GameTest";
+        private static Scene gameTest;
+        public static Scene GameTest
+        {
+            get
+            {
+                if (gameTest == default)
+                {
+                    gameTest = new Scene()
+                    {
+                        Name = GameTestName,
                         BackgroundClips = new List<String>()
                         {
                             "ShootingStars"
@@ -218,23 +240,12 @@ namespace Assets.Scripts.Constants
         public static List<Scene> GetDevelopmentScenes()
         {
             return new List<Scene>()
-            { };
+            { GameTest };
         }
 
         public static IList<Scene> GetAll()
         {
-            return new List<Scene>()
-            {
-                MainMenu,
-                Options,
-                SavedGames,
-                Credits,
-                GameMode,
-                Game,
-                LevelCompleted,
-                GameOver,
-                ShootingStars
-            };
+            return GetGameScenes().Concat(GetDevelopmentScenes()).ToList();
         }
     }
 }

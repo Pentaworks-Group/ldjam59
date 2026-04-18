@@ -1,0 +1,87 @@
+[
+    {
+        "Name": "T1",
+        "Reference": "T1",
+        "Description": "Blabla",
+        "Levels": [
+            {
+                "Name": "L1",
+                "Reference": "L1",
+                "Description": "AnotherBlabla",
+                "Source": {
+                    "Sprite": "Shipsi",
+                    "Name": "TheFlyer",
+                    "Size": 1,
+                    "Gravity": 1,
+                    "Position": {
+                        "x": 0,
+                        "y": 5
+                    },
+                    "Speed": {
+                        "x": 0,
+                        "y": 0
+                    }
+                },
+                "Target": {
+                    "Sprite": "Sink",
+                    "Name": "Sink",
+                    "Size": 1,
+                    "Gravity": 1,
+                    "Position": {
+                        "x": 0,
+                        "y": -5
+                    },
+                    "Speed": {
+                        "x": 0,
+                        "y": 0
+                    }
+                },
+                "Signal": {
+                    "Sprite": "Signal",
+                    "Name": "Signal",
+                    "Size": 1,
+                    "Gravity": 1,
+                    "Position": {
+                        "x": 0,
+                        "y": 5
+                    },
+                    "Speed": {
+                        "x": 0,
+                        "y": 0
+                    }
+                },
+                "Planets": [
+                    {
+                        "Name": "Zenter",
+                        "Size": 1,
+                        "Gravity": 1,
+                        "Position": {
+                            "x": 0,
+                            "y": 5
+                        },
+                        "Speed": {
+                            "x": 0,
+                            "y": 0
+                        },
+                        "Axis": {
+                            "x": 30,
+                            "y": 0
+                        },
+                        "Layers": [
+                            {
+                                "RotationSpeed": 1,
+                                "Texture": "Zenter",
+                                "Color": {
+                                    "Red": 1,
+                                    "Green": 1,
+                                    "Blue": 1,
+                                    "Alopha": 0
+                                }
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    }
+]
