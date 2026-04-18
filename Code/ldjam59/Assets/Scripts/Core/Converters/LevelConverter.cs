@@ -2,6 +2,8 @@
 
 using Assets.Scripts.Core.Definitions;
 using Assets.Scripts.Core.Models;
+
+using System;
 using System.Collections.Generic;
 
 namespace Assets.Scripts.Core
@@ -18,6 +20,7 @@ namespace Assets.Scripts.Core
                 Reference = levelDefinition.Reference,
                 Description = levelDefinition.Description,
                 Seed = levelDefinition.Seed,
+                Planets = new List<Planet>(),
             };
 
             if (levelDefinition.Planets?.Count > 0)
@@ -28,9 +31,9 @@ namespace Assets.Scripts.Core
                 }
             }
 
-            convertedLevel.Source = ConvertSimpleSpaceObject(levelDefinition.Source);
-            convertedLevel.Target = ConvertSimpleSpaceObject(levelDefinition.Target);
-            convertedLevel.Signal = ConvertSimpleSpaceObject(levelDefinition.Signal);
+            convertedLevel.Source = Test<SimpleSpaceObject, SimpleSpaceObjectDefinition>(levelDefinition.Source, SimpleObject);
+            convertedLevel.Target = Test<SimpleSpaceObject, SimpleSpaceObjectDefinition>(levelDefinition.Source, SimpleObject);
+            convertedLevel.Signal = Test<SimpleSpaceObject, SimpleSpaceObjectDefinition>(levelDefinition.Source, SimpleObject);
 
             return convertedLevel;
         }
@@ -38,27 +41,58 @@ namespace Assets.Scripts.Core
         private TSpaceObject ConvertSpaceObject<TSpaceObject, TSpaceObjectDefinition>(TSpaceObjectDefinition spaceObjectDefinition) where TSpaceObject : SpaceObject, new()
                                                                                                                                     where TSpaceObjectDefinition : SpaceObjectDefinition
         {
-            return new TSpaceObject()
+            if (spaceObjectDefinition != default)
             {
-                Name = spaceObjectDefinition.Name,
-                Gravity = spaceObjectDefinition.Gravity,
-                Id = spaceObjectDefinition.Id,
-                Position = spaceObjectDefinition.Position,
-                Size = spaceObjectDefinition.Size,
-                Speed = spaceObjectDefinition.Speed,
-            };
+                return new TSpaceObject()
+                {
+                    Name = spaceObjectDefinition.Name,
+                    Gravity = spaceObjectDefinition.Gravity,
+                    Id = spaceObjectDefinition.Id,
+                    Position = spaceObjectDefinition.Position,
+                    Size = spaceObjectDefinition.Size,
+                    Speed = spaceObjectDefinition.Speed,
+                };
+            }
+
+            return default;
         }
 
+        private TModel Test<TModel, TDefinition>(TDefinition definition, Action<TDefinition, TModel> factory) where TModel : SpaceObject, new()
+                                                                                                              where TDefinition : SpaceObjectDefinition
+        {
+            var result = default(TModel);
+
+            if (definition != default)
+            {
+                result = new TModel()
+                {
+                    Name = definition.Name,
+                    Gravity = definition.Gravity,
+                    Id = definition.Id,
+                    Position = definition.Position,
+                    Size = definition.Size,
+                    Speed = definition.Speed,
+                };
+
+                factory(definition, result);
+            }
+
+            return result;
+        }
+
+        private void SimpleObject(SimpleSpaceObjectDefinition definition, SimpleSpaceObject model)
+        {
+            model.Sprite = definition.Sprite;
+        }
 
         private SimpleSpaceObject ConvertSimpleSpaceObject(SimpleSpaceObjectDefinition source)
         {
+            var result = ConvertSpaceObject<SimpleSpaceObject, SimpleSpaceObjectDefinition>(source);
 
-            var simpleO = ConvertSpaceObject<SimpleSpaceObject, SimpleSpaceObjectDefinition>(source);
-            simpleO.Sprite = source.Sprite;
-            return simpleO;
+            result.Sprite = source.Sprite;
+
+            return result;
         }
-
-
 
         private Planet ConvertPlanet(PlanetDefinition planetDef)
         {
