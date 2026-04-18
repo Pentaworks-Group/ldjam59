@@ -1,18 +1,15 @@
-﻿using System;
+﻿using Assets.Scripts.Core.Definitions;
+using Assets.Scripts.Core.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
-using Assets.Scripts.Core.Definitions;
-using Assets.Scripts.Core.Models;
-
 using Unity.Mathematics;
-
 using UnityEditor.Rendering;
-
 using UnityEngine;
 using UnityEngine.InputSystem;
+using static UnityEngine.GraphicsBuffer;
 
 namespace Assets.Scripts.Scenes.GameTest
 {
@@ -21,18 +18,20 @@ namespace Assets.Scripts.Scenes.GameTest
 
         private void Update()
         {
-            //var mousePosition = Mouse.current.position.ReadValue();
+            Vector3 mousePosition = Mouse.current.position.ReadValue();
+            mousePosition.z = 10f;
+            var viewedMousePosition = Camera.main.ScreenToWorldPoint(mousePosition);
 
-            //var viewedMousePosition = Camera.main.ViewportToWorldPoint(mousePosition);
-
-            //Debug.Log(transform.rotation.ToString());
-            //var angle = Vector3.Angle(mousePosition, transform.position);
+            //Debug.Log("viewedMousePosition:" + viewedMousePosition);
+            //Debug.Log("mousePosition:" + mousePosition);
+            //var angle = Vector3.Angle(viewedMousePosition, transform.position);
             //Debug.Log(transform.rotation.ToString());
             //Debug.Log(angle.ToString());
 
-            var mousePosition = Mouse.current.position.ReadValue();
-
-            transform.Rotate(new Vector3(mousePosition.x, 0, mousePosition.y), Space.World);
+            //var mousePosition = Mouse.current.position.ReadValue();
+            var targetRotation = Quaternion.LookRotation(viewedMousePosition - transform.position);
+            transform.rotation = targetRotation;
+            //transform.Rotate(new Vector3(mousePosition.x, 0, mousePosition.y), Space.World);
 
         }
     }
