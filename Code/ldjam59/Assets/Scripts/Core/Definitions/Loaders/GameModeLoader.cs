@@ -54,6 +54,10 @@ namespace Assets.Scripts.Core.Definitions.Loaders
 
                     CheckPlanets(loadedItem.Planets, targetLevel.Planets);
 
+                    targetLevel.Source = loadedItem.Source;
+                    targetLevel.Target = loadedItem.Target;
+                    targetLevel.Signal = loadedItem.Signal;
+
                     targetItems.Add(targetLevel);
                 }
             }
