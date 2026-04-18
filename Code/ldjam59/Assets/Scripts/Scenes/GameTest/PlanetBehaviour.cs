@@ -13,8 +13,39 @@ namespace Assets.Scripts.Scenes
     public  class PlanetBehaviour : MonoBehaviour
     {
         [SerializeField] private Single gravity = 1;
+        private Single actualGravity = 0;
 
         private readonly List<Rigidbody> affectedBodies = new List<Rigidbody>();
+
+        private void Update()
+        {
+            if (actualGravity != gravity)
+            {
+                actualGravity = gravity;
+                UpdateSphereOfInfluence();
+            }
+        }
+
+        private void UpdateSphereOfInfluence()
+        {
+            if (TryGetComponent<SphereCollider>(out var sphereCollider))
+            {
+                var size = 3f;
+
+                if (actualGravity > 0)
+                {
+                    size = UnityEngine.Mathf.Sqrt(actualGravity * 10f);
+                }
+
+                sphereCollider.radius = size;
+            }
+        }
+
+        private void Awake()
+        {
+            actualGravity = gravity;
+            UpdateSphereOfInfluence();
+        }
 
         private void OnTriggerEnter(Collider other)
         {
@@ -49,7 +80,11 @@ namespace Assets.Scripts.Scenes
                     {
                         var vector = transform.position - affectedBody.transform.position;
 
-                        affectedBody.AddForce(vector.normalized * gravity);
+                        var force = gravity / vector.sqrMagnitude;
+
+                        Debug.Log($"Applied force: {force}.");
+
+                        affectedBody.AddForce(vector.normalized * force);
                     }                    
                 }
             }
