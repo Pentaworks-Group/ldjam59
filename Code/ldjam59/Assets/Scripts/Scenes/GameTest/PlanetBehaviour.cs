@@ -45,7 +45,7 @@ namespace Assets.Scripts.Scenes.GameTest
 
         private void OnTriggerEnter(Collider other)
         {
-            if (other.transform.parent.TryGetComponent<BulletBehaviour>(out var bullet))
+            if (other.transform.parent.TryGetComponent<SignalBehaviour>(out var bullet))
             {
                 if (bullet.TryGetComponent<Rigidbody>(out var bulletRigitBody))
                 {
@@ -57,7 +57,7 @@ namespace Assets.Scripts.Scenes.GameTest
 
         private void OnTriggerExit(Collider other)
         {
-            if (other.transform.parent.TryGetComponent<BulletBehaviour>(out var bullet))
+            if (other.transform.parent.TryGetComponent<SignalBehaviour>(out var bullet))
             {
                 if (bullet.TryGetComponent<Rigidbody>(out var bulletRigitBody))
                 {
@@ -86,7 +86,7 @@ namespace Assets.Scripts.Scenes.GameTest
             }
         }
 
-        private void OnBulletImpact(BulletBehaviour bullet)
+        public void OnBulletImpact(SignalBehaviour bullet)
         {
             if (bullet != default)
             {

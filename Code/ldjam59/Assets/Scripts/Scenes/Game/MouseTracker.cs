@@ -13,7 +13,7 @@ namespace Assets.Scripts.Scenes.Game
 
             viewedMousePosition.y = transform.position.y;
 
-            var targetRotation = Quaternion.LookRotation(viewedMousePosition - transform.position);
+            var targetRotation = Quaternion.LookRotation(transform.position - viewedMousePosition);
             transform.rotation = targetRotation;
         }
     }

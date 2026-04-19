@@ -12,6 +12,8 @@ namespace Assets.Scripts.Scenes.Game
     public class PlanetBehaviour : MonoBehaviour
     {
         private Planet planet;
+        [SerializeField]
+        private PlanetInfluenceBehaviour planetInfluenceBehaviour;
         [SerializeField] private Single gravity = 1;
         private readonly List<Rigidbody> affectedBodies = new List<Rigidbody>();
 
@@ -23,6 +25,7 @@ namespace Assets.Scripts.Scenes.Game
             gameObject.name = planet.Name;
 
             UpdateShader();
+            UpdateSphereOfInfluence();
         }
 
         private void Update()
@@ -36,7 +39,7 @@ namespace Assets.Scripts.Scenes.Game
 
         private void UpdateSphereOfInfluence()
         {
-            if (TryGetComponent<SphereCollider>(out var sphereCollider))
+            if (planetInfluenceBehaviour.TryGetComponent<SphereCollider>(out var sphereCollider))
             {
                 var size = 3f;
 
@@ -73,29 +76,6 @@ namespace Assets.Scripts.Scenes.Game
 
 
 
-        private void OnTriggerEnter(Collider other)
-        {
-            if (other.transform.parent.TryGetComponent<BulletBehaviour>(out var bullet))
-            {
-                if (bullet.TryGetComponent<Rigidbody>(out var bulletRigitBody))
-                {
-                    bullet.OnImpact.AddListener(OnBulletImpact);
-                    affectedBodies.Add(bulletRigitBody);
-                }
-            }
-        }
-
-        private void OnTriggerExit(Collider other)
-        {
-            if (other.transform.parent.TryGetComponent<BulletBehaviour>(out var bullet))
-            {
-                if (bullet.TryGetComponent<Rigidbody>(out var bulletRigitBody))
-                {
-                    affectedBodies.Remove(bulletRigitBody);
-                }
-            }
-        }
-
         private void FixedUpdate()
         {
             if (this.affectedBodies.Count > 0)
@@ -108,7 +88,7 @@ namespace Assets.Scripts.Scenes.Game
 
                         var force = gravity / vector.sqrMagnitude;
 
-                        Debug.Log($"Applied force: {force}.");
+                        //Debug.Log($"Applied force: {force}.");
 
                         affectedBody.AddForce(vector.normalized * force);
                     }
@@ -116,11 +96,39 @@ namespace Assets.Scripts.Scenes.Game
             }
         }
 
-        private void OnBulletImpact(BulletBehaviour bullet)
+        private void OnCollisionEnter(Collision collision)
         {
-            if (bullet != default)
+            if (collision.body.TryGetComponent<SignalBehaviour>(out var signal))
             {
-                if (bullet.TryGetComponent<Rigidbody>(out var rigidbody))
+                signal.OnImpact.Invoke(signal);
+                signal.OnImpact.RemoveAllListeners();
+
+                Destroy(collision.body.gameObject);
+            }
+        }
+
+        public void RegisterSignal(SignalBehaviour signal)
+        {
+            if (signal.TryGetComponent<Rigidbody>(out var signalRigidBody))
+            {
+                signal.OnImpact.AddListener(OnSignalImpact);
+                affectedBodies.Add(signalRigidBody);
+            }
+        }
+
+        public void DeRegisterSignal(SignalBehaviour signal)
+        {
+            if (signal.TryGetComponent<Rigidbody>(out var signalRigidBody))
+            {
+                affectedBodies.Remove(signalRigidBody);
+            }
+        }
+
+        private void OnSignalImpact(SignalBehaviour signal)
+        {
+            if (signal != default)
+            {
+                if (signal.TryGetComponent<Rigidbody>(out var rigidbody))
                 {
                     this.affectedBodies.Remove(rigidbody);
                 }

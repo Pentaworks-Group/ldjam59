@@ -1,29 +1,36 @@
 ﻿using Assets.Scripts.Core.Models;
 
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.InputSystem;
 
 namespace Assets.Scripts.Scenes.Game
 {
     public class GameMainBehaviour : MonoBehaviour
     {
-        private InputAction leftMouseClick;
+        public UnityEvent OnTargetHit { get; set; } = new UnityEvent();
 
 
         [SerializeField]
         private SimpleObjectBehaviour objectTemplate;
         [SerializeField]
-        private Transform bulletContainer;
+        private SimpleObjectBehaviour signalTemplate;
+        [SerializeField]
+        private SimpleObjectBehaviour targetTemplate;
+        [SerializeField]
+        private Transform signalContainer;
 
-        private GameObject bullet;
+        private GameObject signal;
         private Transform source;
-        private Transform target;
+        private TargetBehaviour target;
+
+        private InputAction leftMouseClick;
 
         private void OnLeftMouseClicked()
         {
             Base.Core.Game.PlayButtonSound();
 
-            var instance = GameObject.Instantiate(bullet, bulletContainer);
+            var instance = GameObject.Instantiate(signal, signalContainer);
             instance.transform.position = source.position;
 
             instance.name = "pew";
@@ -32,8 +39,6 @@ namespace Assets.Scripts.Scenes.Game
 
             if (instance.TryGetComponent<Rigidbody>(out var rigidbody))
             {
-                instance.AddComponent<BulletBehaviour>();
-
                 Vector3 mousePosition = Mouse.current.position.ReadValue();
                 mousePosition.z = Camera.main.transform.position.y;
 
@@ -43,6 +48,7 @@ namespace Assets.Scripts.Scenes.Game
                 var startPosition = new Vector3(source.position.x, 0f, source.position.z);
 
                 var vector = viewedMousePosition - startPosition;
+                rigidbody.rotation = Quaternion.LookRotation(vector);
 
                 rigidbody.AddForce(vector.normalized * 2, ForceMode.Impulse);
             }
@@ -60,23 +66,28 @@ namespace Assets.Scripts.Scenes.Game
         {
             Debug.Log("Main Init");
 
-            var sourcetmp = SpawnObject(Base.Core.Game.State.CurrentLevel.Source).gameObject;
-            sourcetmp.SetActive(true);
-            sourcetmp.AddComponent<MouseTracker>();
-            source = sourcetmp.transform;
-            target = SpawnObject(Base.Core.Game.State.CurrentLevel.Target).transform;
-            target.gameObject.SetActive(true);
-            bullet = SpawnObject(Base.Core.Game.State.CurrentLevel.Signal).gameObject;
+            var tmpSource = SpawnObject(Base.Core.Game.State.CurrentLevel.Source, objectTemplate).gameObject;
+            tmpSource.SetActive(true);
+            tmpSource.AddComponent<MouseTracker>();
+            source = tmpSource.transform;
+            var tmpTarget = SpawnObject(Base.Core.Game.State.CurrentLevel.Target, targetTemplate).transform;
+            tmpTarget.gameObject.SetActive(true);
+            target = tmpTarget.GetComponent<TargetBehaviour>();
+
+
+            signal = SpawnObject(Base.Core.Game.State.CurrentLevel.Signal, signalTemplate).gameObject;
 
 
             leftMouseClick.Enable();
         }
 
-        private SimpleObjectBehaviour SpawnObject(SimpleSpaceObject simpleSpaceObject)
+
+        private SimpleObjectBehaviour SpawnObject(SimpleSpaceObject simpleSpaceObject, SimpleObjectBehaviour usedObjectTemplate)
         {
             var postion = new UnityEngine.Vector3(simpleSpaceObject.Position.Value.X, 0, simpleSpaceObject.Position.Value.Y);
 
-            var objectBehaviour = Instantiate(objectTemplate, postion, objectTemplate.transform.rotation, transform);
+            var objectBehaviour = Instantiate(usedObjectTemplate, postion, usedObjectTemplate.transform.rotation, transform);
+            objectBehaviour.gameObject.name = simpleSpaceObject.Name;
             objectBehaviour.Init(simpleSpaceObject);
             return objectBehaviour;
         }
