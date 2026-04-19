@@ -6,7 +6,9 @@ public class MultitrackTestUI : MonoBehaviour
 
     private void OnGUI()
     {
-        GUILayout.BeginArea(new Rect(20, 20, 300, 400));
+        GUILayout.BeginArea(new Rect(20, 20, 300, 500));
+
+        GUI.color = Color.black;
 
         GUILayout.Label($"Position: {player.GetPosition():F1}s / {player.GetDuration():F1}s");
         GUILayout.Label($"Spielt: {player.state.isPlaying}");
