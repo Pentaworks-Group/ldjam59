@@ -58,12 +58,10 @@ namespace Assets.Scripts.Scenes.Game
                     if(shouldBeActive)
                     {
                         audioEngine.EnableRadioEffect(true, 0.2f);
-                        //Debug.Log("[SignalBehaviour] EnableRadioEffect");
                     }
                     else
                     {
                         audioEngine.DisableRadioEffect(true, 0.2f);
-                        //Debug.Log("[SignalBehaviour] DisableRadioEffect");
                     }
                 }
             }

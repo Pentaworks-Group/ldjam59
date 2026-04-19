@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: 5993736370526012872}
   - component: {fileID: 1156315531459023408}
   - component: {fileID: 6091802800966868368}
+  - component: {fileID: 1622134259444966462}
   m_Layer: 0
   m_Name: AudioSystem
   m_TagString: Untagged
@@ -249,3 +250,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::RandomCombinationScheduler
   barTrigger: {fileID: 1156315531459023408}
   beatClock: {fileID: 5993736370526012872}
+--- !u!114 &1622134259444966462
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1645107443026002723}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5be254208c709541beffc01357d3e05, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Assets.Scripts.Core.Music.VolumeBehaviour
+  audioEngine: {fileID: 0}

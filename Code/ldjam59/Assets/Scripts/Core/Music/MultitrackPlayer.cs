@@ -16,8 +16,19 @@ public class MultitrackPlayer : MonoBehaviour
 
     private void Awake()
     {
+        Assets.Scripts.Base.Core.Game.ExecuteAfterInstantation(Init);
+    }
+
+    private void Init()
+    {
         DontDestroyOnLoad(gameObject);
         SceneManager.sceneLoaded += OnSceneLoaded;
+
+        if (state.masterVolume != GameFrame.Base.Audio.Background.Volume)
+        {
+            state.masterVolume = GameFrame.Base.Audio.Background.Volume;
+        }
+
         InitializeSources();
     }
 
