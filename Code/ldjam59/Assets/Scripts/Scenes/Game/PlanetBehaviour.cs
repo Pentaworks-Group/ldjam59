@@ -101,9 +101,6 @@ namespace Assets.Scripts.Scenes.Game
             if (collision.body.TryGetComponent<SignalBehaviour>(out var signal))
             {
                 signal.OnImpact.Invoke(signal);
-                signal.OnImpact.RemoveAllListeners();
-
-                Destroy(collision.body.gameObject);
             }
         }
 
