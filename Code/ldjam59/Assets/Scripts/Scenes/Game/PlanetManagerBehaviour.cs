@@ -2,9 +2,8 @@ using Assets.Scripts.Core.Models;
 using System.Collections.Generic;
 using UnityEngine;
 
-using GameFrame.Core.Extensions;
 
-namespace Assets.Scripts.Game
+namespace Assets.Scripts.Scenes.Game
 {
 	public class PlanetManagerBehaviour : MonoBehaviour
 	{
