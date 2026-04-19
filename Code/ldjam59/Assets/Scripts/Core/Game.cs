@@ -2,6 +2,7 @@ using Assets.Scripts.Core.Definitions;
 using Assets.Scripts.Core.Definitions.Loaders;
 using Assets.Scripts.Core.Persistence;
 using Assets.Scripts.Scenes.Game;
+using GameFrame.Core;
 using GameFrame.Core.Definitions.Loaders;
 using System;
 using System.Collections;
@@ -73,5 +74,13 @@ namespace Assets.Scripts.Core
             yield return new GameModeLoader(this.gameModeCache).LoadDefinitions("GameModes.json");
             Debug.Log("loaded definitions");
         }
+
+        public void LoadLevelByIndex(int index)
+        {
+            var firstLevel = this.State.Mode.Levels[index];
+            this.State.CurrentLevel = new LevelConverter().Convert(firstLevel);
+            Base.Core.Game.ChangeScene(Constants.Scenes.Game, false);
+        }
+
     }
 }

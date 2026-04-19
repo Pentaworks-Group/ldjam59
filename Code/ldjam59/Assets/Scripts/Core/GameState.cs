@@ -32,13 +32,5 @@ namespace Assets.Scripts.Core
         public Int32 Score { get; set; }
         public Int32 RemainingLives { get; set; }
         public Int32 MovementCounter { get; set; }
-
-        public void FillFoods()
-        {
-            var currentLevel = CurrentLevel;
-            var levelDefinition = Mode.Levels.FirstOrDefault(l => l.Reference == currentLevel.Reference);
-
-           
-        }
     }
 }
