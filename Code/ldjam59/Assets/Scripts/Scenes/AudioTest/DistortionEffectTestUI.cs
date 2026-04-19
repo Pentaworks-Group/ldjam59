@@ -7,7 +7,7 @@ public class DistortionEffectTestUI : MonoBehaviour
 
     private void OnGUI()
     {
-        GUILayout.BeginArea(new Rect(20, 340, 300, 250));
+        GUILayout.BeginArea(new Rect(650, 340, 300, 250));
         GUILayout.Label("-- Distortion Effect --");
 
         distortionEffect.intensity = LabeledSlider("Intensity", distortionEffect.intensity, 0f, 1f);

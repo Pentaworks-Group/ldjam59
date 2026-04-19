@@ -26,7 +26,7 @@ public class DistortionEffect : MonoBehaviour
     private const float NEUTRAL_LOWCUT = 20f;      // Hz
     private const float NEUTRAL_HIGHCUT = 20000f;   // Hz
     private const float NEUTRAL_DISTORT = 0f;
-    private const float NEUTRAL_VOLUME_DB = 0f;
+    private const float NEUTRAL_VOLUME_DB = 1.0f;
 
     // Radio effect target values
     private const float RADIO_LOWCUT = 500f;
@@ -137,7 +137,7 @@ public class DistortionEffect : MonoBehaviour
         while (elapsed < half)
         {
             float drop = Random.Range(-20f, - 3f) * intensity;
-            for (int i = 0; i <= state.tracks.Length; i++)
+            for (int i = 0; i < state.tracks.Length; i++)
             {
                 if (!trackAffected[i]) continue;
                 mixer.SetFloat(volumeParams[i], drop);
