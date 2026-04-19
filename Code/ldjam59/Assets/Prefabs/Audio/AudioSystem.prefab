@@ -9,10 +9,13 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5076052899299764448}
+  - component: {fileID: 5299862742824285730}
   - component: {fileID: 8176347262860484116}
   - component: {fileID: 4299058824337318148}
   - component: {fileID: 2102890768408439884}
   - component: {fileID: 6138198911409136259}
+  - component: {fileID: 5993736370526012872}
+  - component: {fileID: 1156315531459023408}
   m_Layer: 0
   m_Name: AudioSystem
   m_TagString: Untagged
@@ -35,6 +38,24 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5299862742824285730
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1645107443026002723}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2bfc92890f542844ea888b78995e0c8d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::AudioEngine
+  player: {fileID: 8176347262860484116}
+  combinations: {fileID: 4299058824337318148}
+  beatClock: {fileID: 5993736370526012872}
+  barTrigger: {fileID: 1156315531459023408}
+  panner: {fileID: 6138198911409136259}
+  distortion: {fileID: 2102890768408439884}
 --- !u!114 &8176347262860484116
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -174,3 +195,36 @@ MonoBehaviour:
   panRange: 1
   smoothTime: 0.1
   showDebugLog: 0
+--- !u!114 &5993736370526012872
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1645107443026002723}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ce3d8310c9c10b4da81f80c05465f62, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BeatClock
+  player: {fileID: 8176347262860484116}
+  state: {fileID: 11400000, guid: 71036854d68760040bfaf01ee2c40e23, type: 2}
+  bpm: 90
+  beatsPerBar: 7
+  beatUnit: 4
+  audioStartOffset: 0
+--- !u!114 &1156315531459023408
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1645107443026002723}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 458d2dc8943593c4c80b86585b2507ee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BarCombinationTrigger
+  beatClock: {fileID: 5993736370526012872}
+  combinationManager: {fileID: 4299058824337318148}
+  defaultFadeDuration: 0
