@@ -69,25 +69,19 @@ namespace Assets.Scripts.Core
         private static void PlanetConversion(PlanetDefinition planetDef, Planet convertedPlanet)
         {
             convertedPlanet.Axis = planetDef.Axis;
-            if (planetDef.Layers?.Count > 0)
-            {
-                ConvertLayers(planetDef, convertedPlanet);
-            }
+            convertedPlanet.PlanetLayer = ConvertLayer(planetDef.PlanetLayer);
+            convertedPlanet.SurfaceLayer = ConvertLayer(planetDef.SurfaceLayer);
+            convertedPlanet.CloudLayer = ConvertLayer(planetDef.CloudLayer);
         }
 
-        private static void ConvertLayers(PlanetDefinition planetDef, Planet convertedPlanet)
+        private static PlanetLayer ConvertLayer(PlanetLayerDefinition layerDef)
         {
-            convertedPlanet.Layers = new List<PlanetLayer>();
-            foreach (var layerDef in planetDef.Layers)
+            return new PlanetLayer()
             {
-                var convertedLayer = new PlanetLayer()
-                {
-                    Color = layerDef.Color,
-                    RotationSpeed = layerDef.RotationSpeed,
-                    Texture = layerDef.Texture,
-                };
-                convertedPlanet.Layers.Add(convertedLayer);
-            }
+                Color = layerDef.Color,
+                RotationSpeed = layerDef.RotationSpeed,
+                Texture = layerDef.Texture,
+            };
         }
     }
 }

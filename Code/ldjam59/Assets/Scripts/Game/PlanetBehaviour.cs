@@ -15,6 +15,7 @@ namespace Assets.Scripts.Game
         {
             this.planet = planet;
             transform.localScale = planet.Size.Value * UnityEngine.Vector3.one;
+            gameObject.name = planet.Name;
 
             UpdateShader();
         }
@@ -22,26 +23,35 @@ namespace Assets.Scripts.Game
 
         private void UpdateShader()
         {
+            Debug.Log($"planetName: {planet.Name}");
             Renderer rend = GetComponent<Renderer>();
             //MaterialPropertyBlock propBlock = new MaterialPropertyBlock();
 
-            //rend.GetPropertyBlock(propBlock);
-            PlanetLayer planetLayer = planet.Layers[0];
-            var col = planetLayer.Color.Value;
-            Material[] mats = rend.materials;
-            Material mat  = mats[0];
-            mat.SetColor("_WorldColor", col.ToUnity());
-            mat.SetVector("_RotationSpeed", new UnityEngine.Vector2(planetLayer.RotationSpeed.Value, 0));
-            var texture = GameFrame.Base.Resources.Manager.Textures.Get(planetLayer.Texture);
-            mat.SetTexture("_WorldTexture", texture);
-            //rend.SetPropertyBlock(propBlock);
-            mats[1] = mat;
-            rend.materials = mats;
+            var propBlock = gameObject.GetComponent<MeshRenderer>().material;
 
-            //var col = planet.Layers[0].Color.Value;
-            //material.SetColor("_WorldColor", col.ToUnity());
-            //material.SetColor("ddd", col.ToUnity());
-            //Debug.Log("Test");
+            //rend.GetPropertyBlock(propBlock);
+            SetLayerValues(propBlock, planet.PlanetLayer, "_PlanetColor", "_PlanetRotationSpeed", "_PlanetTexture");
+            //rend.SetPropertyBlock(propBlock);
+            SetLayerValues(propBlock, planet.SurfaceLayer, "_SurfaceColor", "_SurfaceRotationSpeed", "_SurfaceTexture");
+            //rend.SetPropertyBlock(propBlock);
+            SetLayerValues(propBlock, planet.CloudLayer, "_CloudColor", "_CloudRotationSpeed", "_CloudTexture");
+            //rend.SetPropertyBlock(propBlock);
+            //rend.material = propBlock;  
+        }
+
+        private static void SetLayerValues(Material propBlock, PlanetLayer planetLayer, string colorName, string speedName, string textureName)
+        {
+            var col = planetLayer.Color.Value;
+            Debug.Log($"{colorName}: {planetLayer.Color.Value}");
+            Debug.Log(speedName + ": " + planetLayer.RotationSpeed.Value);
+            Debug.Log(textureName + ": " + planetLayer.Texture);
+
+            UnityEngine.Color colli = col.ToUnity();
+            Debug.Log($"colli: {colli}");
+            propBlock.SetColor(colorName, colli);
+            propBlock.SetVector(speedName, new UnityEngine.Vector2(planetLayer.RotationSpeed.Value, 0));
+            var texture = GameFrame.Base.Resources.Manager.Textures.Get(planetLayer.Texture);
+            propBlock.SetTexture(textureName, texture);
         }
     }
 }
