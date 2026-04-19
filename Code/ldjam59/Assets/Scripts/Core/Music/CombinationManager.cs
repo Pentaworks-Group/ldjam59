@@ -61,7 +61,7 @@ public class CombinationManager : MonoBehaviour
 
     public void FadeOutAll(float duration)
     {
-        for (int i = 0; i < state.tracks.Length; i++)
+            for (int i = 0; i < state.tracks.Length; i++)
             startFade(i, 0f, state.tracks[i].pan, duration);
     }
 
