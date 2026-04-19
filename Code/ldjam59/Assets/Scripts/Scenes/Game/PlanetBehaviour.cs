@@ -88,7 +88,7 @@ namespace Assets.Scripts.Scenes.Game
 
                         var force = gravity / vector.sqrMagnitude;
 
-                        Debug.Log($"Applied force: {force}.");
+                        //Debug.Log($"Applied force: {force}.");
 
                         affectedBody.AddForce(vector.normalized * force);
                     }
@@ -98,37 +98,37 @@ namespace Assets.Scripts.Scenes.Game
 
         private void OnCollisionEnter(Collision collision)
         {
-            if (collision.body.TryGetComponent<BulletBehaviour>(out var bullet))
+            if (collision.body.TryGetComponent<SignalBehaviour>(out var signal))
             {
-                bullet.OnImpact.Invoke(bullet);
-                bullet.OnImpact.RemoveAllListeners();
+                signal.OnImpact.Invoke(signal);
+                signal.OnImpact.RemoveAllListeners();
 
                 Destroy(collision.body.gameObject);
             }
         }
 
-        public void RegisterBullet(BulletBehaviour bullet)
+        public void RegisterSignal(SignalBehaviour signal)
         {
-            if (bullet.TryGetComponent<Rigidbody>(out var bulletRigitBody))
+            if (signal.TryGetComponent<Rigidbody>(out var signalRigidBody))
             {
-                bullet.OnImpact.AddListener(OnBulletImpact);
-                affectedBodies.Add(bulletRigitBody);
+                signal.OnImpact.AddListener(OnSignalImpact);
+                affectedBodies.Add(signalRigidBody);
             }
         }
 
-        public void DeRegisterBullet(BulletBehaviour bullet)
+        public void DeRegisterSignal(SignalBehaviour signal)
         {
-            if (bullet.TryGetComponent<Rigidbody>(out var bulletRigitBody))
+            if (signal.TryGetComponent<Rigidbody>(out var signalRigidBody))
             {
-                affectedBodies.Remove(bulletRigitBody);
+                affectedBodies.Remove(signalRigidBody);
             }
         }
 
-        private void OnBulletImpact(BulletBehaviour bullet)
+        private void OnSignalImpact(SignalBehaviour signal)
         {
-            if (bullet != default)
+            if (signal != default)
             {
-                if (bullet.TryGetComponent<Rigidbody>(out var rigidbody))
+                if (signal.TryGetComponent<Rigidbody>(out var rigidbody))
                 {
                     this.affectedBodies.Remove(rigidbody);
                 }

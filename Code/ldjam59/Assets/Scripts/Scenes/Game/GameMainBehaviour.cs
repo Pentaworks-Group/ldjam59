@@ -1,31 +1,36 @@
 ﻿using Assets.Scripts.Core.Models;
 
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.InputSystem;
 
 namespace Assets.Scripts.Scenes.Game
 {
     public class GameMainBehaviour : MonoBehaviour
     {
-        private InputAction leftMouseClick;
+        public UnityEvent OnTargetHit { get; set; } = new UnityEvent();
 
 
         [SerializeField]
         private SimpleObjectBehaviour objectTemplate;
         [SerializeField]
-        private SimpleObjectBehaviour bulletTemplate;
+        private SimpleObjectBehaviour signalTemplate;
         [SerializeField]
-        private Transform bulletContainer;
+        private SimpleObjectBehaviour targetTemplate;
+        [SerializeField]
+        private Transform signalContainer;
 
-        private GameObject bullet;
+        private GameObject signal;
         private Transform source;
-        private Transform target;
+        private TargetBehaviour target;
+
+        private InputAction leftMouseClick;
 
         private void OnLeftMouseClicked()
         {
             Base.Core.Game.PlayButtonSound();
 
-            var instance = GameObject.Instantiate(bullet, bulletContainer);
+            var instance = GameObject.Instantiate(signal, signalContainer);
             instance.transform.position = source.position;
 
             instance.name = "pew";
@@ -61,13 +66,16 @@ namespace Assets.Scripts.Scenes.Game
         {
             Debug.Log("Main Init");
 
-            var sourcetmp = SpawnObject(Base.Core.Game.State.CurrentLevel.Source, objectTemplate).gameObject;
-            sourcetmp.SetActive(true);
-            sourcetmp.AddComponent<MouseTracker>();
-            source = sourcetmp.transform;
-            target = SpawnObject(Base.Core.Game.State.CurrentLevel.Target, objectTemplate).transform;
-            target.gameObject.SetActive(true);
-            bullet = SpawnObject(Base.Core.Game.State.CurrentLevel.Signal, bulletTemplate).gameObject;
+            var tmpSource = SpawnObject(Base.Core.Game.State.CurrentLevel.Source, objectTemplate).gameObject;
+            tmpSource.SetActive(true);
+            tmpSource.AddComponent<MouseTracker>();
+            source = tmpSource.transform;
+            var tmpTarget = SpawnObject(Base.Core.Game.State.CurrentLevel.Target, targetTemplate).transform;
+            tmpTarget.gameObject.SetActive(true);
+            target = tmpTarget.GetComponent<TargetBehaviour>();
+
+
+            signal = SpawnObject(Base.Core.Game.State.CurrentLevel.Signal, signalTemplate).gameObject;
 
 
             leftMouseClick.Enable();

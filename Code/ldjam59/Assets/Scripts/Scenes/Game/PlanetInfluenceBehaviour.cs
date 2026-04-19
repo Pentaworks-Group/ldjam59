@@ -9,17 +9,17 @@ namespace Assets.Scripts.Scenes.Game
 
         private void OnTriggerEnter(Collider other)
         {
-            if (other.transform.parent.TryGetComponent<BulletBehaviour>(out var bullet))
+            if (other.transform.parent.TryGetComponent<SignalBehaviour>(out var signal))
             {
-                planetBehaviour.RegisterBullet(bullet);
+                planetBehaviour.RegisterSignal(signal);
             }
         }
 
         private void OnTriggerExit(Collider other)
         {
-            if (other.transform.parent.TryGetComponent<BulletBehaviour>(out var bullet))
+            if (other.transform.parent.TryGetComponent<SignalBehaviour>(out var signal))
             {
-                planetBehaviour.DeRegisterBullet(bullet);
+                planetBehaviour.DeRegisterSignal(signal);
             }
         }
     }

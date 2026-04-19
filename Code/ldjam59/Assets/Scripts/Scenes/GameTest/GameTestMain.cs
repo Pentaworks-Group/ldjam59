@@ -31,7 +31,7 @@ namespace Assets.Scripts.Scenes.GameTest
 
             if (instance.TryGetComponent<Rigidbody>(out var rigidbody))
             {
-                instance.AddComponent<BulletBehaviour>();
+                instance.AddComponent<SignalBehaviour>();
 
                 Vector3 mousePosition = Mouse.current.position.ReadValue();
                 mousePosition.z = Camera.main.transform.position.y;

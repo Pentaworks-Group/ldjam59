@@ -9,9 +9,9 @@ using UnityEngine.Events;
 
 namespace Assets.Scripts.Scenes.Game
 {
-    public class BulletBehaviour : MonoBehaviour
+    public class SignalBehaviour : MonoBehaviour
     {
-        public UnityEvent<BulletBehaviour> OnImpact = new UnityEvent<BulletBehaviour>();
+        public UnityEvent<SignalBehaviour> OnImpact = new UnityEvent<SignalBehaviour>();
 
         private void OnCollisionEnter(Collision collision)
         {

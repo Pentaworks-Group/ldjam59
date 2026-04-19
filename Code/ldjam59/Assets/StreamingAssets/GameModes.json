@@ -49,7 +49,7 @@
                     }
                 },
                 "Signal": {
-                    "Sprite": "blue-arrow",
+                    "Sprite": "Pill",
                     "Name": "Signal",
                     "Size": 0.1,
                     "Gravity": 1,
