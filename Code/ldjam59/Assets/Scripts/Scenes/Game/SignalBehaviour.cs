@@ -11,7 +11,15 @@ namespace Assets.Scripts.Scenes.Game
 {
     public class SignalBehaviour : MonoBehaviour
     {
+        [SerializeField]
+        private Collider borderCollider;
+
         public UnityEvent<SignalBehaviour> OnImpact = new UnityEvent<SignalBehaviour>();
+
+        private void Awake()
+        {
+            OnImpact.AddListener(DestroySignal);
+        }
 
         private void OnCollisionEnter(Collision collision)
         {
@@ -30,10 +38,16 @@ namespace Assets.Scripts.Scenes.Game
 
         private void OnTriggerExit(Collider other)
         {
-            if (other is BoxCollider)
+            if (other == borderCollider)
             {
-                Destroy(gameObject);
+                OnImpact.Invoke(this);
             }
+        }
+
+        private void DestroySignal(SignalBehaviour behaviour)
+        {
+            OnImpact.RemoveAllListeners();
+            Destroy(gameObject);
         }
     }
 }
