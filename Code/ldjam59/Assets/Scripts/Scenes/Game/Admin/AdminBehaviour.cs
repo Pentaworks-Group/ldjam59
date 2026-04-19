@@ -3,7 +3,6 @@ using Newtonsoft.Json;
 using TMPro;
 using UnityEngine;
 
-using Assets.Scripts.Constants;
 
 namespace Assets.Scripts.Scenes.Game.Admin
 {
@@ -32,7 +31,7 @@ namespace Assets.Scripts.Scenes.Game.Admin
 
 			var tt = GameFrame.Core.Json.Handler.Deserialize<Level>(json);
 			Base.Core.Game.State.CurrentLevel = tt;
-			Base.Core.Game.ChangeScene("Game", true);
+			Base.Core.Game.ChangeScene(Constants.Scenes.Game, false);
         }
 
         public void OpenPanel()

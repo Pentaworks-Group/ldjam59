@@ -30,8 +30,12 @@ namespace Assets.Scripts.Scenes.Game
 
         private int[] trackIndices = { 0, 3 }; //Track indices of soundTracks which track the Object
 
+        private void OnDisable()
+        {
+            clickAction.performed -= OnLeftMouseClicked;
+        }
 
-        private void OnLeftMouseClicked()
+        private void OnLeftMouseClicked(InputAction.CallbackContext context)
         {
             Base.Core.Game.PlayButtonSound();
 
@@ -93,7 +97,7 @@ namespace Assets.Scripts.Scenes.Game
             signal = SpawnObject(Base.Core.Game.State.CurrentLevel.Signal, signalTemplate).gameObject;
 
 
-            clickAction.performed += ctx => OnLeftMouseClicked();
+            clickAction.performed += OnLeftMouseClicked;
             clickAction.Enable();
         }
 
