@@ -1,5 +1,4 @@
 ﻿using Assets.Scripts.Core.Models;
-using Assets.Scripts.Scenes.Game;
 
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -53,19 +52,22 @@ namespace Assets.Scripts.Scenes.Game
         {
             leftMouseClick = new InputAction(binding: "<Mouse>/leftButton");
             leftMouseClick.performed += ctx => OnLeftMouseClicked();
+
             Base.Core.Game.ExecuteAfterInstantation(Init);
         }
 
         private void Init()
         {
-            var sourcetmp  = SpawnObject(Base.Core.Game.State.CurrentLevel.Source).gameObject;
+            Debug.Log("Main Init");
+
+            var sourcetmp = SpawnObject(Base.Core.Game.State.CurrentLevel.Source).gameObject;
             sourcetmp.SetActive(true);
             sourcetmp.AddComponent<MouseTracker>();
             source = sourcetmp.transform;
             target = SpawnObject(Base.Core.Game.State.CurrentLevel.Target).transform;
             target.gameObject.SetActive(true);
             bullet = SpawnObject(Base.Core.Game.State.CurrentLevel.Signal).gameObject;
-            
+
 
             leftMouseClick.Enable();
         }

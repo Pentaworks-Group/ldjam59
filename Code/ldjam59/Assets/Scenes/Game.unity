@@ -799,7 +799,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1499582780}
-  - component: {fileID: 1499582782}
+  - component: {fileID: 1499582781}
   m_Layer: 0
   m_Name: SimpleObjects
   m_TagString: Untagged
@@ -823,7 +823,7 @@ Transform:
   - {fileID: 277002127}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1499582782
+--- !u!114 &1499582781
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
