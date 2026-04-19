@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b564767faa1ddc74aa71f250b0140257, type: 3}
-  m_Name: MenuMusic
+  m_Name: MenuMusic_1
   m_EditorClassIdentifier: Assembly-CSharp::TrackCombination
-  combinationName: MenuMusic
+  combinationName: MenuMusic_1
   tracks:
   - active: 1
     volume: 1

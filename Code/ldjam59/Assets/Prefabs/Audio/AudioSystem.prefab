@@ -97,6 +97,8 @@ MonoBehaviour:
   state: {fileID: 11400000, guid: 71036854d68760040bfaf01ee2c40e23, type: 2}
   combinations:
   - {fileID: 11400000, guid: feb9905f57b83714598078c0a3cebebe, type: 2}
+  - {fileID: 11400000, guid: 8e8962a466b8ef746a2fad3eff491fdd, type: 2}
+  - {fileID: 11400000, guid: 6c81146eb8082e34c987f0f7f8e7663f, type: 2}
   - {fileID: 11400000, guid: 7c8426dedcd1e5f4ba81a095990758f1, type: 2}
 --- !u!114 &2102890768408439884
 MonoBehaviour:
