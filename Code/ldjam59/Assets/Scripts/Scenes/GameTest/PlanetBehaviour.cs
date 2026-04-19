@@ -1,24 +1,51 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-using Assets.Scripts.Scenes.GameTest;
+using Assets.Scripts.Scenes.Game;
 
 using UnityEngine;
 
-namespace Assets.Scripts.Scenes
+namespace Assets.Scripts.Scenes.GameTest
 {
     public  class PlanetBehaviour : MonoBehaviour
     {
         [SerializeField] private Single gravity = 1;
+        private Single actualGravity = 0;
 
         private readonly List<Rigidbody> affectedBodies = new List<Rigidbody>();
 
+        private void Update()
+        {
+            if (actualGravity != gravity)
+            {
+                actualGravity = gravity;
+                UpdateSphereOfInfluence();
+            }
+        }
+
+        private void UpdateSphereOfInfluence()
+        {
+            if (TryGetComponent<SphereCollider>(out var sphereCollider))
+            {
+                var size = 3f;
+
+                if (actualGravity > 0)
+                {
+                    size = UnityEngine.Mathf.Sqrt(actualGravity * 10f);
+                }
+
+                sphereCollider.radius = size;
+            }
+        }
+
+        private void Awake()
+        {
+            actualGravity = gravity;
+            UpdateSphereOfInfluence();
+        }
+
         private void OnTriggerEnter(Collider other)
         {
-            if (other.transform.parent.TryGetComponent<BulletBehaviour>(out var bullet))
+            if (other.transform.parent.TryGetComponent<SignalBehaviour>(out var bullet))
             {
                 if (bullet.TryGetComponent<Rigidbody>(out var bulletRigitBody))
                 {
@@ -30,7 +57,7 @@ namespace Assets.Scripts.Scenes
 
         private void OnTriggerExit(Collider other)
         {
-            if (other.transform.parent.TryGetComponent<BulletBehaviour>(out var bullet))
+            if (other.transform.parent.TryGetComponent<SignalBehaviour>(out var bullet))
             {
                 if (bullet.TryGetComponent<Rigidbody>(out var bulletRigitBody))
                 {
@@ -49,13 +76,17 @@ namespace Assets.Scripts.Scenes
                     {
                         var vector = transform.position - affectedBody.transform.position;
 
-                        affectedBody.AddForce(vector.normalized * gravity);
+                        var force = gravity / vector.sqrMagnitude;
+
+                        Debug.Log($"Applied force: {force}.");
+
+                        affectedBody.AddForce(vector.normalized * force);
                     }                    
                 }
             }
         }
 
-        private void OnBulletImpact(BulletBehaviour bullet)
+        public void OnBulletImpact(SignalBehaviour bullet)
         {
             if (bullet != default)
             {

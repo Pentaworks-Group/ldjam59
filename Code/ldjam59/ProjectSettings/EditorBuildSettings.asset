@@ -9,14 +9,35 @@ EditorBuildSettings:
     path: Assets/Scenes/MainMenu.unity
     guid: 5fb15014b16275048a019112f3829e19
   - enabled: 1
-    path: Assets/Scenes/Credits.unity
-    guid: f657380f36c2eb544a25ab171b61e6ef
-  - enabled: 1
     path: Assets/Scenes/Game.unity
     guid: e063a95a3a1675b4bad3f9696957ce9f
   - enabled: 1
+    path: Assets/Scenes/Credits.unity
+    guid: f657380f36c2eb544a25ab171b61e6ef
+  - enabled: 1
     path: Assets/Scenes/GameTest.unity
     guid: 99c9720ab356a0642a771bea13969a05
+  - enabled: 1
+    path: Assets/Scenes/GameMode.unity
+    guid: c6d658cb2922cb043b5f683a30f6c7c7
+  - enabled: 1
+    path: Assets/Scenes/GameOver.unity
+    guid: 7a88b72905c6951438fc06019d325db2
+  - enabled: 1
+    path: Assets/Scenes/LevelCompleted.unity
+    guid: 5738b7982cb287d459a36a0cbb6a0369
+  - enabled: 1
+    path: Assets/Scenes/Options.unity
+    guid: 6abd60c2b5a1cb2469a4c2baa0feefe1
+  - enabled: 1
+    path: Assets/Scenes/SavedGames.unity
+    guid: 84741dfc071878c45b5055853dcc1828
+  - enabled: 1
+    path: Assets/Scenes/ShootingStars.unity
+    guid: e56f9494680a5194da52e2df2a95f460
+  - enabled: 1
+    path: Assets/Scenes/AudioTests.unity
+    guid: ecdd7273b9875f146a36cff14eee38be
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   m_UseUCBPForAssetBundles: 0

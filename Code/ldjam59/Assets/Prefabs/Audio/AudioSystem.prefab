@@ -1,0 +1,265 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1645107443026002723
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5076052899299764448}
+  - component: {fileID: 5299862742824285730}
+  - component: {fileID: 8176347262860484116}
+  - component: {fileID: 4299058824337318148}
+  - component: {fileID: 2102890768408439884}
+  - component: {fileID: 6138198911409136259}
+  - component: {fileID: 5993736370526012872}
+  - component: {fileID: 1156315531459023408}
+  - component: {fileID: 6091802800966868368}
+  - component: {fileID: 1622134259444966462}
+  m_Layer: 0
+  m_Name: AudioSystem
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5076052899299764448
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1645107443026002723}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.5, y: 0.35, z: 0.5}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5299862742824285730
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1645107443026002723}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2bfc92890f542844ea888b78995e0c8d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::AudioEngine
+  player: {fileID: 8176347262860484116}
+  combinations: {fileID: 4299058824337318148}
+  beatClock: {fileID: 5993736370526012872}
+  barTrigger: {fileID: 1156315531459023408}
+  panner: {fileID: 6138198911409136259}
+  distortion: {fileID: 2102890768408439884}
+  randomScheduler: {fileID: 6091802800966868368}
+--- !u!114 &8176347262860484116
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1645107443026002723}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4898488af4eec164595c0852100b680e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MultitrackPlayer
+  state: {fileID: 11400000, guid: 71036854d68760040bfaf01ee2c40e23, type: 2}
+  mixerGroups:
+  - {fileID: -8372557582552810726, guid: 18a0a0f3d635e90438bc9f601a24ed06, type: 2}
+  - {fileID: -1124452548766640146, guid: 18a0a0f3d635e90438bc9f601a24ed06, type: 2}
+  - {fileID: -3769857982121550320, guid: 18a0a0f3d635e90438bc9f601a24ed06, type: 2}
+  - {fileID: -2137588849423759769, guid: 18a0a0f3d635e90438bc9f601a24ed06, type: 2}
+  - {fileID: -3369889644916328743, guid: 18a0a0f3d635e90438bc9f601a24ed06, type: 2}
+  - {fileID: 8896292835193243113, guid: 18a0a0f3d635e90438bc9f601a24ed06, type: 2}
+  - {fileID: -573550463340495757, guid: 18a0a0f3d635e90438bc9f601a24ed06, type: 2}
+  - {fileID: -5162892923139267056, guid: 18a0a0f3d635e90438bc9f601a24ed06, type: 2}
+  - {fileID: -8688654933696142754, guid: 18a0a0f3d635e90438bc9f601a24ed06, type: 2}
+--- !u!114 &4299058824337318148
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1645107443026002723}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 81ffc486e4ff8044787455218f67936d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CombinationManager
+  player: {fileID: 8176347262860484116}
+  state: {fileID: 11400000, guid: 71036854d68760040bfaf01ee2c40e23, type: 2}
+  combinations:
+  - {fileID: 11400000, guid: feb9905f57b83714598078c0a3cebebe, type: 2}
+  - {fileID: 11400000, guid: 8e8962a466b8ef746a2fad3eff491fdd, type: 2}
+  - {fileID: 11400000, guid: 6c81146eb8082e34c987f0f7f8e7663f, type: 2}
+  - {fileID: 11400000, guid: 7c8426dedcd1e5f4ba81a095990758f1, type: 2}
+  - {fileID: 11400000, guid: bee116266f1a3084ba4bb425fff2be9b, type: 2}
+  - {fileID: 11400000, guid: 2ecda2400f798334ea894d6fa00c5f21, type: 2}
+  - {fileID: 11400000, guid: cc5f5dea3a93f0242b3b38a11d95d71b, type: 2}
+--- !u!114 &2102890768408439884
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1645107443026002723}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff8f65dcf119eb6438d94b3e93b58970, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DistortionEffect
+  player: {fileID: 8176347262860484116}
+  state: {fileID: 11400000, guid: 71036854d68760040bfaf01ee2c40e23, type: 2}
+  mixer: {fileID: 24100000, guid: 18a0a0f3d635e90438bc9f601a24ed06, type: 2}
+  lowCutParams:
+  - Bells_LowCut
+  - Piano_1_LowCut
+  - Piano_2_LowCut
+  - Synth_LowCut
+  - Bass_LowCut
+  - Drums_LowCut
+  - Claps_LowCut
+  - Swell_LowCut
+  - Snare_LowCut
+  lowCutVolumeParams:
+  - Bells_LowCut_Volume
+  - Piano_1_LowCut_Volume
+  - Piano_2_LowCut_Volume
+  - Synth_LowCut_Volume
+  - Bass_LowCut_Volume
+  - Drums_LowCut_Volume
+  - Claps_LowCut_Volume
+  - Swell_LowCut_Volume
+  - Snare_LowCut_Volume
+  highCutParams:
+  - Bells_HighCut
+  - Piano_1_HighCut
+  - Piano_2_HighCut
+  - Synth_HighCut
+  - Bass_HighCut
+  - Drums_HighCut
+  - Claps_HighCut
+  - Swell_HighCut
+  - Snare_HighCut
+  highCutVolumeParams:
+  - Bells_HighCut_Volume
+  - Piano_1_HighCut_Volume
+  - Piano_2_HighCut_Volume
+  - Synth_HighCut_Volume
+  - Bass_HighCut_Volume
+  - Drums_HighCut_Volume
+  - Claps_HighCut_Volume
+  - Swell_HighCut_Volume
+  - Snare_HighCut_Volume
+  distortionParams:
+  - Bells_Distortion
+  - Piano_1_Distortion
+  - Piano_2_Distortion
+  - Synth_Distortion
+  - Bass_Distortion
+  - Drums_Distortion
+  - Claps_Distortion
+  - Swell_Distortion
+  - Snare_Distortion
+  volumeParams:
+  - Bells_Volume
+  - Piano_1_Volume
+  - Piano_2_Volume
+  - Synth_Volume
+  - Bass_Volume
+  - Drums_Volume
+  - Claps_Volume
+  - Swell_Volume
+  - Snare_Volume
+  intensity: 1
+  crackleRate: 0.3
+  fadeDuration: 1.5
+--- !u!114 &6138198911409136259
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1645107443026002723}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea75103dd943fc74a81caf954f3f0703, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TrackPanner
+  player: {fileID: 8176347262860484116}
+  state: {fileID: 11400000, guid: 71036854d68760040bfaf01ee2c40e23, type: 2}
+  trackingCamera: {fileID: 0}
+  target: {fileID: 0}
+  tracksToAffect: 0000000003000000
+  deadZone: 0.05
+  panRange: 1
+  smoothTime: 0.1
+  showDebugLog: 0
+--- !u!114 &5993736370526012872
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1645107443026002723}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ce3d8310c9c10b4da81f80c05465f62, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BeatClock
+  player: {fileID: 8176347262860484116}
+  state: {fileID: 11400000, guid: 71036854d68760040bfaf01ee2c40e23, type: 2}
+  bpm: 90
+  beatsPerBar: 7
+  beatUnit: 4
+  audioStartOffset: 0
+--- !u!114 &1156315531459023408
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1645107443026002723}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 458d2dc8943593c4c80b86585b2507ee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BarCombinationTrigger
+  beatClock: {fileID: 5993736370526012872}
+  combinationManager: {fileID: 4299058824337318148}
+  defaultFadeDuration: 0
+--- !u!114 &6091802800966868368
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1645107443026002723}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 75fb29679a429ab44b7c36648fa19409, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RandomCombinationScheduler
+  barTrigger: {fileID: 1156315531459023408}
+  beatClock: {fileID: 5993736370526012872}
+--- !u!114 &1622134259444966462
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1645107443026002723}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5be254208c709541beffc01357d3e05, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Assets.Scripts.Core.Music.VolumeBehaviour
+  audioEngine: {fileID: 0}

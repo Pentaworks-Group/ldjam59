@@ -6,7 +6,9 @@ public class MultitrackTestUI : MonoBehaviour
 
     private void OnGUI()
     {
-        GUILayout.BeginArea(new Rect(20, 20, 300, 400));
+        GUILayout.BeginArea(new Rect(20, 20, 300, 500));
+
+        GUI.color = Color.black;
 
         GUILayout.Label($"Position: {player.GetPosition():F1}s / {player.GetDuration():F1}s");
         GUILayout.Label($"Spielt: {player.state.isPlaying}");
@@ -16,6 +18,16 @@ public class MultitrackTestUI : MonoBehaviour
         if (GUILayout.Button("Play", GUILayout.Height(40))) player.Play();
         if (GUILayout.Button("Pause", GUILayout.Height(40))) player.Pause();
         if (GUILayout.Button("Stop", GUILayout.Height(40))) player.Stop();
+
+        GUILayout.Space(10);
+        GUILayout.Label("-- Master Volume --");
+        GUILayout.BeginHorizontal();
+        GUILayout.Label("Volume", GUILayout.Width(60));
+        float newMaster = GUILayout.HorizontalSlider(player.GetMasterVolume(), 0f, 1f);
+        if (!Mathf.Approximately(newMaster, player.GetMasterVolume()))
+            player.SetMasterVolume(newMaster);
+        GUILayout.Label(player.GetMasterVolume().ToString("F2"), GUILayout.Width(36));
+        GUILayout.EndHorizontal();
 
         GUILayout.Space(10);
 

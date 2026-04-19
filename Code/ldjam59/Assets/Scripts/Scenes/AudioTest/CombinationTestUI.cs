@@ -3,6 +3,7 @@ using UnityEngine;
 public class CombinationTestUI : MonoBehaviour
 {
     public CombinationManager manager;
+    public AudioEngine audioEngine;
     public float fadeDuration = 2f;
 
     private void OnGUI()
@@ -28,7 +29,8 @@ public class CombinationTestUI : MonoBehaviour
             GUILayout.BeginHorizontal();
             GUI.color = isActive ? Color.green : Color.white;
             if (GUILayout.Button($"Fade {fadeDuration:F1}s", GUILayout.Width(90), GUILayout.Height(36)))
-                manager.ActivateCombinationFaded(i, fadeDuration);
+                //                manager.ActivateCombinationFaded(i, fadeDuration);
+                audioEngine.CueOnNextBar(combo.name);
             GUILayout.EndHorizontal();
             
             if (isActive)

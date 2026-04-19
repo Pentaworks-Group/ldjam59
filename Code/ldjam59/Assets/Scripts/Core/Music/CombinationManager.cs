@@ -1,5 +1,7 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using static UnityEngine.UI.CanvasScaler;
 
 public class CombinationManager : MonoBehaviour
 {
@@ -13,8 +15,18 @@ public class CombinationManager : MonoBehaviour
     private Coroutine[] fadeCoroutines;
     private int activeCobinationIndex = -1;
 
-    void Awake()
+    private bool isLoaded = false;
+    private void Awake()
     {
+        if (!isLoaded)
+        {
+            Init();
+        }
+    }
+
+    private void Init()
+    {
+        isLoaded = true;
         fadeCoroutines = new Coroutine[state.tracks.Length];
     }
 
@@ -44,10 +56,10 @@ public class CombinationManager : MonoBehaviour
         activeCobinationIndex = index;
 
         var combo = combinations[index];
-        for (int i = 0;i < state.tracks.Length;i++)
+        for (int i = 0; i < state.tracks.Length; i++)
         {
             var entry = getEntry(combo, i);
-            float targetVolume = entry.active ? entry.volume :0f;
+            float targetVolume = entry.active ? entry.volume : 0f;
             startFade(i, targetVolume, entry.pan, duration);
         }
     }
@@ -61,12 +73,8 @@ public class CombinationManager : MonoBehaviour
 
     public void FadeOutAll(float duration)
     {
-        for (int i = 0; i < state.tracks.Length;i++)
-        {
-            var src = player.GetSource(i);
-            float currentPan = src != null ? src.panStereo : 0f;
-            startFade(i, 0f, currentPan, duration);
-        }
+            for (int i = 0; i < state.tracks.Length; i++)
+            startFade(i, 0f, state.tracks[i].pan, duration);
     }
 
     public void FadeInCurrent(float duration)
@@ -77,56 +85,51 @@ public class CombinationManager : MonoBehaviour
 
     public int GetActiveCombinationIndex() => activeCobinationIndex;
 
+    // Writes logical volume/pan into state and lets MultitrackPlayer own src.volume.
     private void applyEntry(int index, float volume, float pan)
     {
-        var src = player.GetSource(index);
-        if (src == null) return;
+        var track = state.tracks[index];
+        track.volume = volume;
+        track.pan = pan;
+        track.muted = (volume <= 0f);
 
-        src.volume = volume;
-        src.panStereo = pan;
-
-        // Keep AudioTrackData in sync
-        state.tracks[index].volume = volume;
-        state.tracks[index].pan = pan;
-        state.tracks[index].muted = (volume <= 0f);
+        // Single authority for writing to the AudioSource
+        player.ApplyTrackSettings(index);
     }
 
     private void startFade(int trackIndex, float targetVolume, float targetPan, float duration)
     {
-        if (fadeCoroutines[trackIndex] != null)
-            StopCoroutine(fadeCoroutines[trackIndex]);
+        if (fadeCoroutines != null)
+        {
+            if (fadeCoroutines[trackIndex] != null)
+            {
+                StopCoroutine(fadeCoroutines[trackIndex]);
+            }
 
-        fadeCoroutines[trackIndex] = StartCoroutine(
-            fadeTrack(trackIndex, targetVolume, targetPan, duration)
-        );
+            fadeCoroutines[trackIndex] = StartCoroutine(fadeTrack(trackIndex, targetVolume, targetPan, duration));
+        }
     }
 
     private IEnumerator fadeTrack(int trackIndex, float targetVolume, float targetPan, float duration)
     {
-        var src = player.GetSource(trackIndex);
-        if (src == null) yield break;
-
-        float startVolume = src.volume;
-        float startPan = src.panStereo;
-        float elapsed = 0f;
+        // Read logical volume from state — this is always correct regardless of masterVolume.
+        float startVolume = state.tracks[trackIndex].volume;
+        float startPan    = state.tracks[trackIndex].pan;
+        float elapsed     = 0f;
 
         while (elapsed < duration)
         {
             elapsed += Time.deltaTime;
             float t = Mathf.SmoothStep(0f, 1f, elapsed / duration);
 
-            float newVolume = Mathf.Lerp(startVolume, targetVolume, t);
-            float newPan = Mathf.Lerp(startPan, targetPan, t);
-
-            // Keep state in sync every frame during fade
-            applyEntry(trackIndex, newVolume, newPan);
+            applyEntry(trackIndex,
+                Mathf.Lerp(startVolume, targetVolume, t),
+                Mathf.Lerp(startPan,    targetPan,    t));
 
             yield return null;
         }
 
-        // Snap to exact target at end
         applyEntry(trackIndex, targetVolume, targetPan);
-
     }
 
     private TrackCombinationEntry getEntry(TrackCombination combo, int trackIndex)
@@ -141,6 +144,7 @@ public class CombinationManager : MonoBehaviour
     {
         for (int i = 0; i < combinations.Length; i++)
             if (combinations[i].combinationName == name) return i;
+
         return -1;
     }
 

@@ -221,16 +221,37 @@ namespace Assets.Scripts.Constants
             }
         }
 
+        public const String AudioTestName = "GameTest";
+        private static Scene audioTest;
+        public static Scene AudioTest
+        {
+            get
+            {
+                if (audioTest == default)
+                {
+                    audioTest = new Scene()
+                    {
+                        Name = AudioTestName,
+                        BackgroundClips = new List<String>()
+                        {
+                        }
+                    };
+                }
+
+                return audioTest;
+            }
+        }
+
         public static List<Scene> GetGameScenes()
         {
             return new List<Scene>()
             {
+                Game,
                 MainMenu,
                 Options,
                 SavedGames,
                 Credits,
                 GameMode,
-                Game,
                 LevelCompleted,
                 GameOver,
                 ShootingStars
@@ -240,7 +261,10 @@ namespace Assets.Scripts.Constants
         public static List<Scene> GetDevelopmentScenes()
         {
             return new List<Scene>()
-            { GameTest };
+            {
+                GameTest,
+                AudioTest
+            };
         }
 
         public static IList<Scene> GetAll()

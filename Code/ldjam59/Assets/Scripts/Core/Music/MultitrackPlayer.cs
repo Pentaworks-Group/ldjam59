@@ -14,10 +14,30 @@ public class MultitrackPlayer : MonoBehaviour
     private AudioSource[] sources;
     private bool isPlaying = false;
 
+    private bool isLoaded = false;
+
     private void Awake()
     {
+        if (!isLoaded)
+        {
+            Init();
+        }
+    }
+
+    private void Init()
+    {
+        isLoaded = true;
         DontDestroyOnLoad(gameObject);
         SceneManager.sceneLoaded += OnSceneLoaded;
+
+        if (GameFrame.Base.Audio.Background != default)
+        {
+            if (state.masterVolume != GameFrame.Base.Audio.Background.Volume)
+            {
+                state.masterVolume = GameFrame.Base.Audio.Background.Volume;
+            }
+        }
+
         InitializeSources();
     }
 
@@ -66,7 +86,17 @@ public class MultitrackPlayer : MonoBehaviour
 
     public void Play()
     {
-        if (isPlaying) return;
+        if (sources == null)
+        {
+            Debug.LogError("Can't Play! no sources provided.");
+            return;
+        }
+
+        if (isPlaying)
+        {
+            return;
+        }
+
         isPlaying = true;
         state.isPlaying = true;
 
@@ -127,10 +157,20 @@ public class MultitrackPlayer : MonoBehaviour
         var data = state.tracks[index];
         var src = sources[index];
 
-        src.volume = data.muted ? 0f : data.volume;
+        float effectiveVolume = data.muted ? 0f : data.volume * state.masterVolume;
+        src.volume = effectiveVolume;
         src.panStereo = data.pan;
         src.loop = data.loop || state.loopAll;
     }    
+
+    public void SetMasterVolume(float volume)
+    {
+        state.masterVolume = Mathf.Clamp01(volume);
+        for (int i= 0;i < sources.Length;i++)
+            ApplyTrackSettings(i);
+    }
+
+    public float GetMasterVolume() => state.masterVolume;
 
     public void SetSolo(int index, bool solo)
     {
@@ -140,9 +180,10 @@ public class MultitrackPlayer : MonoBehaviour
         for (int i = 0; i < sources.Length; i++)
         {
             var data = state.tracks[i];
-            sources[i].volume = anySolo
-                ? (data.soloed ? data.volume : 0f)
-                : (data.muted ? 0f : data.volume);
+            float effectiveVolume = anySolo
+                ? (data.soloed ? data.volume * state.masterVolume : 0f)
+                : (data.muted ? 0f : data.volume * state.masterVolume);
+            sources[i].volume = effectiveVolume;
         }
     }
 
