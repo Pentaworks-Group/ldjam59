@@ -246,12 +246,12 @@ namespace Assets.Scripts.Constants
         {
             return new List<Scene>()
             {
+                Game,
                 MainMenu,
                 Options,
                 SavedGames,
                 Credits,
                 GameMode,
-                Game,
                 LevelCompleted,
                 GameOver,
                 ShootingStars
