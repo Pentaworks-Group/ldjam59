@@ -44,9 +44,18 @@ public class DistortionEffect : MonoBehaviour
     private Coroutine crackleCoroutine;
     private List<Coroutine> fadeCoroutines = new List<Coroutine>();
 
+    // Cached per-track mixer state
+    private MixerParams[] cachedParams;
+
     void Awake()
     {
         trackAffected = new bool[state.tracks.Length];
+
+        // Initialize cache to neutral so fades always start from a valid value,
+        // even before the effect has been applied for the first time.
+        cachedParams = new MixerParams[state.tracks.Length];
+        for (int i = 0; i < cachedParams.Length; i++)
+            cachedParams[i] = getNeutralParams();
     }
 
     public void EnableRadioEffect(bool fade = true)
@@ -64,12 +73,13 @@ public class DistortionEffect : MonoBehaviour
         foreach (int idx in trackIndices)
             if (idx < trackAffected.Length)
                 trackAffected[idx] = true;
+
         applyEffect(fade);
     }
 
     public void DisableRadioEffect(bool fade = true)
     {
-        stopAllFades();
+        stopAllFades(); 
         if (crackleCoroutine != null)
         {
             StopCoroutine(crackleCoroutine);
@@ -148,7 +158,9 @@ public class DistortionEffect : MonoBehaviour
             for (int i = 0; i < state.tracks.Length; i++)
             {
                 if (!trackAffected[i]) continue;
-                mixer.SetFloat(volumeParams[i], drop);
+                var p = getCurrentParams(i);
+                p.volumeDB = drop;
+                setParams(i, p);
             }
             float wait = Random.Range(0.05f, 0.2f);
             yield return new WaitForSeconds(wait);
@@ -180,18 +192,20 @@ public class DistortionEffect : MonoBehaviour
             for (int i = 0;i < state.tracks.Length;i++)
             {
                 if (!trackAffected[i]) continue;
-                if (i < volumeParams.Length)
-                    mixer.SetFloat(volumeParams[i], dip);
+                var p = getCurrentParams(i);
+                p.volumeDB = dip;
+                setParams(i, p);
             }
 
             yield return new WaitForSeconds(dipTime);
 
-            // Restore volume
+            // Restore volume to wahtever the cache says the non-dipped value should be.
             for (int i = 0; i < state.tracks.Length;i++)
             {
                 if (!trackAffected[i]) continue;
-                if (i < volumeParams.Length)
-                    mixer.SetFloat(volumeParams[i], NEUTRAL_VOLUME_DB);
+                var p = getCurrentParams(i);
+                p.volumeDB = dip;
+                setParams(i, p);
             }
         }
     }
@@ -227,19 +241,11 @@ public class DistortionEffect : MonoBehaviour
         if (index < highCutVolumeParams.Length) mixer.SetFloat(highCutVolumeParams[index], p.highCutVolume);
         if (index < distortionParams.Length) mixer.SetFloat(distortionParams[index], p.distort);
         if (index < volumeParams.Length) mixer.SetFloat(volumeParams[index], p.volumeDB);
+
+        cachedParams[index] = p;
     }
 
-    private MixerParams getCurrentParams(int index)
-    {
-        var p = new MixerParams();
-        if (index < lowCutParams.Length) mixer.GetFloat(lowCutParams[index], out p.lowCut);
-        if (index < lowCutVolumeParams.Length) mixer.GetFloat(lowCutVolumeParams[index], out p.lowCutVolume);
-        if (index < highCutParams.Length) mixer.GetFloat(highCutParams[index], out p.highCut);
-        if (index < highCutVolumeParams.Length) mixer.GetFloat(highCutVolumeParams[index], out p.highCutVolume);
-        if (index < distortionParams.Length) mixer.GetFloat(distortionParams[index], out p.distort);
-        if (index < volumeParams.Length) mixer.GetFloat(volumeParams[index], out p.volumeDB);
-        return p;
-    }
+    private MixerParams getCurrentParams(int index) => cachedParams[index];
 
     private MixerParams getRadioParams() => new MixerParams
     {
