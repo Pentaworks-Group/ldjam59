@@ -129,6 +129,7 @@ public class CombinationManager : MonoBehaviour
     {
         for (int i = 0; i < combinations.Length; i++)
             if (combinations[i].combinationName == name) return i;
+
         return -1;
     }
 

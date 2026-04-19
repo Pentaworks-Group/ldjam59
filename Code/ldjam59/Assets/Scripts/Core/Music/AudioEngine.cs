@@ -18,12 +18,13 @@ public class AudioEngine : MonoBehaviour
     // -----------------------------------------------------------------
 
     [Header("Subsystems")]
-    public MultitrackPlayer         player;
-    public CombinationManager       combinations;
-    public BeatClock                beatClock;
-    public BarCombinationTrigger    barTrigger;
-    public TrackPanner              panner;
-    public DistortionEffect         distortion;
+    public MultitrackPlayer           player;
+    public CombinationManager         combinations;
+    public BeatClock                  beatClock;
+    public BarCombinationTrigger      barTrigger;
+    public TrackPanner                panner;
+    public DistortionEffect           distortion;
+    public RandomCombinationScheduler randomScheduler;
 
     // -----------------------------------------------------------------
     // Convenience read-only properties
@@ -119,6 +120,19 @@ public class AudioEngine : MonoBehaviour
     /// <param name="duration"></param>
     public void TriggerSignalLoss(float duration)
         => distortion.TriggerSignalLoss(duration);
+
+    // -----------------------------------------------------------------
+    // Random combination cycling
+    // -----------------------------------------------------------------
+
+    /// <summary>Start switching randomly between the given combinations,
+    /// waiting between minBarInterval and maxBarInterval bars between each switch. </summary>
+    public void StartRandomCycling(string[] combinations, int minBarInterval, int maxBarInterval, float fadeDuration = -1f)
+        => randomScheduler.StartRandomCycling(combinations, minBarInterval, maxBarInterval, fadeDuration);
+
+    /// <summary>Stop random cycling. Cancels any pending cue. </summary>
+    public void StopRandomCycling()
+        => randomScheduler.StopRandomCycling();
 
     // -----------------------------------------------------------------
     // Compound helpers - common multi-step patterns

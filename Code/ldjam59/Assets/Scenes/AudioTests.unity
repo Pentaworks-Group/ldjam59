@@ -149,6 +149,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CombinationTestUI
   manager: {fileID: 2098357723}
+  audioEngine: {fileID: 2098357728}
   fadeDuration: 2
 --- !u!4 &422634523
 Transform:
@@ -699,6 +700,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff8f65dcf119eb6438d94b3e93b58970, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DistortionEffect
+--- !u!114 &2098357728 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5299862742824285730, guid: e7f03cefcc1be50458ea7dfa7dca5684, type: 3}
+  m_PrefabInstance: {fileID: 3208693344268250452}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2bfc92890f542844ea888b78995e0c8d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::AudioEngine
 --- !u!1001 &3208693344268250452
 PrefabInstance:
   m_ObjectHideFlags: 0
