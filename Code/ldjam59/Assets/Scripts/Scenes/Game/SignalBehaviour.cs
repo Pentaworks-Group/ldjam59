@@ -28,6 +28,7 @@ namespace Assets.Scripts.Scenes.Game
 
         private void Update()
         {
+            //TODO: this approach fails if there are multiple objects
             if(baseObject != null)
             {
                 // Calculate direction and distance to the target
