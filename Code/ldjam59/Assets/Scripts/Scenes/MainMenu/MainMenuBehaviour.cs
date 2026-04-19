@@ -1,5 +1,4 @@
-﻿
-using System;
+﻿using System;
 
 using GameFrame.Core;
 
@@ -9,12 +8,11 @@ namespace Assets.Scripts.Scenes.MainMenu
 {
     public class MainMenuBehaviour : GameFrame.Core.UI.Scripts.Menu.BaseMenuBehaviour
     {
-        [SerializeField] MultitrackPlayer multiTrackPlayer;
-        [SerializeField] CombinationManager combinationManager;
+        [SerializeField] AudioEngine audioEngine;
 
         private void Awake()
         {
-            multiTrackPlayer.Play();
+            audioEngine.Play();
         }
 
         public void OnOpenOptions() => ChangeToScene(Constants.Scenes.Options);
