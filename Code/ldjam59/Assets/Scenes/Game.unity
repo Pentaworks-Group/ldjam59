@@ -306,6 +306,74 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 468720be75bedba468e2c57910739965, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Assets.Scripts.Scenes.Game.StaticUIBehaviour
+--- !u!1001 &614856555
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1645107443026002723, guid: e7f03cefcc1be50458ea7dfa7dca5684, type: 3}
+      propertyPath: m_Name
+      value: AudioSystem
+      objectReference: {fileID: 0}
+    - target: {fileID: 5076052899299764448, guid: e7f03cefcc1be50458ea7dfa7dca5684, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 1.14739
+      objectReference: {fileID: 0}
+    - target: {fileID: 5076052899299764448, guid: e7f03cefcc1be50458ea7dfa7dca5684, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5076052899299764448, guid: e7f03cefcc1be50458ea7dfa7dca5684, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 1.14739
+      objectReference: {fileID: 0}
+    - target: {fileID: 5076052899299764448, guid: e7f03cefcc1be50458ea7dfa7dca5684, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5076052899299764448, guid: e7f03cefcc1be50458ea7dfa7dca5684, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5076052899299764448, guid: e7f03cefcc1be50458ea7dfa7dca5684, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5076052899299764448, guid: e7f03cefcc1be50458ea7dfa7dca5684, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5076052899299764448, guid: e7f03cefcc1be50458ea7dfa7dca5684, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5076052899299764448, guid: e7f03cefcc1be50458ea7dfa7dca5684, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5076052899299764448, guid: e7f03cefcc1be50458ea7dfa7dca5684, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: e7f03cefcc1be50458ea7dfa7dca5684, type: 3}
+--- !u!114 &614856556 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5299862742824285730, guid: e7f03cefcc1be50458ea7dfa7dca5684, type: 3}
+  m_PrefabInstance: {fileID: 614856555}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2bfc92890f542844ea888b78995e0c8d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::AudioEngine
 --- !u!4 &842504307 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1582485058921675140, guid: e3e2a7ba553dc424f9f4b5f6f4ac3c9c, type: 3}
@@ -637,6 +705,7 @@ MonoBehaviour:
   signalTemplate: {fileID: 7832156709569956452}
   targetTemplate: {fileID: 7832156709757100665}
   signalContainer: {fileID: 1684383653}
+  audioEngine: {fileID: 614856556}
 --- !u!1 &1684383652
 GameObject:
   m_ObjectHideFlags: 0
@@ -1299,3 +1368,4 @@ SceneRoots:
   - {fileID: 230869694}
   - {fileID: 1764177311}
   - {fileID: 377927280794655787}
+  - {fileID: 614856555}

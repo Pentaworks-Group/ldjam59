@@ -19,6 +19,8 @@ namespace Assets.Scripts.Scenes.Game
         private SimpleObjectBehaviour targetTemplate;
         [SerializeField]
         private Transform signalContainer;
+        [SerializeField]
+        private AudioEngine audioEngine;
 
         private GameObject signal;
         private Transform source;
@@ -59,6 +61,10 @@ namespace Assets.Scripts.Scenes.Game
             clickAction = InputSystem.actions.FindAction("Click");
 
             Base.Core.Game.ExecuteAfterInstantation(Init);
+
+            string[] combinations = { "MenuMusic_1", "MenuMusic_2", "MenuMusic_3", "MenuMusic_3" };
+            audioEngine.StartRandomCycling(combinations, 1, 7, 0.2f);
+            audioEngine.Play();
         }
 
         private void Init()
