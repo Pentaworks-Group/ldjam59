@@ -645,12 +645,64 @@ MonoBehaviour:
   mixer: {fileID: 24100000, guid: 18a0a0f3d635e90438bc9f601a24ed06, type: 2}
   lowCutParams:
   - Bells_LowCut
+  - Piano_1_LowCut
+  - Piano_2_LowCut
+  - Synth_LowCut
+  - Bass_LowCut
+  - Drums_LowCut
+  - Claps_LowCut
+  - Swell_LowCut
+  - Snare_LowCut
+  lowCutVolumeParams:
+  - Bells_LowCut_Volume
+  - Piano_1_LowCut_Volume
+  - Piano_2_LowCut_Volume
+  - Synth_LowCut_Volume
+  - Bass_LowCut_Volume
+  - Drums_LowCut_Volume
+  - Claps_LowCut_Volume
+  - Swell_LowCut_Volume
+  - Snare_LowCut_Volume
   highCutParams:
   - Bells_HighCut
+  - Piano_1_HighCut
+  - Piano_2_HighCut
+  - Synth_HighCut
+  - Bass_HighCut
+  - Drums_HighCut
+  - Claps_HighCut
+  - Swell_HighCut
+  - Snare_HighCut
+  highCutVolumeParams:
+  - Bells_HighCut_Volume
+  - Piano_1_HighCut_Volume
+  - Piano_2_HighCut_Volume
+  - Synth_HighCut_Volume
+  - Bass_HighCut_Volume
+  - Drums_HighCut_Volume
+  - Claps_HighCut_Volume
+  - Swell_HighCut_Volume
+  - Snare_HighCut_Volume
   distortionParams:
   - Bells_Distortion
+  - Piano_1_Distortion
+  - Piano_2_Distortion
+  - Synth_Distortion
+  - Bass_Distortion
+  - Drums_Distortion
+  - Claps_Distortion
+  - Swell_Distortion
+  - Snare_Distortion
   volumeParams:
   - Bells_Volume
+  - Piano_1_Volume
+  - Piano_2_Volume
+  - Synth_Volume
+  - Bass_Volume
+  - Drums_Volume
+  - Claps_Volume
+  - Swell_Volume
+  - Snare_Volume
   intensity: 1
   crackleRate: 0.3
   fadeDuration: 1.5
