@@ -25,7 +25,7 @@ public static class BuildConfigurator
 
     public static void BuildProjectDevelopment()
     {
-        Debug.LogError($"SceneNames.scenes: {Scenes.GetGameScenes()}");
+        //Debug.LogError($"SceneNames.scenes: {Scenes.GetGameScenes()}");
         //Debug.Log($"SceneNames.scenesDevelopment: {SceneNames.scenesDevelopment}");
 
         var report = BuildPipeline.BuildPlayer(GetScenePaths(Scenes.GetGameScenes(), Scenes.GetDevelopmentScenes()), locationPath, BuildTarget.WebGL, BuildOptions.Development);
