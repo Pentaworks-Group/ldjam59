@@ -28,6 +28,9 @@ namespace Assets.Scripts.Scenes.Game
 
         private InputAction clickAction;
 
+        private int[] trackIndices = { 0, 3 }; //Track indices of soundTracks which track the Object
+
+
         private void OnLeftMouseClicked()
         {
             Base.Core.Game.PlayButtonSound();
@@ -62,7 +65,8 @@ namespace Assets.Scripts.Scenes.Game
 
             Base.Core.Game.ExecuteAfterInstantation(Init);
 
-            string[] combinations = { "MenuMusic_1", "MenuMusic_2", "MenuMusic_3", "MenuMusic_3" };
+            audioEngine.SetCombination("Level_0", 1.0f);
+            string[] combinations = { "Level_0", "Level_1", "Level_2", "Level_3" };
             audioEngine.StartRandomCycling(combinations, 1, 7, 0.2f);
             audioEngine.Play();
         }
@@ -95,6 +99,10 @@ namespace Assets.Scripts.Scenes.Game
             var objectBehaviour = Instantiate(usedObjectTemplate, postion, usedObjectTemplate.transform.rotation, transform);
             objectBehaviour.gameObject.name = simpleSpaceObject.Name;
             objectBehaviour.Init(simpleSpaceObject);
+
+            audioEngine.TrackObject(objectBehaviour.transform, trackIndices);
+            //TODO: untrack if the object gets removed
+
             return objectBehaviour;
         }
     }

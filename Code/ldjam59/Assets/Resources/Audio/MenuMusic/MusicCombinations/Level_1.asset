@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b564767faa1ddc74aa71f250b0140257, type: 3}
-  m_Name: Level_0
+  m_Name: Level_1
   m_EditorClassIdentifier: Assembly-CSharp::TrackCombination
-  combinationName: Level_0
+  combinationName: Level_1
   tracks:
-  - active: 1
+  - active: 0
     volume: 1
     pan: 0
   - active: 0
@@ -23,7 +23,7 @@ MonoBehaviour:
   - active: 1
     volume: 1
     pan: 0
-  - active: 0
+  - active: 1
     volume: 0
     pan: 0
   - active: 1
