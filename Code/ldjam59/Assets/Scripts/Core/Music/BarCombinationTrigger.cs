@@ -18,6 +18,7 @@ public class BarCombinationTrigger : MonoBehaviour
     // -1 means no change queued
     private int pendingBar = -1;
     private int lastFiredBar = 0;
+    private int accumulatedBars = 0;
     private string pendingCombinationName = null;
     private float pendingFadeDuration = 0f;
 
@@ -59,6 +60,8 @@ public class BarCombinationTrigger : MonoBehaviour
     {
         pendingBar = -1;
         pendingCombinationName = null;
+        accumulatedBars = 0;
+        lastFiredBar = 0;
     }
 
     public bool HasPendingChange => pendingBar >= 0;
@@ -69,12 +72,18 @@ public class BarCombinationTrigger : MonoBehaviour
     {
         if (pendingBar < 0) return;
 
-        bool reached = bar == pendingBar;
-        bool wrapped = bar < lastFiredBar && pendingBar > lastFiredBar;
+        // Track how many times we've looped by detecting backward jumps.
+        if (bar < lastFiredBar)
+            accumulatedBars += lastFiredBar;
 
         lastFiredBar = bar;
 
-        if (!reached && !wrapped) return;
+        int absoluteBar = accumulatedBars + bar;
+
+        if (absoluteBar < pendingBar)
+        {
+            return;
+        }
 
         if (pendingFadeDuration > 0f)
             combinationManager.ActivateCombinationFaded(pendingCombinationName, pendingFadeDuration);
