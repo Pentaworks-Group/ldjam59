@@ -1,14 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Assets.Scripts.Scenes.Game;
+
 
 using UnityEngine;
 
 namespace Assets.Scripts.Scenes.GameTest
 {
-    public class PlanetSurfaceBehaviour : MonoBehaviour
+    public class PlanetInfluenceBehaviour : MonoBehaviour
     {
         private void OnCollisionEnter(Collision collision)
         {

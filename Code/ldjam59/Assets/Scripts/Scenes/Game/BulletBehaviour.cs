@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.Events;
 
-namespace Assets.Scripts.Scenes.GameTest
+namespace Assets.Scripts.Scenes.Game
 {
     public class BulletBehaviour : MonoBehaviour
     {

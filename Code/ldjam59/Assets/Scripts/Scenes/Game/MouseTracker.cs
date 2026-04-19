@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.InputSystem;
 
-namespace Assets.Scripts.Scenes.GameTest
+namespace Assets.Scripts.Scenes.Game
 {
     public class MouseTracker : MonoBehaviour
     {

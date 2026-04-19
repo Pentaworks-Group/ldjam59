@@ -9,45 +9,63 @@
                 "Reference": "L1",
                 "Description": "AnotherBlabla",
                 "Source": {
-                    "Sprite": "Shipsi",
+                    "Sprite": "white-arrow",
                     "Name": "TheFlyer",
                     "Size": 1,
                     "Gravity": 1,
                     "Position": {
-                        "x": 0,
-                        "y": 5
+                        "x": 15,
+                        "y": 0
                     },
                     "Speed": {
                         "x": 0,
                         "y": 0
+                    },
+                    "Color": {
+                        "Red": 0,
+                        "Green": 0,
+                        "Blue": 1,
+                        "Alpha": 1
                     }
                 },
                 "Target": {
-                    "Sprite": "Sink",
+                    "Sprite": "hole",
                     "Name": "Sink",
                     "Size": 1,
                     "Gravity": 1,
                     "Position": {
-                        "x": 0,
-                        "y": -5
+                        "x": -15,
+                        "y": 0
                     },
                     "Speed": {
                         "x": 0,
                         "y": 0
+                    },
+                    "Color": {
+                        "Red": 0,
+                        "Green": 1,
+                        "Blue": 0,
+                        "Alpha": 1
                     }
                 },
                 "Signal": {
-                    "Sprite": "Signal",
+                    "Sprite": "blue-arrow",
                     "Name": "Signal",
                     "Size": 1,
                     "Gravity": 1,
                     "Position": {
-                        "x": 0,
+                        "x": 5,
                         "y": 5
                     },
                     "Speed": {
                         "x": 0,
                         "y": 0
+                    },
+                    "Color": {
+                        "Red": 0.5,
+                        "Green": 0.5,
+                        "Blue": 0.5,
+                        "Alpha": 1
                     }
                 },
                 "Planets": [
