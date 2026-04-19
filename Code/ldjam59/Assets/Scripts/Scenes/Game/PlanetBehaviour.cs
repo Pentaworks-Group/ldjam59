@@ -12,6 +12,8 @@ namespace Assets.Scripts.Scenes.Game
     public class PlanetBehaviour : MonoBehaviour
     {
         private Planet planet;
+        [SerializeField]
+        private PlanetInfluenceBehaviour planetInfluenceBehaviour;
         [SerializeField] private Single gravity = 1;
         private readonly List<Rigidbody> affectedBodies = new List<Rigidbody>();
 
@@ -23,6 +25,7 @@ namespace Assets.Scripts.Scenes.Game
             gameObject.name = planet.Name;
 
             UpdateShader();
+            UpdateSphereOfInfluence();
         }
 
         private void Update()
@@ -36,7 +39,7 @@ namespace Assets.Scripts.Scenes.Game
 
         private void UpdateSphereOfInfluence()
         {
-            if (TryGetComponent<SphereCollider>(out var sphereCollider))
+            if (planetInfluenceBehaviour.TryGetComponent<SphereCollider>(out var sphereCollider))
             {
                 var size = 3f;
 
@@ -73,29 +76,6 @@ namespace Assets.Scripts.Scenes.Game
 
 
 
-        private void OnTriggerEnter(Collider other)
-        {
-            if (other.transform.parent.TryGetComponent<BulletBehaviour>(out var bullet))
-            {
-                if (bullet.TryGetComponent<Rigidbody>(out var bulletRigitBody))
-                {
-                    bullet.OnImpact.AddListener(OnBulletImpact);
-                    affectedBodies.Add(bulletRigitBody);
-                }
-            }
-        }
-
-        private void OnTriggerExit(Collider other)
-        {
-            if (other.transform.parent.TryGetComponent<BulletBehaviour>(out var bullet))
-            {
-                if (bullet.TryGetComponent<Rigidbody>(out var bulletRigitBody))
-                {
-                    affectedBodies.Remove(bulletRigitBody);
-                }
-            }
-        }
-
         private void FixedUpdate()
         {
             if (this.affectedBodies.Count > 0)
@@ -113,6 +93,34 @@ namespace Assets.Scripts.Scenes.Game
                         affectedBody.AddForce(vector.normalized * force);
                     }
                 }
+            }
+        }
+
+        private void OnCollisionEnter(Collision collision)
+        {
+            if (collision.body.TryGetComponent<BulletBehaviour>(out var bullet))
+            {
+                bullet.OnImpact.Invoke(bullet);
+                bullet.OnImpact.RemoveAllListeners();
+
+                Destroy(collision.body.gameObject);
+            }
+        }
+
+        public void RegisterBullet(BulletBehaviour bullet)
+        {
+            if (bullet.TryGetComponent<Rigidbody>(out var bulletRigitBody))
+            {
+                bullet.OnImpact.AddListener(OnBulletImpact);
+                affectedBodies.Add(bulletRigitBody);
+            }
+        }
+
+        public void DeRegisterBullet(BulletBehaviour bullet)
+        {
+            if (bullet.TryGetComponent<Rigidbody>(out var bulletRigitBody))
+            {
+                affectedBodies.Remove(bulletRigitBody);
             }
         }
 

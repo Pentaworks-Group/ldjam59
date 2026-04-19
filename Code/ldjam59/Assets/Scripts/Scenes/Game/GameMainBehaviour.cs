@@ -13,6 +13,8 @@ namespace Assets.Scripts.Scenes.Game
         [SerializeField]
         private SimpleObjectBehaviour objectTemplate;
         [SerializeField]
+        private SimpleObjectBehaviour bulletTemplate;
+        [SerializeField]
         private Transform bulletContainer;
 
         private GameObject bullet;
@@ -32,8 +34,6 @@ namespace Assets.Scripts.Scenes.Game
 
             if (instance.TryGetComponent<Rigidbody>(out var rigidbody))
             {
-                instance.AddComponent<BulletBehaviour>();
-
                 Vector3 mousePosition = Mouse.current.position.ReadValue();
                 mousePosition.z = Camera.main.transform.position.y;
 
@@ -43,6 +43,7 @@ namespace Assets.Scripts.Scenes.Game
                 var startPosition = new Vector3(source.position.x, 0f, source.position.z);
 
                 var vector = viewedMousePosition - startPosition;
+                rigidbody.rotation = Quaternion.LookRotation(vector);
 
                 rigidbody.AddForce(vector.normalized * 2, ForceMode.Impulse);
             }
@@ -60,23 +61,25 @@ namespace Assets.Scripts.Scenes.Game
         {
             Debug.Log("Main Init");
 
-            var sourcetmp = SpawnObject(Base.Core.Game.State.CurrentLevel.Source).gameObject;
+            var sourcetmp = SpawnObject(Base.Core.Game.State.CurrentLevel.Source, objectTemplate).gameObject;
             sourcetmp.SetActive(true);
             sourcetmp.AddComponent<MouseTracker>();
             source = sourcetmp.transform;
-            target = SpawnObject(Base.Core.Game.State.CurrentLevel.Target).transform;
+            target = SpawnObject(Base.Core.Game.State.CurrentLevel.Target, objectTemplate).transform;
             target.gameObject.SetActive(true);
-            bullet = SpawnObject(Base.Core.Game.State.CurrentLevel.Signal).gameObject;
+            bullet = SpawnObject(Base.Core.Game.State.CurrentLevel.Signal, bulletTemplate).gameObject;
 
 
             leftMouseClick.Enable();
         }
 
-        private SimpleObjectBehaviour SpawnObject(SimpleSpaceObject simpleSpaceObject)
+
+        private SimpleObjectBehaviour SpawnObject(SimpleSpaceObject simpleSpaceObject, SimpleObjectBehaviour usedObjectTemplate)
         {
             var postion = new UnityEngine.Vector3(simpleSpaceObject.Position.Value.X, 0, simpleSpaceObject.Position.Value.Y);
 
-            var objectBehaviour = Instantiate(objectTemplate, postion, objectTemplate.transform.rotation, transform);
+            var objectBehaviour = Instantiate(usedObjectTemplate, postion, usedObjectTemplate.transform.rotation, transform);
+            objectBehaviour.gameObject.name = simpleSpaceObject.Name;
             objectBehaviour.Init(simpleSpaceObject);
             return objectBehaviour;
         }

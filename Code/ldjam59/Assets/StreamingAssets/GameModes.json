@@ -11,7 +11,7 @@
                 "Source": {
                     "Sprite": "white-arrow",
                     "Name": "TheFlyer",
-                    "Size": 1,
+                    "Size": 0.5,
                     "Gravity": 1,
                     "Position": {
                         "x": 15,
@@ -51,7 +51,7 @@
                 "Signal": {
                     "Sprite": "blue-arrow",
                     "Name": "Signal",
-                    "Size": 1,
+                    "Size": 0.1,
                     "Gravity": 1,
                     "Position": {
                         "x": 5,

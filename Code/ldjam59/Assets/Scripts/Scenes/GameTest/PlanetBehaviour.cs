@@ -86,7 +86,7 @@ namespace Assets.Scripts.Scenes.GameTest
             }
         }
 
-        private void OnBulletImpact(BulletBehaviour bullet)
+        public void OnBulletImpact(BulletBehaviour bullet)
         {
             if (bullet != default)
             {

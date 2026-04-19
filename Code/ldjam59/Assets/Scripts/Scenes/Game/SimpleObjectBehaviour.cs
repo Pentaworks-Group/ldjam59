@@ -6,6 +6,8 @@ namespace Assets.Scripts.Scenes.Game
 {
 	public class SimpleObjectBehaviour : MonoBehaviour
 	{
+		[SerializeField]
+		private SpriteRenderer spriteRenderer;
 		private SimpleSpaceObject SimpleSpaceObject;
 		public void Init(SimpleSpaceObject spaceObject)
 		{
@@ -16,10 +18,9 @@ namespace Assets.Scripts.Scenes.Game
 
 		private void UpdateRendering()
 		{
-            SpriteRenderer rend = GetComponent<SpriteRenderer>();
-			rend.sprite = GameFrame.Base.Resources.Manager.Sprites.Get(SimpleSpaceObject.Sprite);
-			rend.color = SimpleSpaceObject.Color.ToUnity();
-			transform.localScale = new UnityEngine.Vector3(SimpleSpaceObject.Size.Value, 1f, SimpleSpaceObject.Size.Value);
+            spriteRenderer.sprite = GameFrame.Base.Resources.Manager.Sprites.Get(SimpleSpaceObject.Sprite);
+            spriteRenderer.color = SimpleSpaceObject.Color.ToUnity();
+			transform.localScale = new UnityEngine.Vector3(SimpleSpaceObject.Size.Value, SimpleSpaceObject.Size.Value, SimpleSpaceObject.Size.Value);
         }
 	}
 }

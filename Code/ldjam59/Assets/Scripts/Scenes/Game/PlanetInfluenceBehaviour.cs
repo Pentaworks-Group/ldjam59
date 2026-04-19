@@ -1,20 +1,25 @@
-﻿using Assets.Scripts.Scenes.Game;
+﻿using UnityEngine;
 
-
-using UnityEngine;
-
-namespace Assets.Scripts.Scenes.GameTest
+namespace Assets.Scripts.Scenes.Game
 {
     public class PlanetInfluenceBehaviour : MonoBehaviour
     {
-        private void OnCollisionEnter(Collision collision)
-        {
-            if (collision.body.TryGetComponent<BulletBehaviour>(out var bullet))
-            {
-                bullet.OnImpact.Invoke(bullet);
-                bullet.OnImpact.RemoveAllListeners();
+        [SerializeField]
+        private PlanetBehaviour planetBehaviour;
 
-                Destroy(collision.body.gameObject);
+        private void OnTriggerEnter(Collider other)
+        {
+            if (other.transform.parent.TryGetComponent<BulletBehaviour>(out var bullet))
+            {
+                planetBehaviour.RegisterBullet(bullet);
+            }
+        }
+
+        private void OnTriggerExit(Collider other)
+        {
+            if (other.transform.parent.TryGetComponent<BulletBehaviour>(out var bullet))
+            {
+                planetBehaviour.DeRegisterBullet(bullet);
             }
         }
     }
