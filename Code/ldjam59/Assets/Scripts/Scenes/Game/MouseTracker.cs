@@ -7,7 +7,8 @@ namespace Assets.Scripts.Scenes.Game
     {
         private void Update()
         {
-            Vector3 mousePosition = Mouse.current.position.ReadValue();
+            
+            Vector3 mousePosition = Pointer.current.position.ReadValue();
             mousePosition.z = Camera.main.transform.position.y;
             var viewedMousePosition = Camera.main.ScreenToWorldPoint(mousePosition);
 

@@ -24,7 +24,7 @@ namespace Assets.Scripts.Scenes.Game
         private Transform source;
         private TargetBehaviour target;
 
-        private InputAction leftMouseClick;
+        private InputAction clickAction;
 
         private void OnLeftMouseClicked()
         {
@@ -39,7 +39,7 @@ namespace Assets.Scripts.Scenes.Game
 
             if (instance.TryGetComponent<Rigidbody>(out var rigidbody))
             {
-                Vector3 mousePosition = Mouse.current.position.ReadValue();
+                Vector3 mousePosition = Pointer.current.position.ReadValue();
                 mousePosition.z = Camera.main.transform.position.y;
 
                 var viewedMousePosition = Camera.main.ScreenToWorldPoint(mousePosition);
@@ -56,8 +56,7 @@ namespace Assets.Scripts.Scenes.Game
 
         private void Awake()
         {
-            leftMouseClick = new InputAction(binding: "<Mouse>/leftButton");
-            leftMouseClick.performed += ctx => OnLeftMouseClicked();
+            clickAction = InputSystem.actions.FindAction("Click");
 
             Base.Core.Game.ExecuteAfterInstantation(Init);
         }
@@ -78,7 +77,8 @@ namespace Assets.Scripts.Scenes.Game
             signal = SpawnObject(Base.Core.Game.State.CurrentLevel.Signal, signalTemplate).gameObject;
 
 
-            leftMouseClick.Enable();
+            clickAction.performed += ctx => OnLeftMouseClicked();
+            clickAction.Enable();
         }
 
 
