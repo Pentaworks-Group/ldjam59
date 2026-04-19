@@ -64,6 +64,7 @@ namespace Assets.Scripts.Core
         private void SimpleObject(SimpleSpaceObjectDefinition definition, SimpleSpaceObject model)
         {
             model.Sprite = definition.Sprite;
+            model.Color = definition.Color;
         }
 
         private static void PlanetConversion(PlanetDefinition planetDef, Planet convertedPlanet)
