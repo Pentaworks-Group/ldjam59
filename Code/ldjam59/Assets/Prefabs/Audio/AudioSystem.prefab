@@ -57,7 +57,7 @@ MonoBehaviour:
   barTrigger: {fileID: 1156315531459023408}
   panner: {fileID: 6138198911409136259}
   distortion: {fileID: 2102890768408439884}
-  randomScheduler: {fileID: 0}
+  randomScheduler: {fileID: 6091802800966868368}
 --- !u!114 &8176347262860484116
 MonoBehaviour:
   m_ObjectHideFlags: 0

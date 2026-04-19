@@ -12,6 +12,9 @@ namespace Assets.Scripts.Scenes.MainMenu
 
         private void Awake()
         {
+            //            audioEngine.SetCombination("MenuMusic");
+            string[] combinations = {"MenuMusic", "Level_0"};
+            audioEngine.StartRandomCycling(combinations, 1, 7, 0.2f);
             audioEngine.Play();
         }
 
