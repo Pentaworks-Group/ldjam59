@@ -33,6 +33,24 @@ namespace Assets.Scripts.Core
             Start();
         }
 
+        public void LoadLevelByIndex(int index)
+        {
+            var firstLevel = this.State.Mode.Levels[index];
+            this.State.CurrentLevel = new LevelConverter().Convert(firstLevel);
+            Base.Core.Game.ChangeScene(Constants.Scenes.Game, false);
+        }
+
+        public override void Quit()
+        {
+#if UNITY_EDITOR
+            UnityEditor.EditorApplication.isPlaying = false;
+#elif UNITY_WEBGL
+            Application.Quit(); 
+#elif UNITY_STANDALONE
+            Application.Quit();            
+#endif
+        }
+
         protected override GameState InitializeGameState()
         {
             var gameMode = selectedGameMode;
@@ -74,13 +92,5 @@ namespace Assets.Scripts.Core
             yield return new GameModeLoader(this.gameModeCache).LoadDefinitions("GameModes.json");
             Debug.Log("loaded definitions");
         }
-
-        public void LoadLevelByIndex(int index)
-        {
-            var firstLevel = this.State.Mode.Levels[index];
-            this.State.CurrentLevel = new LevelConverter().Convert(firstLevel);
-            Base.Core.Game.ChangeScene(Constants.Scenes.Game, false);
-        }
-
     }
 }

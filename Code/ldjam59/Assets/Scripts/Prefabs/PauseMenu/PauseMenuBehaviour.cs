@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using TMPro;
 
 using UnityEditor;
+using UnityEditor.Analytics;
 
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -20,6 +21,8 @@ namespace Assets.Scripts.Prefabs.PauseMenu
 
         public List<GameObject> hideOnPause = new List<GameObject>();
         public GameObject pauseMenuContainer;
+        public GameObject backButton;
+        public PauseSubMenuBehaviour defaultMenu;
         public PauseSubMenuBehaviour optionsMenu;
         public PauseSubMenuBehaviour saveGameMenu;
         public TMP_Text titleText;
@@ -38,6 +41,9 @@ namespace Assets.Scripts.Prefabs.PauseMenu
                 escapeAction.performed+= OnEscapePressed;
 
                 HideItems();
+
+                titleText.text = defaultMenu.title;
+                defaultMenu.gameObject.SetActive(true);
                 pauseMenuContainer.SetActive(true);
             }
         }
@@ -51,12 +57,25 @@ namespace Assets.Scripts.Prefabs.PauseMenu
             }
             else
             {
-                OpenMenu(default);
+                OnBack();
             }
+        }
+
+        public void OnBack()
+        {
+            OpenMenu(default);
         }
 
         public void OnOpenOptions() => OpenMenu(optionsMenu);
         public void OnOpenSaveGames() => OpenMenu(saveGameMenu);
+
+        public void OnQuit()
+        {
+            Base.Core.Game.PlayButtonSound();
+
+            Base.Core.Game.Stop();
+            Base.Core.Game.ChangeScene(Constants.Scenes.MainMenu);
+        }
 
         private void OpenMenu(PauseSubMenuBehaviour newValue)
         {
@@ -71,14 +90,18 @@ namespace Assets.Scripts.Prefabs.PauseMenu
             {
                 titleText.text = newValue.title;
 
+                backButton.SetActive(true);
                 newValue.gameObject.SetActive(true);
-                pauseMenuContainer.SetActive(false);
+                defaultMenu.gameObject.SetActive(false);
             }
             else
             {
-                pauseMenuContainer.SetActive(true);
-                titleText.text = "Pause";
+                backButton.SetActive(false);
+                defaultMenu.gameObject.SetActive(true);
+                titleText.text = defaultMenu.title;
             }
+
+            Base.Core.Game.PlayButtonSound();
         }
 
         private void HideItems()
