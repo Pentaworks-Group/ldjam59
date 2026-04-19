@@ -1,3 +1,5 @@
+using Assets.Scripts.Scenes.Game;
+
 using UnityEngine;
 
 namespace Assets.Scripts.Scenes.GameTest
@@ -8,12 +10,14 @@ namespace Assets.Scripts.Scenes.GameTest
 
         private void OnCollisionEnter(Collision collision)
         {
-            if (collision.body.TryGetComponent<BulletBehaviour>(out var bullet))
+            if (collision.body.TryGetComponent<SignalBehaviour>(out var signalBehaviour))
             {
                 Debug.Log("hit");
                 scoreBehaviour.AddScore();
-                bullet.OnImpact.Invoke(bullet);
-                bullet.OnImpact.RemoveAllListeners();
+
+                signalBehaviour.OnImpact.Invoke(signalBehaviour);
+                signalBehaviour.OnImpact.RemoveAllListeners();
+
                 Destroy(collision.body.gameObject);
             }
         }
