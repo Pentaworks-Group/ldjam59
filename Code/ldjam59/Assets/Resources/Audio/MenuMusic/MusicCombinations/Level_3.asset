@@ -18,13 +18,13 @@ MonoBehaviour:
     volume: 1
     pan: 0
   - active: 1
-    volume: 0
+    volume: 1
     pan: 0
   - active: 0
     volume: 1
     pan: 0
   - active: 1
-    volume: 0
+    volume: 1
     pan: 0
   - active: 1
     volume: 1
