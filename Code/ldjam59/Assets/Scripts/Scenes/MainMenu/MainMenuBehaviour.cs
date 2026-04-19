@@ -25,5 +25,10 @@ namespace Assets.Scripts.Scenes.MainMenu
         {
             Base.Core.Game.Quit();
         }
+
+        public void TESTT()
+        {
+            Debug.Log("TEEEEEEEEEEEEEEEEEEEST");
+        }
     }
 }

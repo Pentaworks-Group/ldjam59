@@ -15,13 +15,18 @@ public class CombinationManager : MonoBehaviour
     private Coroutine[] fadeCoroutines;
     private int activeCobinationIndex = -1;
 
-    void Awake()
+    private bool isLoaded = false;
+    private void Awake()
     {
-        Assets.Scripts.Base.Core.Game.ExecuteAfterInstantation(Init);
+        if (!isLoaded)
+        {
+            Init();
+        }
     }
 
     private void Init()
     {
+        isLoaded = true;
         fadeCoroutines = new Coroutine[state.tracks.Length];
     }
 

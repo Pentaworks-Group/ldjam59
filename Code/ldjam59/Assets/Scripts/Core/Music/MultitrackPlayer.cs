@@ -14,13 +14,19 @@ public class MultitrackPlayer : MonoBehaviour
     private AudioSource[] sources;
     private bool isPlaying = false;
 
+    private bool isLoaded = false;
+
     private void Awake()
     {
-        Assets.Scripts.Base.Core.Game.ExecuteAfterInstantation(Init);
+        if (!isLoaded)
+        {
+            Init();
+        }
     }
 
     private void Init()
     {
+        isLoaded = true;
         DontDestroyOnLoad(gameObject);
         SceneManager.sceneLoaded += OnSceneLoaded;
 
