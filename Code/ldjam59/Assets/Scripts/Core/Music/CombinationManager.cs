@@ -99,12 +99,15 @@ public class CombinationManager : MonoBehaviour
 
     private void startFade(int trackIndex, float targetVolume, float targetPan, float duration)
     {
-        if (fadeCoroutines[trackIndex] != null)
-            StopCoroutine(fadeCoroutines[trackIndex]);
+        if (fadeCoroutines != null)
+        {
+            if (fadeCoroutines[trackIndex] != null)
+            {
+                StopCoroutine(fadeCoroutines[trackIndex]);
+            }
 
-        fadeCoroutines[trackIndex] = StartCoroutine(
-            fadeTrack(trackIndex, targetVolume, targetPan, duration)
-        );
+            fadeCoroutines[trackIndex] = StartCoroutine(fadeTrack(trackIndex, targetVolume, targetPan, duration));
+        }
     }
 
     private IEnumerator fadeTrack(int trackIndex, float targetVolume, float targetPan, float duration)
