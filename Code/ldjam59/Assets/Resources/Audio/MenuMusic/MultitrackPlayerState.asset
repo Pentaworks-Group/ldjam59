@@ -22,6 +22,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 9830549c23e5f3f41b00e76032a507fb, type: 2}
   - {fileID: 11400000, guid: 95ca3d3f657e92f4cbf889a8dfd31675, type: 2}
   - {fileID: 11400000, guid: ca6ad86eb9dc4e042b3b1acc7f2c9081, type: 2}
-  currentPosition: 0
-  isPlaying: 0
+  currentPosition: 21.781088
+  isPlaying: 1
   loopAll: 1
+  masterVolume: 0.512

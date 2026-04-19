@@ -58,14 +58,14 @@ public class DistortionEffect : MonoBehaviour
             cachedParams[i] = getNeutralParams();
     }
 
-    public void EnableRadioEffect(bool fade = true)
+    public void EnableRadioEffect(bool fade = true, float duration = -1f)
     {
         for (int i = 0; i < state.tracks.Length; i++)
             trackAffected[i] = true;
-        applyEffect(fade);
+        applyEffect(fade, duration);
     }
 
-    public void EnableRadioEffect(int[] trackIndices, bool fade = true)
+    public void EnableRadioEffect(int[] trackIndices, bool fade = true, float duration = -1f)
     {
         for (int i = 0; i < trackAffected.Length; i++)
             trackAffected[i] = false;
@@ -74,10 +74,10 @@ public class DistortionEffect : MonoBehaviour
             if (idx < trackAffected.Length)
                 trackAffected[idx] = true;
 
-        applyEffect(fade);
+        applyEffect(fade, duration);
     }
 
-    public void DisableRadioEffect(bool fade = true)
+    public void DisableRadioEffect(bool fade = true, float duration = -1f)
     {
         stopAllFades(); 
         if (crackleCoroutine != null)
@@ -87,12 +87,14 @@ public class DistortionEffect : MonoBehaviour
         }
         effectActive = false;
 
+        float resolvedDuration = (fade && duration >= 0f) ? duration : fadeDuration;
+
         for (int i = 0; i < state.tracks.Length; i++)
         {
             if (!trackAffected[i]) continue;
             if (fade)
                 fadeCoroutines.Add(StartCoroutine(
-                    fadeParams(i, getCurrentParams(i), getNeutralParams(), fadeDuration)
+                    fadeParams(i, getCurrentParams(i), getNeutralParams(), resolvedDuration)
                 ));
             else
                 setParams(i, getNeutralParams());
@@ -104,11 +106,14 @@ public class DistortionEffect : MonoBehaviour
         StartCoroutine(signalLossSequence(duration));
     }
 
-    private void applyEffect(bool fade)
+    public bool IsEffectActive => effectActive;
+
+    private void applyEffect(bool fade, float duration = -1f)
     {
         stopAllFades();
         effectActive = true;
 
+        float resolvedDuration = (fade && duration >= 0f) ? duration : fadeDuration;
         var target = getRadioParams();
 
         for (int i = 0; i < state.tracks.Length; i++)
@@ -116,7 +121,7 @@ public class DistortionEffect : MonoBehaviour
             if (!trackAffected[i]) continue;
             if (fade)
                 fadeCoroutines.Add(StartCoroutine(
-                    fadeParams(i, getCurrentParams(i), target, fadeDuration)
+                    fadeParams(i, getCurrentParams(i), target, resolvedDuration)
                 ));
             else
                 setParams(i, target);
