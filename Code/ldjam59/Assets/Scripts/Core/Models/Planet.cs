@@ -5,7 +5,10 @@ namespace Assets.Scripts.Core.Models
 {
     public class Planet : SpaceObject
     {        
-        public List<PlanetLayer> Layers { get; set; }
+        public PlanetLayer PlanetLayer { get; set; }
+        public PlanetLayer SurfaceLayer { get; set; }
+        public PlanetLayer CloudLayer { get; set; }
+
         public Vector2 Axis { get; set; }
     }
 }

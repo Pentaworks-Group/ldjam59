@@ -21,22 +21,36 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: World
-  m_Shader: {fileID: -6465566751694194690, guid: 1cfd645a3e99d044f94c2ef8850de16b, type: 3}
+  m_Shader: {fileID: -6465566751694194690, guid: b9cf7d6a3700e044ba7ec7b9e2e98319, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
-  m_ValidKeywords: []
+  m_ValidKeywords:
+  - _ALPHATEST_ON
   m_InvalidKeywords: []
   m_LightmapFlags: 4
-  m_EnableInstancingVariants: 0
+  m_EnableInstancingVariants: 1
   m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
-  stringTagMap: {}
+  m_CustomRenderQueue: 2450
+  stringTagMap:
+    RenderType: TransparentCutout
   disabledShaderPasses:
   - MOTIONVECTORS
   m_LockedProperties: 
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
+    - _CloudTexture:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _PlanetTexture:
+        m_Texture: {fileID: 2800000, guid: 9dd074628c5902a4d8a5cc853ca4195c, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SurfaceTexture:
+        m_Texture: {fileID: 2800000, guid: b2ea027c61ad1404c9ff29e9741756f2, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _WorldTexture:
         m_Texture: {fileID: 2800000, guid: b2ea027c61ad1404c9ff29e9741756f2, type: 3}
         m_Scale: {x: 1, y: 1}
@@ -59,11 +73,30 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
+    - _AlphaClip: 1
+    - _AlphaToMask: 1
+    - _Blend: 0
+    - _CastShadows: 1
+    - _Cull: 2
+    - _DstBlend: 0
+    - _DstBlendAlpha: 0
     - _QueueControl: 0
     - _QueueOffset: 0
+    - _SrcBlend: 1
+    - _SrcBlendAlpha: 1
+    - _Surface: 0
+    - _ZTest: 8
+    - _ZWrite: 1
+    - _ZWriteControl: 0
     m_Colors:
+    - _CloudColor: {r: 0.45882353, g: 0.5167275, b: 0.7490196, a: 0}
+    - _CloudRotationSpeed: {r: 0, g: 0, b: 0, a: 0}
+    - _PlanetColor: {r: 0.7490196, g: 0.035294097, b: 0.087794214, a: 0}
+    - _PlanetRotationSpeed: {r: 0.5, g: 0, b: 0, a: 0}
     - _RotationSpeed: {r: 0.1, g: 0, b: 0, a: 0}
     - _RotationSpeed_1: {r: 0.3, g: 0, b: 0, a: 0}
+    - _SurfaceColor: {r: 0.8805031, g: 0.2076657, b: 0.2249596, a: 0}
+    - _SurfaceRotationSpeed: {r: 0.1, g: 0, b: 0, a: 0}
     - _WorldColor: {r: 0.5924529, g: 0.35658956, b: 0.5203718, a: 1}
     - _WorldColor_1: {r: 0, g: 0.5019608, b: 0.5019608, a: 0.3019608}
   m_BuildTextureStacks: []

@@ -67,18 +67,36 @@
                             "x": 30,
                             "y": 0
                         },
-                        "Layers": [
-                            {
-                                "RotationSpeed": 0.1,
-                                "Texture": "Planet_texture_1",
-                                "Color": {
-                                    "Red": 0,
-                                    "Green": 0,
-                                    "Blue": 255,
-                                    "Alpha": 0
-                                }
+                        "PlanetLayer": {
+                            "RotationSpeed": 0.1,
+                            "Texture": "Planet_texture_3_1",
+                            "Color": {
+                                "Red": 0,
+                                "Green": 0,
+                                "Blue": 1,
+                                "Alpha": 1
                             }
-                        ]
+                        },
+                        "SurfaceLayer": {
+                            "RotationSpeed": 0.11,
+                            "Texture": "Planet_texture_2_1",
+                            "Color": {
+                                "Red": 0.5,
+                                "Green": 0.3,
+                                "Blue": 0.1,
+                                "Alpha": 0.98
+                            }
+                        },
+                        "CloudLayer": {
+                            "RotationSpeed": 0.15,
+                            "Texture": "Planet_texture_1_continents",
+                            "Color": {
+                                "Red": 0.5874662,
+                                "Green": 0.7490195,
+                                "Blue": 0.7490195,
+                                "Alpha": 0.9
+                            }
+                        }
                     },
                     {
                         "Name": "SuckSuck",
@@ -96,18 +114,36 @@
                             "x": 0,
                             "y": 30
                         },
-                        "Layers": [
-                            {
-                                "RotationSpeed": 3,
-                                "Texture": "Planet_texture_2_1",
-                                "Color": {
-                                    "Red": 255,
-                                    "Green": 0,
-                                    "Blue": 0,
-                                    "Alpha": 0
-                                }
+                        "PlanetLayer": {
+                            "RotationSpeed": 0.2,
+                            "Texture": "Planet_texture_3_1",
+                            "Color": {
+                                "Red": 0.3,
+                                "Green": 0.04,
+                                "Blue": 1,
+                                "Alpha": 1
                             }
-                        ]
+                        },
+                        "SurfaceLayer": {
+                            "RotationSpeed": 0.22,
+                            "Texture": "Planet_texture_1_ocean",
+                            "Color": {
+                                "Red": 0.1,
+                                "Green": 1,
+                                "Blue": 0.8,
+                                "Alpha": 0.98
+                            }
+                        },
+                        "CloudLayer": {
+                            "RotationSpeed": 0.25,
+                            "Texture": "Planet_texture_2_1",
+                            "Color": {
+                                "Red": 0.9,
+                                "Green": 0.4,
+                                "Blue": 0.5,
+                                "Alpha": 0.9
+                            }
+                        }
                     },
                     {
                         "Name": "Tut",
@@ -125,18 +161,37 @@
                             "x": 5,
                             "y": 20
                         },
-                        "Layers": [
-                            {
-                                "RotationSpeed": 1,
-                                "Texture": "Planet_texture_3_1",
-                                "Color": {
-                                    "Red": 255,
-                                    "Green": 255,
-                                    "Blue": 0,
-                                    "Alpha": 0
-                                }
+
+                        "PlanetLayer": {
+                            "RotationSpeed": 0.3,
+                            "Texture": "Planet_texture_3_1",
+                            "Color": {
+                                "Red": 0.735849,
+                                "Green": 0.006941857,
+                                "Blue": 0.006941857,
+                                "Alpha": 1
                             }
-                        ]
+                        },
+                        "SurfaceLayer": {
+                            "RotationSpeed": 0.23,
+                            "Texture": "Planet_texture_1_5",
+                            "Color": {
+                                "Red": 0.7490195,
+                                "Green": 0.4194509,
+                                "Blue": 0.4569018,
+                                "Alpha": 0.98
+                            }
+                        },
+                        "CloudLayer": {
+                            "RotationSpeed": 0.31,
+                            "Texture": "Planet_texture_1",
+                            "Color": {
+                                "Red": 0.7490195,
+                                "Green": 0.7490195,
+                                "Blue": 0.7490195,
+                                "Alpha": 0.9
+                            }
+                        }
                     }
                 ]
             }
