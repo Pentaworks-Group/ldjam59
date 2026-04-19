@@ -26,6 +26,8 @@ namespace Assets.Scripts.Scenes.Game
 
             UpdateShader();
             UpdateSphereOfInfluence();
+
+            Base.Core.Game.OnModelUpdate.AddListener(UpdateModel);
         }
 
         private void Update()
@@ -88,8 +90,6 @@ namespace Assets.Scripts.Scenes.Game
 
                         var force = gravity / vector.sqrMagnitude;
 
-                        //Debug.Log($"Applied force: {force}.");
-
                         affectedBody.AddForce(vector.normalized * force);
                     }
                 }
@@ -131,5 +131,33 @@ namespace Assets.Scripts.Scenes.Game
                 }
             }
         }
+
+        private void UpdateModel()
+        {
+            Renderer rend = GetComponent<Renderer>();
+
+            MaterialPropertyBlock propBlock = new MaterialPropertyBlock();
+            rend.GetPropertyBlock(propBlock);
+            UpdateLevelModel(propBlock, planet.PlanetLayer, "_PlanetColor", "_PlanetRotationSpeed", "_PlanetTexture");
+            UpdateLevelModel(propBlock, planet.SurfaceLayer, "_SurfaceColor", "_SurfaceRotationSpeed", "_SurfaceTexture");
+            UpdateLevelModel(propBlock, planet.CloudLayer, "_CloudColor", "_CloudRotationSpeed", "_CloudTexture");
+
+            var pos = transform.position;
+            planet.Position = new GameFrame.Core.Math.Vector2(pos.x, pos.z);
+            planet.Size = transform.localScale.x;
+
+            planet.Axis = new GameFrame.Core.Math.Vector2(transform.rotation.x, transform.rotation.z);
+        }
+
+        private void UpdateLevelModel( MaterialPropertyBlock propBlock, PlanetLayer layer, string colorName, string speedName, string textureName) {
+
+            var col = propBlock.GetColor(colorName);
+            layer.Color = col.ToFrame();
+
+            layer.RotationSpeed = propBlock.GetVector(speedName).x;
+
+            layer.Texture = propBlock.GetTexture(textureName).name;
+        }
+
     }
 }

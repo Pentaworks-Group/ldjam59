@@ -2,6 +2,7 @@ using Assets.Scripts.Core.Models;
 using Newtonsoft.Json;
 using TMPro;
 using UnityEngine;
+using static UnityEngine.InputSystem.InputSettings;
 
 
 namespace Assets.Scripts.Scenes.Game.Admin
@@ -18,7 +19,10 @@ namespace Assets.Scripts.Scenes.Game.Admin
 
         public void GenerateJson()
 		{
-			var cleanedLevel = Base.Core.Game.State.CurrentLevel;
+
+            Base.Core.Game.OnModelUpdate.Invoke();
+
+            var cleanedLevel = Base.Core.Game.State.CurrentLevel;
             var json = GameFrame.Core.Json.Handler.Serialize(cleanedLevel, Formatting.Indented, new JsonSerializerSettings());
 
             jsonField.text = json;

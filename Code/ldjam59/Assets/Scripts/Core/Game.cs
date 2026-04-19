@@ -1,14 +1,14 @@
+using Assets.Scripts.Core.Definitions;
+using Assets.Scripts.Core.Definitions.Loaders;
+using Assets.Scripts.Core.Persistence;
+using Assets.Scripts.Scenes.Game;
+using GameFrame.Core.Definitions.Loaders;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-
-using Assets.Scripts.Core.Definitions;
-using Assets.Scripts.Core.Definitions.Loaders;
-using Assets.Scripts.Core.Persistence;
-using GameFrame.Core.Definitions.Loaders;
-
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace Assets.Scripts.Core
 {
@@ -17,6 +17,9 @@ namespace Assets.Scripts.Core
         private readonly DefinitionCache<Definitions.GameMode> gameModeCache = new DefinitionCache<Definitions.GameMode>();
 
         private GameMode selectedGameMode;
+
+
+        public UnityEvent OnModelUpdate = new UnityEvent();
 
         public IList<Definitions.GameMode> GetAvailableGameModes()
         {

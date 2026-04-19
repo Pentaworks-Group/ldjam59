@@ -1,8 +1,8 @@
-using System.Collections.Generic;
-
 using Assets.Scripts.Core.Models;
-
+using System;
+using System.Collections.Generic;
 using UnityEngine;
+using static UnityEngine.InputSystem.InputSettings;
 
 
 namespace Assets.Scripts.Scenes.Game
@@ -19,6 +19,8 @@ namespace Assets.Scripts.Scenes.Game
         {
             Base.Core.Game.ExecuteAfterInstantation(SpawnPlanets);
         }
+
+
 
         private void SpawnPlanets()
         {
