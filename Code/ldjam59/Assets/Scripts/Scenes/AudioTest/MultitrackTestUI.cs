@@ -20,6 +20,16 @@ public class MultitrackTestUI : MonoBehaviour
         if (GUILayout.Button("Stop", GUILayout.Height(40))) player.Stop();
 
         GUILayout.Space(10);
+        GUILayout.Label("-- Master Volume --");
+        GUILayout.BeginHorizontal();
+        GUILayout.Label("Volume", GUILayout.Width(60));
+        float newMaster = GUILayout.HorizontalSlider(player.GetMasterVolume(), 0f, 1f);
+        if (!Mathf.Approximately(newMaster, player.GetMasterVolume()))
+            player.SetMasterVolume(newMaster);
+        GUILayout.Label(player.GetMasterVolume().ToString("F2"), GUILayout.Width(36));
+        GUILayout.EndHorizontal();
+
+        GUILayout.Space(10);
 
         bool loopAll = player.state.loopAll;
         bool newLoop = GUILayout.Toggle(loopAll, "Alle Spuren loopen");
