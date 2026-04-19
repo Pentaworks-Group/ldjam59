@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.Audio;
 using System.Collections;
 using System.Collections.Generic;
+using static UnityEngine.UI.CanvasScaler;
 
 public class DistortionEffect : MonoBehaviour
 {
@@ -48,6 +49,11 @@ public class DistortionEffect : MonoBehaviour
     private MixerParams[] cachedParams;
 
     void Awake()
+    {
+        Assets.Scripts.Base.Core.Game.ExecuteAfterInstantation(Init);
+    }
+
+    private void Init()
     {
         trackAffected = new bool[state.tracks.Length];
 

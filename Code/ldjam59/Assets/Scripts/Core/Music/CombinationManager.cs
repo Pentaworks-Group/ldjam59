@@ -1,5 +1,7 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using static UnityEngine.UI.CanvasScaler;
 
 public class CombinationManager : MonoBehaviour
 {
@@ -14,6 +16,11 @@ public class CombinationManager : MonoBehaviour
     private int activeCobinationIndex = -1;
 
     void Awake()
+    {
+        Assets.Scripts.Base.Core.Game.ExecuteAfterInstantation(Init);
+    }
+
+    private void Init()
     {
         fadeCoroutines = new Coroutine[state.tracks.Length];
     }
