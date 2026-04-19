@@ -30,13 +30,15 @@ public class AudioEngine : MonoBehaviour
     // Convenience read-only properties
     // -----------------------------------------------------------------
 
-    public bool  IsPlaying     => player.state.isPlaying;
-    public float Position      => player.GetPosition();
-    public float Duration      => player.GetDuration();
-    public int   CurrentBar    => beatClock.CurrentBar;
-    public int   CurrentBeat   => beatClock.CurrentBeat;
-    public bool  HasPendingCue => barTrigger.HasPendingChange;
-    public int   BarsUntilCue  => barTrigger.BarsUntilChange;
+    public bool  IsPlaying           => player.state.isPlaying;
+    public float Position            => player.GetPosition();
+    public float Duration            => player.GetDuration();
+    public int   CurrentBar          => beatClock.CurrentBar;
+    public int   CurrentBeat         => beatClock.CurrentBeat;
+    public bool  HasPendingCue       => barTrigger.HasPendingChange;
+    public int   BarsUntilCue        => barTrigger.BarsUntilChange;
+    public bool  IsRadioEffectActive => distortion.IsEffectActive;
+    public float MasterVolume        => player.GetMasterVolume();
 
     // -----------------------------------------------------------------
     // Playback
@@ -105,16 +107,16 @@ public class AudioEngine : MonoBehaviour
     // -----------------------------------------------------------------
 
     /// <summary>Apply radio distortion to all tracks. </summary>
-    public void EnableRadioEffect(bool fade = true)
-        => distortion.EnableRadioEffect(fade);
+    public void EnableRadioEffect(bool fade = true, float duration = -1f)
+        => distortion.EnableRadioEffect(fade, duration);
 
     /// <summary>Appl radio distortion to specific tracks only. </summary>
-    public void EnableRadioEffect(int[] trackIndices, bool fade = true)
-        => distortion.EnableRadioEffect(trackIndices, fade);
+    public void EnableRadioEffect(int[] trackIndices, bool fade = true, float duration = -1f)
+        => distortion.EnableRadioEffect(trackIndices, fade, duration);
 
     /// <summary>Remove radio distortion. </summary>
-    public void DisableRadioEffect(bool fade = true)
-        => distortion.DisableRadioEffect(fade);
+    public void DisableRadioEffect(bool fade = true, float duration = -1f)
+        => distortion.DisableRadioEffect(fade, duration);
 
     /// <summary>Trigger a temporary signal-loss effect (fade-in, stutter, fade-out) </summary>
     /// <param name="duration"></param>

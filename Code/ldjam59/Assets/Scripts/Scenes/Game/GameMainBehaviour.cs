@@ -57,6 +57,12 @@ namespace Assets.Scripts.Scenes.Game
 
                 rigidbody.AddForce(vector.normalized * 2, ForceMode.Impulse);
             }
+
+            if (instance.TryGetComponent<SignalBehaviour>(out var signalBehaviour))
+            {
+                signalBehaviour.SetBase(source);
+                signalBehaviour.SetAudioEngine(audioEngine);
+            }
         }
 
         private void Awake()
