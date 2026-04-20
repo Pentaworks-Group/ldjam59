@@ -391,6 +391,7 @@ GameObject:
   - component: {fileID: 1392765347}
   - component: {fileID: 1392765346}
   - component: {fileID: 1392765349}
+  - component: {fileID: 1392765350}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -516,6 +517,27 @@ MonoBehaviour:
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
   m_Version: 2
+--- !u!114 &1392765350
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1392765345}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 716919b4c8023ce4db64713b5f411206, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Assets.Scripts.Scenes.Game.ConnectionLossEffect
+  staticIntensity: 0.15
+  staticSpeed: 0.8
+  scanlineIntensity: 0.25
+  scanlineCount: 300
+  jitterAmount: 0.04
+  rollSpeed: 0.1
+  vignetteStrength: 1.2
+  transitionSpeed: 0.2
+  connectedByDefault: 1
 --- !u!1 &1448618134
 GameObject:
   m_ObjectHideFlags: 0
@@ -695,6 +717,7 @@ MonoBehaviour:
   targetTemplate: {fileID: 7832156709757100665}
   signalContainer: {fileID: 1684383653}
   audioEngine: {fileID: 614856556}
+  connectionLossEffect: {fileID: 1392765350}
 --- !u!1 &1684383652
 GameObject:
   m_ObjectHideFlags: 0
