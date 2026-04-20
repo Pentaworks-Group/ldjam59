@@ -20,8 +20,12 @@ namespace Assets.Scripts.Scenes.MainMenu
         private int nextIndex = 0;
         private readonly List<string> currentLines = new List<string>();
 
+        private Boolean isRunning;
+
         private void Start()
         {
+            Debug.Log($"Time: {Time.timeScale}");
+
             lines = SplitToLines(textField.text);
             int end = Mathf.Min(nextIndex + height, lines.Length);
 
@@ -35,6 +39,15 @@ namespace Assets.Scripts.Scenes.MainMenu
             nextIndex = end;
 
             if (end == height)
+            {
+                this.isRunning = true;
+                StartCoroutine(Timer());
+            }
+        }
+
+        private void OnEnable()
+        {
+            if (this.isRunning)
             {
                 StartCoroutine(Timer());
             }
