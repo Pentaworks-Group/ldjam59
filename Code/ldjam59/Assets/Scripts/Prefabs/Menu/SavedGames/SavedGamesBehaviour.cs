@@ -61,6 +61,8 @@ namespace Assets.Scripts.Prefabs.Menu.SavedGames
 
         public void OnSlotSelected(SavedGamePreview selectedSlot)
         {
+            Base.Core.Game.PlayButtonSound();
+
             currentSlot = selectedSlot;
 
             UpdateDetails(selectedSlot);
@@ -98,9 +100,9 @@ namespace Assets.Scripts.Prefabs.Menu.SavedGames
             }
             else
             {
-                saveButton.interactable = true;
-                loadButton.interactable = true;
-                eraseButton.interactable = true;
+                saveButton.interactable = false;
+                loadButton.interactable = false;
+                eraseButton.interactable = false;
 
                 displayText.text = "";
             }
