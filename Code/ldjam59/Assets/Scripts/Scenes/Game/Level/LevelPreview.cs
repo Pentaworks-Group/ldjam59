@@ -1,7 +1,7 @@
 using Assets.Scripts.Core.Models;
 using System;
 
-namespace Assets.Scripts.Scenes.Game.LevelPreview
+namespace Assets.Scripts.Scenes.Game.Level
 {
 	public class LevelPreview
 	{

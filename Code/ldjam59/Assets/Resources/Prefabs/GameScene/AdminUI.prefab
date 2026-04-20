@@ -1176,6 +1176,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6fa25c1015b7b7f4dbe85a4337f629a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Assets.Scripts.Scenes.Game.Admin.AdminBehaviour
+  levelLoader: {fileID: 0}
   panel: {fileID: 4673322740032766543}
   button: {fileID: 3727681152639534430}
   jsonField: {fileID: 8560412233760990854}
@@ -2184,8 +2185,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 108187878481624684}
-        m_TargetAssemblyTypeName: Assets.Scripts.Scenes.Game.Admin.AdminBehaviour,
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: Assets.Scripts.Scenes.Game.Level.LevelLoaderBehaviour,
           Assembly-CSharp
         m_MethodName: LoadPreviousLevel
         m_Mode: 1
@@ -2318,8 +2319,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 108187878481624684}
-        m_TargetAssemblyTypeName: Assets.Scripts.Scenes.Game.Admin.AdminBehaviour,
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: Assets.Scripts.Scenes.Game.Level.LevelLoaderBehaviour,
           Assembly-CSharp
         m_MethodName: LoadNextLevel
         m_Mode: 1

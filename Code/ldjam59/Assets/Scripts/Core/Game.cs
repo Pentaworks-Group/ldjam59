@@ -33,6 +33,7 @@ namespace Assets.Scripts.Core
             Start();
         }
 
+
         public void LoadLevelByIndex(int index)
         {
             var firstLevel = this.State.Mode.Levels[index];

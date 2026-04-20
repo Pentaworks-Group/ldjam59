@@ -1,9 +1,8 @@
 using System;
 using TMPro;
 using UnityEngine;
-using UnityEngine.SocialPlatforms.Impl;
 
-namespace Assets.Scripts.Scenes.Game.LevelPreview
+namespace Assets.Scripts.Scenes.Game.Level
 {
     public class LevelListSlotBehaviour : GameFrame.Core.UI.List.ListSlotBehaviour<LevelPreview>
     {
