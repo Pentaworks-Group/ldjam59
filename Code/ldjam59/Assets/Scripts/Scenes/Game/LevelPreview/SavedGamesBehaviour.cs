@@ -8,7 +8,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Assets.Scripts.Prefabs.Menu.SavedGames
+namespace Assets.Scripts.Scenes.Game.LevelPreview
 {
     public class SavedGamesBehaviour : MonoBehaviour
     {
@@ -61,8 +61,6 @@ namespace Assets.Scripts.Prefabs.Menu.SavedGames
 
         public void OnSlotSelected(SavedGamePreview selectedSlot)
         {
-            Base.Core.Game.PlayButtonSound();
-
             currentSlot = selectedSlot;
 
             UpdateDetails(selectedSlot);
@@ -100,9 +98,9 @@ namespace Assets.Scripts.Prefabs.Menu.SavedGames
             }
             else
             {
-                saveButton.interactable = false;
-                loadButton.interactable = false;
-                eraseButton.interactable = false;
+                saveButton.interactable = true;
+                loadButton.interactable = true;
+                eraseButton.interactable = true;
 
                 displayText.text = "";
             }

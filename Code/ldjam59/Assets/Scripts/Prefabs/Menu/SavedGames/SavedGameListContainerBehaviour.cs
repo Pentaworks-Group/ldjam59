@@ -4,7 +4,7 @@ using Assets.Scripts.Core.Persistence;
 
 namespace Assets.Scripts.Prefabs.Menu.SavedGames
 {
-    public class SavedGameListContainerBehaviour : GameFrame.Core.UI.List.ListContainerBehaviour<SavedGamePreview>
+    public class LevelListContainerBehaviour : GameFrame.Core.UI.List.ListContainerBehaviour<SavedGamePreview>
     {
         public override void CustomStart()
         {
