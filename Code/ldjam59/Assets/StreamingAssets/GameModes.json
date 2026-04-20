@@ -9,7 +9,7 @@
         "Reference": "L1",
         "Description": "Send the message box to its destination",
         "Source": {
-          "Sprite": "white-arrow",
+          "Sprite": "Satellite",
           "Name": "TheFlyer",
           "Size": 0.5,
           "Gravity": 1,
@@ -74,7 +74,7 @@
         "Reference": "L2",
         "Description": "There is always somebody in the way",
         "Source": {
-          "Sprite": "white-arrow",
+          "Sprite": "Satellite",
           "Name": "TheFlyer",
           "Size": 0.5,
           "Gravity": 1,
