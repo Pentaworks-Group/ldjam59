@@ -1,5 +1,6 @@
 
 
+
 S.L.O.P - Signals lost in planets
 
 **********************
@@ -12,6 +13,7 @@ for more games
 Developers:
 -----------------------
 - XpArKeR
+- Salasam
 - pop
 - Lea251
 - Zeeka
@@ -24,10 +26,17 @@ Music:
 -----------------------
 - Lea251
 
+Level design:
+-----------------------
+- pop
+- salasam
+- XpArKeR
+
 Testers:
 -----------------------
-- Loved ones
-- Sadly, not many others this time around
+- Häxli
+
+Sadly, not many others this time around
 
 Effects:
 -----------------------

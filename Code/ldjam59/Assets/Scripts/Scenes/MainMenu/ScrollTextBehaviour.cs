@@ -1,5 +1,3 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 
 using TMPro;
@@ -20,8 +18,6 @@ namespace Assets.Scripts.Scenes.MainMenu
         private int nextIndex = 0;
         private readonly List<string> currentLines = new List<string>();
 
-        private Boolean isRunning;
-
         private void Start()
         {
             Debug.Log($"Time: {Time.timeScale}");
@@ -40,35 +36,8 @@ namespace Assets.Scripts.Scenes.MainMenu
 
             if (end == height)
             {
-                this.isRunning = true;
-                StartCoroutine(Timer());
+                InvokeRepeating(nameof(UpdateText), 2f, updateInterval);
             }
-        }
-
-        private void OnEnable()
-        {
-            if (this.isRunning)
-            {
-                StartCoroutine(Timer());
-            }
-        }
-
-        private IEnumerator Timer()
-        {
-            WaitForSeconds wait = new WaitForSeconds(updateInterval);
-
-            while (true)
-            {
-                UpdateText();
-                yield return wait;
-            }
-        }
-
-        private static string[] SplitToLines(string rawText)
-        {
-            string[] lines = rawText.Split(new string[] { "\r\n", "\r", "\n" }, System.StringSplitOptions.None);
-
-            return lines;
         }
 
         private void UpdateText()
@@ -84,6 +53,13 @@ namespace Assets.Scripts.Scenes.MainMenu
             {
                 nextIndex = 0;
             }
+        }
+
+        private static string[] SplitToLines(string rawText)
+        {
+            string[] lines = rawText.Split(new string[] { "\r\n", "\r", "\n" }, System.StringSplitOptions.None);
+
+            return lines;
         }
     }
 }
