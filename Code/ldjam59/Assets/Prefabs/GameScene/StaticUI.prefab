@@ -470,7 +470,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 3258275182670696044}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 4669049476703044455}
+        m_TargetAssemblyTypeName: Assets.Scripts.Scenes.Game.StaticUIBehaviour, Assembly-CSharp
+        m_MethodName: CloseHitWindow
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &5544167248510248345
 GameObject:
   m_ObjectHideFlags: 0
@@ -589,7 +601,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Assets.Scripts.Scenes.Game.StaticUIBehaviour
   main: {fileID: 0}
-  container: {fileID: 0}
+  container: {fileID: 8664143654288354963}
 --- !u!1 &8664143654288354963
 GameObject:
   m_ObjectHideFlags: 0
@@ -600,7 +612,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3133770968767608601}
   m_Layer: 5
-  m_Name: Container
+  m_Name: EndContainer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -635,6 +647,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1033251580486487475}
     m_Modifications:
+    - target: {fileID: 2009665817038998457, guid: 7dd1f10a775d76a44aff8fa2653918df, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2504564012284999265, guid: 7dd1f10a775d76a44aff8fa2653918df, type: 3}
       propertyPath: m_Name
       value: PauseMenu
@@ -767,7 +783,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5536212407534356995, guid: ad01e7daeb5c8494d8d9cd4500ed45e2, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7021169915624744659, guid: ad01e7daeb5c8494d8d9cd4500ed45e2, type: 3}
       propertyPath: m_Pivot.x
