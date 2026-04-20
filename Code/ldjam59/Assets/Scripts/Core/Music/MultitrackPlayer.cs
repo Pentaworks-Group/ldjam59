@@ -1,8 +1,9 @@
 using UnityEngine;
 using UnityEngine.Audio;
+using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 
-public class MultitrackPlayer : MonoBehaviour
+public class MultitrackPlayer : MonoBehaviour, IPointerClickHandler
 {
     [Header("Shared State (ScriptableObject)")]
     public MultitrackPlayerState state;
@@ -12,6 +13,8 @@ public class MultitrackPlayer : MonoBehaviour
 
     private AudioSource[] sources;
     private bool isPlaying = false;
+
+    private bool started = false;
 
     private void Awake()
     {
@@ -97,6 +100,15 @@ public class MultitrackPlayer : MonoBehaviour
             ApplyTrackSettings(i);
             sources[i].PlayScheduled(dspStart);
         }
+    }
+
+    public void OnPointerClick(PointerEventData eventData)
+    {
+        if (started) return;
+        started = true;
+
+        WebAudioBridge.ResumeAudioContext();
+        Play();
     }
 
     public void Pause()
