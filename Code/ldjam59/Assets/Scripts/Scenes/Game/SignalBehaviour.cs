@@ -69,15 +69,9 @@ namespace Assets.Scripts.Scenes.Game
                 if (connectionLossEffect != null && shouldBeActive!=connectionLossEffect.IsEffectActive)
                 {
                     if(shouldBeActive)
-                    {
-                        Debug.Log("Set Connection Loss effect active");
                         connectionLossEffect.SetConnected(false);
-                    }
                     else
-                    {
-                        Debug.Log("Set Connection Loss effect inactive");
                         connectionLossEffect.SetConnected(true);
-                    }
                 }
             }
         }
