@@ -4,7 +4,7 @@
   "Description": "AnotherBlablaMod",
   "Seed": null,
   "Planets": [
-       {
+    {
       "PlanetLayer": {
         "RotationSpeed": 0.1,
         "Texture": "Planet_texture_3_1",
@@ -20,8 +20,8 @@
         "Texture": "Planet_texture_2_1",
         "Color": {
           "Red": 0.5,
-          "Green": 0.299999982,
-          "Blue": 0.09999997,
+          "Green": 0.299999952,
+          "Blue": 0.09999994,
           "Alpha": 0.98
         }
       },
@@ -36,7 +36,7 @@
         }
       },
       "Axis": {
-        "X": -0.258819073,
+        "X": 0.00225862069,
         "Y": 0.0
       },
       "Name": "Zenter",
@@ -69,8 +69,8 @@
         "Texture": "Planet_texture_2_1",
         "Color": {
           "Red": 0.5,
-          "Green": 0.299999982,
-          "Blue": 0.09999997,
+          "Green": 0.299999952,
+          "Blue": 0.09999994,
           "Alpha": 0.98
         }
       },
@@ -85,7 +85,7 @@
         }
       },
       "Axis": {
-        "X": -0.258819073,
+        "X": 0.00225862069,
         "Y": 0.0
       },
       "Name": "Zenter",
@@ -107,7 +107,7 @@
         "RotationSpeed": 0.2,
         "Texture": "Planet_texture_3_1",
         "Color": {
-          "Red": 0.299999982,
+          "Red": 0.299999952,
           "Green": 0.04,
           "Blue": 1.0,
           "Alpha": 1.0
@@ -117,7 +117,7 @@
         "RotationSpeed": 0.22,
         "Texture": "Planet_texture_1_ocean",
         "Color": {
-          "Red": 0.09999997,
+          "Red": 0.09999994,
           "Green": 1.0,
           "Blue": 0.8,
           "Alpha": 0.98
@@ -128,13 +128,13 @@
         "Texture": "Planet_texture_2_1",
         "Color": {
           "Red": 0.9,
-          "Green": 0.399999976,
+          "Green": 0.399999946,
           "Blue": 0.5,
           "Alpha": 0.9
         }
       },
       "Axis": {
-        "X": 0.258819073,
+        "X": -0.00225862069,
         "Y": 0.0
       },
       "Name": "SuckSuck",
@@ -142,8 +142,8 @@
       "Size": 6.0,
       "Gravity": 5.0,
       "Position": {
-        "X": -10.10428,
-        "Y": 16.76861
+        "X": -4.47428,
+        "Y": 11.98861
       },
       "Speed": {
         "X": 0.0,
@@ -167,7 +167,7 @@
         "Texture": "Planet_texture_1_5",
         "Color": {
           "Red": 0.7490195,
-          "Green": 0.419450879,
+          "Green": 0.419450849,
           "Blue": 0.4569018,
           "Alpha": 0.98
         }
@@ -183,7 +183,7 @@
         }
       },
       "Axis": {
-        "X": 0.13052623,
+        "X": -0.001139056,
         "Y": 0.0
       },
       "Name": "Tut",
@@ -214,8 +214,8 @@
     "Size": 0.5,
     "Gravity": 1.0,
     "Position": {
-      "X": 15.0,
-      "Y": 0.0
+      "X": 9.91572,
+      "Y": -1.59139
     },
     "Speed": {
       "X": 0.0,
