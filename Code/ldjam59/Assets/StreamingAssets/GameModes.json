@@ -356,7 +356,7 @@
                         "Name": "Tut",
                         "Id": null,
                         "Size": 8.0,
-                        "Gravity": 500.0,
+                        "Gravity": 5.0,
                         "Position": {
                             "X": -9.60428,
                             "Y": 1.88861
