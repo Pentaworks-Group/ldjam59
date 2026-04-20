@@ -13,23 +13,8 @@ public class MultitrackPlayer : MonoBehaviour
     private AudioSource[] sources;
     private bool isPlaying = false;
 
-    private bool isLoaded = false;
-
     private void Awake()
     {
-        Debug.Log("Player awake");
-
-        if (!isLoaded)
-        {
-            Init();
-        }
-    }
-
-    private void Init()
-    {
-        isLoaded = true;
-
-        DontDestroyOnLoad(gameObject);
         SceneManager.sceneLoaded += OnSceneLoaded;
 
         if (GameFrame.Base.Audio.Background != default)

@@ -11,13 +11,15 @@ namespace Assets.Scripts.Base
             {
                 if (audioEngine == default)
                 {
-                    var prefab = UnityEngine.Resources.Load<GameObject>("AudioSystem");
+                    var prefab = UnityEngine.Resources.Load<GameObject>("Prefabs/Audio/AudioSystem");
 
                     if (prefab != default)
                     {
-                        var gameObject = GameObject.Instantiate(prefab);
+                        var audioSystem = GameObject.Instantiate(prefab);
 
-                        if (gameObject.TryGetComponent<AudioEngine>(out var loadedEngine))
+                        GameObject.DontDestroyOnLoad(audioSystem);
+
+                        if (audioSystem.TryGetComponent<AudioEngine>(out var loadedEngine))
                         {
                             audioEngine = loadedEngine;
                         }

@@ -11,7 +11,6 @@ namespace Assets.Scripts.Scenes.Game
 
         public UnityEvent<SignalBehaviour> OnImpact = new UnityEvent<SignalBehaviour>();
 
-        private AudioEngine audioEngine;
         private ConnectionLossEffect connectionLossEffect;
 
         private Transform baseObject;
@@ -25,11 +24,6 @@ namespace Assets.Scripts.Scenes.Game
         public void SetBase(Transform baseObject)
         {
             this.baseObject = baseObject;
-        }
-
-        public void SetAudioEngine(AudioEngine audioEngine)
-        {
-            this.audioEngine = audioEngine;
         }
 
         public void SetConnectionLossEffect(ConnectionLossEffect connectionLossEffect)
@@ -53,6 +47,8 @@ namespace Assets.Scripts.Scenes.Game
                         shouldBeActive = true;
                     }
                 }
+
+                var audioEngine = Base.Audio.AudioEngine;
 
                 if (audioEngine.IsRadioEffectActive != shouldBeActive)
                 {

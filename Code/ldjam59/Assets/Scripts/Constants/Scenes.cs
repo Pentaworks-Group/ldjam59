@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+
 using GameFrame.Core;
 
 namespace Assets.Scripts.Constants
@@ -26,8 +27,6 @@ namespace Assets.Scripts.Constants
             }
         }
 
-
-
         public const String GameName = "Game";
         private static Scene game;
         public static Scene Game
@@ -51,7 +50,6 @@ namespace Assets.Scripts.Constants
                 return game;
             }
         }
-
 
         public const String GameTestName = "GameTest";
         private static Scene gameTest;

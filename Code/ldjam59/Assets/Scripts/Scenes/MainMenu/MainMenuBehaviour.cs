@@ -8,17 +8,15 @@ namespace Assets.Scripts.Scenes.MainMenu
 {
     public class MainMenuBehaviour : GameFrame.Core.UI.Scripts.Menu.BaseMenuBehaviour
     {
-        [SerializeField] AudioEngine audioEngine;
         [SerializeField] private GameObject OptionsPopup;
         [SerializeField] private GameObject SavedGamesPopup;
         [SerializeField] private GameObject GameModesPopup;
 
-
         private void Awake()
         {
             string[] combinations = { "MenuMusic_1", "MenuMusic_2", "MenuMusic_3", "MenuMusic_3" };
-            audioEngine.StartRandomCycling(combinations, 1, 7, 0.2f);
-            audioEngine.Play();
+            Base.Audio.AudioEngine.StartRandomCycling(combinations, 1, 7, 0.2f);
+            Base.Audio.AudioEngine.Play();
         }
 
         public void OnOpenOptions()

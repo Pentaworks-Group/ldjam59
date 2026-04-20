@@ -15,18 +15,8 @@ public class CombinationManager : MonoBehaviour
     private Coroutine[] fadeCoroutines;
     private int activeCobinationIndex = -1;
 
-    private bool isLoaded = false;
     private void Awake()
     {
-        if (!isLoaded)
-        {
-            Init();
-        }
-    }
-
-    private void Init()
-    {
-        isLoaded = true;
         fadeCoroutines = new Coroutine[state.tracks.Length];
     }
 

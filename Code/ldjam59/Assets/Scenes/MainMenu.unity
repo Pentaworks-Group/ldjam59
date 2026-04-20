@@ -1074,7 +1074,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Assets.Scripts.Scenes.MainMenu.CreditsBehaviour
   textField: {fileID: 2037606553}
   height: 10
-  width: 16
   updateInterval: 1
 --- !u!1 &1070618243
 GameObject:
@@ -2004,74 +2003,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 8980581034793757355, guid: e2953dd3928d39049a882a7da8cf4950, type: 3}
   m_PrefabInstance: {fileID: 1866132518}
   m_PrefabAsset: {fileID: 0}
---- !u!1001 &1608599964
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 1645107443026002723, guid: e7f03cefcc1be50458ea7dfa7dca5684, type: 3}
-      propertyPath: m_Name
-      value: AudioSystem
-      objectReference: {fileID: 0}
-    - target: {fileID: 5076052899299764448, guid: e7f03cefcc1be50458ea7dfa7dca5684, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0.53705
-      objectReference: {fileID: 0}
-    - target: {fileID: 5076052899299764448, guid: e7f03cefcc1be50458ea7dfa7dca5684, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5076052899299764448, guid: e7f03cefcc1be50458ea7dfa7dca5684, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -0.80397
-      objectReference: {fileID: 0}
-    - target: {fileID: 5076052899299764448, guid: e7f03cefcc1be50458ea7dfa7dca5684, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5076052899299764448, guid: e7f03cefcc1be50458ea7dfa7dca5684, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5076052899299764448, guid: e7f03cefcc1be50458ea7dfa7dca5684, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5076052899299764448, guid: e7f03cefcc1be50458ea7dfa7dca5684, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5076052899299764448, guid: e7f03cefcc1be50458ea7dfa7dca5684, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5076052899299764448, guid: e7f03cefcc1be50458ea7dfa7dca5684, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5076052899299764448, guid: e7f03cefcc1be50458ea7dfa7dca5684, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: e7f03cefcc1be50458ea7dfa7dca5684, type: 3}
---- !u!114 &1608599965 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5299862742824285730, guid: e7f03cefcc1be50458ea7dfa7dca5684, type: 3}
-  m_PrefabInstance: {fileID: 1608599964}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2bfc92890f542844ea888b78995e0c8d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::AudioEngine
 --- !u!1001 &1683302523
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2953,7 +2884,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65204867f03626e49a6846d9de534b1a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Assets.Scripts.Scenes.MainMenu.MainMenuBehaviour
-  audioEngine: {fileID: 1608599965}
+  audioEngine: {fileID: 0}
   OptionsPopup: {fileID: 42935842}
   SavedGamesPopup: {fileID: 1157414895}
   GameModesPopup: {fileID: 1607542258}
@@ -2967,4 +2898,3 @@ SceneRoots:
   - {fileID: 2097579281}
   - {fileID: 1127973072}
   - {fileID: 911601269}
-  - {fileID: 1608599964}

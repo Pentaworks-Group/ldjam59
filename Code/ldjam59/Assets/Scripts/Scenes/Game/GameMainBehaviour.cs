@@ -11,7 +11,7 @@ namespace Assets.Scripts.Scenes.Game
     public class GameMainBehaviour : MonoBehaviour
     {
         public UnityEvent OnTargetHit { get; set; } = new UnityEvent();
-
+        
         [SerializeField]
         private SimpleObjectBehaviour objectTemplate;
         [SerializeField]
@@ -20,8 +20,6 @@ namespace Assets.Scripts.Scenes.Game
         private SimpleObjectBehaviour targetTemplate;
         [SerializeField]
         private Transform signalContainer;
-        [SerializeField]
-        private AudioEngine audioEngine;
         [SerializeField]
         private ConnectionLossEffect connectionLossEffect;
 
@@ -92,7 +90,6 @@ namespace Assets.Scripts.Scenes.Game
             if (instance.TryGetComponent<SignalBehaviour>(out var signalBehaviour))
             {
                 signalBehaviour.SetBase(source);
-                signalBehaviour.SetAudioEngine(audioEngine);
                 signalBehaviour.SetConnectionLossEffect(connectionLossEffect);
             }
         }
@@ -104,7 +101,7 @@ namespace Assets.Scripts.Scenes.Game
 
             Base.Core.Game.ExecuteAfterInstantation(Init);
 
-            audioEngine = Base.Audio.AudioEngine;
+            var audioEngine = Base.Audio.AudioEngine;
 
             audioEngine.SetCombination("Level_0", 1.0f);
             string[] combinations = { "Level_0", "Level_1", "Level_2", "Level_3" };
@@ -149,7 +146,7 @@ namespace Assets.Scripts.Scenes.Game
             objectBehaviour.gameObject.name = simpleSpaceObject.Name;
             objectBehaviour.Init(simpleSpaceObject);
 
-            audioEngine.TrackObject(objectBehaviour.transform, trackIndices);
+            Base.Audio.AudioEngine.TrackObject(objectBehaviour.transform, trackIndices);
             //TODO: untrack if the object gets removed
 
             return objectBehaviour;

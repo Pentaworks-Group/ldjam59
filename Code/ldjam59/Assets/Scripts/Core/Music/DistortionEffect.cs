@@ -1,8 +1,8 @@
-using UnityEngine;
-using UnityEngine.Audio;
 using System.Collections;
 using System.Collections.Generic;
-using static UnityEngine.UI.CanvasScaler;
+
+using UnityEngine;
+using UnityEngine.Audio;
 
 public class DistortionEffect : MonoBehaviour
 {
@@ -48,25 +48,18 @@ public class DistortionEffect : MonoBehaviour
     // Cached per-track mixer state
     private MixerParams[] cachedParams;
 
-    private bool isLoaded = false;
     private void Awake()
     {
-        if (!isLoaded)
-        {
-            Init();
-        }
-    }
-
-    private void Init()
-    {
-        isLoaded = true;
         trackAffected = new bool[state.tracks.Length];
-
+        
         // Initialize cache to neutral so fades always start from a valid value,
         // even before the effect has been applied for the first time.
         cachedParams = new MixerParams[state.tracks.Length];
+
         for (int i = 0; i < cachedParams.Length; i++)
+        {
             cachedParams[i] = getNeutralParams();
+        }
     }
 
     public void EnableRadioEffect(bool fade = true, float duration = -1f)
@@ -79,11 +72,17 @@ public class DistortionEffect : MonoBehaviour
     public void EnableRadioEffect(int[] trackIndices, bool fade = true, float duration = -1f)
     {
         for (int i = 0; i < trackAffected.Length; i++)
+        {
             trackAffected[i] = false;
+        }
 
         foreach (int idx in trackIndices)
+        {
             if (idx < trackAffected.Length)
+            {
                 trackAffected[idx] = true;
+            }
+        }
 
         applyEffect(fade, duration);
     }
