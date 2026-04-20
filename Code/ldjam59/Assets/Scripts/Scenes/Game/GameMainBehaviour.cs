@@ -88,8 +88,6 @@ namespace Assets.Scripts.Scenes.Game
             OnTargetHit.AddListener(TargetHit);
         }
 
-
-
         private void Update()
         {
             if (Base.Core.Game.IsRunning)
