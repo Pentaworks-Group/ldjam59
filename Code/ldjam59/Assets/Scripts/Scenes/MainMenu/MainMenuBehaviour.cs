@@ -9,7 +9,6 @@ namespace Assets.Scripts.Scenes.MainMenu
         [SerializeField] private GameObject SavedGamesPopup;
         [SerializeField] private GameObject GameModesPopup;
         [SerializeField] private GameObject CreditsPopup;
-        [SerializeField] private GameObject StartPopup;
 
         private GameObject currentPopup;
 
@@ -37,6 +36,8 @@ namespace Assets.Scripts.Scenes.MainMenu
 
         public void OnOpenGameMode()
         {
+            Base.Core.Game.PlayButtonSound();
+
             //GameModesPopup.SetActive(true);
             Base.Core.Game.Start();
         }
@@ -53,15 +54,6 @@ namespace Assets.Scripts.Scenes.MainMenu
             Base.Audio.AudioEngine.SetCombination("MenuMusic_2");
             Base.Audio.AudioEngine.Play();
             Base.Audio.AudioEngine.StartRandomCycling(combinations, 1, 7, 0.2f);
-
-            //Needed for WebAudio: Web Audio needs a user interaction on most browsers to start playing.
-            if (StartPopup != null)
-            {
-                StartPopup.SetActive(false);
-            } else
-            {
-                Debug.LogWarning("[MainMenuBehaviour] StartPopup not defined");
-            }
         }
 
         public void CloserPopus()
@@ -74,6 +66,8 @@ namespace Assets.Scripts.Scenes.MainMenu
 
         private void ShowPopup(GameObject gameObject)
         {
+            Base.Core.Game.PlayButtonSound();
+
             currentPopup = gameObject;
             currentPopup.SetActive(true);
         }

@@ -20,7 +20,6 @@ namespace Assets.Scripts.Core
 
         private GameMode selectedGameMode;
 
-
         public UnityEvent OnModelUpdate = new UnityEvent();
 
         public IList<Definitions.GameMode> GetAvailableGameModes()
@@ -38,11 +37,13 @@ namespace Assets.Scripts.Core
         {
             var firstLevel = this.State.Mode.Levels[index];
             this.State.CurrentLevel = new LevelConverter().Convert(firstLevel);
+
             if (!this.State.LevelScores.TryGetValue(State.CurrentLevel.Reference, out var levelScore))
             {
                 levelScore = new LevelScore();
                 this.State.LevelScores[State.CurrentLevel.Reference] = levelScore;
             }
+
             this.State.CurrentLevel.Score = levelScore;
             Base.Core.Game.ChangeScene(Constants.Scenes.Game, false);
         }
