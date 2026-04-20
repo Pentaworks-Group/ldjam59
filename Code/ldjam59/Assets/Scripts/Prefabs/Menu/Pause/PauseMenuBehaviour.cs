@@ -48,6 +48,11 @@ namespace Assets.Scripts.Prefabs.Menu.Pause
             }
         }
 
+        public void OpenPauseMenu()
+        {
+            Base.Core.Game.Pause();
+        }
+
         private void OnEscapePressed(InputAction.CallbackContext context)
         {
             if (openMenu == default)
