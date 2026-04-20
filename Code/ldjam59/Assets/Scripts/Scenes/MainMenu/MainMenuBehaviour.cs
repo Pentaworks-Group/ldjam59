@@ -8,6 +8,9 @@ namespace Assets.Scripts.Scenes.MainMenu
         [SerializeField] private GameObject OptionsPopup;
         [SerializeField] private GameObject SavedGamesPopup;
         [SerializeField] private GameObject GameModesPopup;
+        [SerializeField] private GameObject CreditsPopup;
+
+        private GameObject currentPopup;
 
         private InputAction escapeAction;
 
@@ -31,19 +34,17 @@ namespace Assets.Scripts.Scenes.MainMenu
         {
             CloserPopus();
         }
-        public void OnOpenOptions()
-        {
-            OptionsPopup.SetActive(true);
-        }
-        public void OnOpenSavedGames()
-        {
-            SavedGamesPopup.SetActive(true);
-        }
+
+        public void OnOpenOptions() => ShowPopup(OptionsPopup);
+        public void OnOpenSavedGames() => ShowPopup(SavedGamesPopup);
+        public void OnOpenCredits() => ShowPopup(CreditsPopup);
+
         public void OnOpenGameMode()
         {
             //GameModesPopup.SetActive(true);
             Base.Core.Game.Start();
         }
+
         public void OnQuit()
         {
             Base.Core.Game.Quit();
@@ -51,10 +52,16 @@ namespace Assets.Scripts.Scenes.MainMenu
 
         public void CloserPopus()
         {
-            OptionsPopup.SetActive(false);
-            SavedGamesPopup.SetActive(false);
-            GameModesPopup.SetActive(false);
-            Debug.Log("Closing popups");
+            if (currentPopup != null)
+            {
+                currentPopup.SetActive(false);
+            }            
+        }
+
+        private void ShowPopup(GameObject gameObject)
+        {
+            currentPopup = gameObject;
+            currentPopup.SetActive(true);
         }
     }
 }
