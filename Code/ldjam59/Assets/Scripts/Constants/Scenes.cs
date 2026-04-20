@@ -51,28 +51,6 @@ namespace Assets.Scripts.Constants
             }
         }
 
-        public const String GameTestName = "GameTest";
-        private static Scene gameTest;
-        public static Scene GameTest
-        {
-            get
-            {
-                if (gameTest == default)
-                {
-                    gameTest = new Scene()
-                    {
-                        Name = GameTestName,
-                        BackgroundClips = new List<String>()
-                        {
-                            "ShootingStars"
-                        }
-                    };
-                }
-
-                return gameTest;
-            }
-        }
-
         public const String AudioTestName = "AudioTests";
         private static Scene audioTest;
         public static Scene AudioTest
@@ -107,7 +85,6 @@ namespace Assets.Scripts.Constants
         {
             return new List<Scene>()
             {
-                GameTest,
                 AudioTest
             };
         }

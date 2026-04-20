@@ -1,11 +1,11 @@
-using Assets.Scripts.Core.Models;
-using Assets.Scripts.Scenes.GameTest;
-using GameFrame.Core.Extensions;
-using GameFrame.Core.Media;
 using System;
 using System.Collections.Generic;
+
+using Assets.Scripts.Core.Models;
+
+using GameFrame.Core.Extensions;
+
 using UnityEngine;
-using static TMPro.SpriteAssetUtilities.TexturePacker_JsonArray;
 
 namespace Assets.Scripts.Scenes.Game
 {
@@ -98,7 +98,7 @@ namespace Assets.Scripts.Scenes.Game
         {
             if (collision.body.TryGetComponent<SignalBehaviour>(out var signal))
             {
-                signal.OnImpact.Invoke(signal);
+                signal.Explode();
             }
         }
 
@@ -147,7 +147,8 @@ namespace Assets.Scripts.Scenes.Game
             planet.Axis = new GameFrame.Core.Math.Vector2(transform.rotation.x, transform.rotation.z);
         }
 
-        private void UpdateLevelModel( MaterialPropertyBlock propBlock, PlanetLayer layer, string colorName, string speedName, string textureName) {
+        private void UpdateLevelModel(MaterialPropertyBlock propBlock, PlanetLayer layer, string colorName, string speedName, string textureName)
+        {
 
             var col = propBlock.GetColor(colorName);
             layer.Color = col.ToFrame();

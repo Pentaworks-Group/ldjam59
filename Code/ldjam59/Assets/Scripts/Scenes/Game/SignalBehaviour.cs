@@ -45,6 +45,12 @@ namespace Assets.Scripts.Scenes.Game
             this.connectionLossEffect = connectionLossEffect;
         }
 
+        public void Explode()
+        {
+            GameFrame.Base.Audio.Effects.Play("Boom");
+            OnImpact.Invoke(this);
+        }
+
         private void Update()
         {
             if (Base.Core.Game.IsRunning)
@@ -113,7 +119,7 @@ namespace Assets.Scripts.Scenes.Game
         {
             if (other == borderCollider)
             {
-                OnImpact.Invoke(this);
+                Explode();
             }
         }
 
@@ -129,7 +135,7 @@ namespace Assets.Scripts.Scenes.Game
                 Base.Audio.AudioEngine.TrackObject(default);
             }
             */
-
+            
             Destroy(gameObject);
         }
     }
