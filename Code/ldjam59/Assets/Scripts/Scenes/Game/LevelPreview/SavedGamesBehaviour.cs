@@ -8,7 +8,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Assets.Scripts.Prefabs.Menu.SavedGames
+namespace Assets.Scripts.Scenes.Game.LevelPreview
 {
     public class SavedGamesBehaviour : MonoBehaviour
     {

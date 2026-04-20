@@ -112,7 +112,7 @@ namespace Assets.Scripts.Scenes.Game.Admin
             LoadLevel(currentLevelIndex - 1);
         }
 
-        private void LoadLevel(int index)
+        public void LoadLevel(int index)
 		{
 			Base.Core.Game.LoadLevelByIndex(index);
         }
