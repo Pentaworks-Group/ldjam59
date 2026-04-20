@@ -10,6 +10,8 @@ namespace Assets.Scripts.Scenes.Game
         {
             if (other.transform.parent.TryGetComponent<SignalBehaviour>(out var signal))
             {
+                GameFrame.Base.Audio.Effects.Play("Hit");
+
                 signal.OnImpact.Invoke(signal);
                 main.OnTargetHit.Invoke();
             }

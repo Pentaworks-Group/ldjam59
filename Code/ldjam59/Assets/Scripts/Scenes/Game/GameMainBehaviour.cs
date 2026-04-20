@@ -66,7 +66,7 @@ namespace Assets.Scripts.Scenes.Game
 
         private void OnLeftMouseClicked(InputAction.CallbackContext context)
         {
-            Base.Core.Game.PlayButtonSound();
+            GameFrame.Base.Audio.Effects.Play("Launch");
 
             var activeSignal = new Signal();
             Base.Core.Game.State.CurrentLevel.ActiveSignals.Add(activeSignal);
