@@ -85,6 +85,8 @@ public class MultitrackPlayer : MonoBehaviour
             return;
         }
 
+        WebAudioBridge.ResumeAudioContext();
+
         isPlaying = true;
         state.isPlaying = true;
 

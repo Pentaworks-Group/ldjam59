@@ -1,0 +1,13 @@
+LDJam:
+ - CoverImage:	640x512px (5:4 Ration => scaling!)
+ 
+itch.io
+ - CoverImage:	630x500px
+ - Banner:		960x400px
+ 
+Unity:
+ Windows (Optional):
+  - Icon: 		Various (System override)
+ 
+
+ 
