@@ -62,7 +62,8 @@ namespace Assets.Scripts.Core.Definitions.Loaders
                         Reference = loadedItem.Reference,
                         Name = loadedItem.Name,
                         Description = loadedItem.Description,
-                        Planets = new List<PlanetDefinition>()
+                        Planets = new List<PlanetDefinition>(),
+                        SignalVelocityFactor = loadedItem.SignalVelocityFactor,
                     };
 
                     CheckPlanets(loadedItem.Planets, targetLevel.Planets);

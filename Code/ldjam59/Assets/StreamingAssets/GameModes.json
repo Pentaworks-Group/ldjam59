@@ -8,6 +8,7 @@
         "Name": "Level1",
         "Reference": "L1",
         "Description": "Send the message box to its destination",
+        "SignalVelocityFactor": 2,
         "Source": {
           "Sprite": "Satellite",
           "Name": "TheFlyer",
@@ -73,6 +74,7 @@
         "Name": "Level2",
         "Reference": "L2",
         "Description": "There is always somebody in the way",
+        "SignalVelocityFactor": 2,
         "Source": {
           "Sprite": "Satellite",
           "Name": "TheFlyer",
@@ -187,6 +189,7 @@
         "Name": "Level3",
         "Reference": "L3",
         "Description": "Now it starts to get interesting",
+        "SignalVelocityFactor": 2.5,
         "Source": {
           "Sprite": "Satellite",
           "Name": "TheFlyer",
@@ -395,6 +398,7 @@
         "Reference": "Level4",
         "Name": "L4",
         "Description": "BigBad Planet",
+        "SignalVelocityFactor": 2,
         "Seed": null,
         "Planets": [
           {
@@ -616,6 +620,7 @@
         "Reference": "Level5",
         "Name": "L5",
         "Description": "It is getting crowded",
+        "SignalVelocityFactor": 2,
         "Seed": null,
         "Planets": [
           {
@@ -886,6 +891,7 @@
         "Reference": "Level6",
         "Name": "L6",
         "Description": "AnotherBlablaMod",
+        "SignalVelocityFactor": 2,
         "Seed": null,
         "Planets": [
           {
@@ -1205,6 +1211,7 @@
         "Reference": "Level7",
         "Name": "L7",
         "Description": "AnotherBlablaMod",
+        "SignalVelocityFactor": 2,
         "Seed": null,
         "Planets": [
           {

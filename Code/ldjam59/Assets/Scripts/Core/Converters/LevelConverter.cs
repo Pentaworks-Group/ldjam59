@@ -1,10 +1,10 @@
 ﻿
 
-using Assets.Scripts.Core.Definitions;
-using Assets.Scripts.Core.Models;
-
 using System;
 using System.Collections.Generic;
+
+using Assets.Scripts.Core.Definitions;
+using Assets.Scripts.Core.Models;
 
 namespace Assets.Scripts.Core
 {
@@ -23,6 +23,8 @@ namespace Assets.Scripts.Core
                 Planets = new List<Planet>(),
                 ActiveSignals = new List<Signal>(),
             };
+
+            convertedLevel.SignalVelocityFactor = levelDefinition.SignalVelocityFactor ?? 2;
 
             if (levelDefinition.Planets?.Count > 0)
             {

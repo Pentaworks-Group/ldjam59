@@ -178,7 +178,7 @@ namespace Assets.Scripts.Scenes.Game
                     var vector = viewedMousePosition - startPosition;
                     rigidbody.rotation = Quaternion.LookRotation(vector);
 
-                    rigidbody.AddForce(vector.normalized * 2, ForceMode.Impulse);
+                    rigidbody.AddForce(vector.normalized * Base.Core.Game.State.CurrentLevel.SignalVelocityFactor, ForceMode.Impulse);
                 }
                 else
                 {

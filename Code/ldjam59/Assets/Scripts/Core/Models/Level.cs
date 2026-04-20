@@ -25,6 +25,6 @@ namespace Assets.Scripts.Core.Models
         public LevelScore Score { get; set; }
         public Double TimeElapsed { get; set; } = 0.0;
         public Int32 SignalsSend { get; set; } = 0;
-
+        public Single SignalVelocityFactor { get; set; }
     }
 }
