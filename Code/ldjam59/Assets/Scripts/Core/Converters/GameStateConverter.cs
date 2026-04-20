@@ -30,6 +30,13 @@ namespace Assets.Scripts.Core
 
                 gameState.CurrentLevel = new LevelConverter().Convert(firstLevel);
 
+                if (!gameState.LevelScores.TryGetValue(gameState.CurrentLevel.Reference, out var levelScore))
+                {
+                    levelScore = new LevelScore();
+                    gameState.LevelScores[gameState.CurrentLevel.Reference] = levelScore;
+                }
+
+                gameState.CurrentLevel.Score = levelScore;
             }
             else
             {

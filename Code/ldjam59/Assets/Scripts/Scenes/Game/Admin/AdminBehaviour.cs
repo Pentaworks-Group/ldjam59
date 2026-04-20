@@ -53,8 +53,15 @@ namespace Assets.Scripts.Scenes.Game.Admin
 			var json = jsonField.text;
 
 			var tt = GameFrame.Core.Json.Handler.Deserialize<Level>(json);
-			Base.Core.Game.State.CurrentLevel = tt;
-			Base.Core.Game.ChangeScene(Constants.Scenes.Game, false);
+            Core.GameState state = Base.Core.Game.State;
+            state.CurrentLevel = tt;
+            if (!state.LevelScores.TryGetValue(tt.Reference, out var levelScore))
+            {
+                levelScore = new LevelScore();
+                state.LevelScores[tt.Reference] = levelScore;
+            }
+            tt.Score = levelScore;
+            Base.Core.Game.ChangeScene(Constants.Scenes.Game, false);
         }
 
         public void OpenPanel()

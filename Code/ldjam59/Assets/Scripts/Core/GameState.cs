@@ -1,9 +1,8 @@
 ﻿using System;
-using System.Linq;
+using System.Collections.Generic;
 
 using Assets.Scripts.Core.Definitions;
 using Assets.Scripts.Core.Models;
-
 
 namespace Assets.Scripts.Core
 {
@@ -26,7 +25,7 @@ namespace Assets.Scripts.Core
         }
 
         public Level CurrentLevel { get; set; }
-
+        public Dictionary<string, LevelScore> LevelScores { get; set; } = new Dictionary<string, LevelScore>();
         public Double TimeElapsed { get; set; } = 0.0;
         public String DeathReason { get; set; }
         public Int32 Score { get; set; }

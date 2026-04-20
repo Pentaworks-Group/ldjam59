@@ -15,10 +15,7 @@ namespace Assets.Scripts.Scenes.GameTest
                 Debug.Log("hit");
                 scoreBehaviour.AddScore();
 
-                signalBehaviour.OnImpact.Invoke(signalBehaviour);
-                signalBehaviour.OnImpact.RemoveAllListeners();
-
-                Destroy(collision.body.gameObject);
+                signalBehaviour.OnImpact.Invoke(signalBehaviour);                
             }
         }
     }

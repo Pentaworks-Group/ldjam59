@@ -1,17 +1,16 @@
-﻿using System;
-
-using Assets.Scripts.Core.Models;
-
+﻿using Assets.Scripts.Core.Models;
+using System;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
+using UnityEngine.SocialPlatforms.Impl;
 
 namespace Assets.Scripts.Scenes.Game
 {
     public class GameMainBehaviour : MonoBehaviour
     {
         public UnityEvent OnTargetHit { get; set; } = new UnityEvent();
-        
+
         [SerializeField]
         private SimpleObjectBehaviour objectTemplate;
         [SerializeField]
@@ -23,7 +22,7 @@ namespace Assets.Scripts.Scenes.Game
         [SerializeField]
         private ConnectionLossEffect connectionLossEffect;
 
-        private GameObject signal;
+        private GameObject signalObject;
         private Transform source;
         private TargetBehaviour target;
 
@@ -64,12 +63,15 @@ namespace Assets.Scripts.Scenes.Game
         {
             Base.Core.Game.PlayButtonSound();
 
-            var instance = GameObject.Instantiate(signal, signalContainer);
+            var instance = GameObject.Instantiate(signalObject, signalContainer);
             instance.transform.position = source.position;
 
             instance.name = "pew";
 
             instance.SetActive(true);
+
+            var activeSignal = new Signal();
+            Base.Core.Game.State.CurrentLevel.ActiveSignals.Add(activeSignal);
 
             if (instance.TryGetComponent<Rigidbody>(out var rigidbody))
             {
@@ -89,9 +91,11 @@ namespace Assets.Scripts.Scenes.Game
 
             if (instance.TryGetComponent<SignalBehaviour>(out var signalBehaviour))
             {
-                signalBehaviour.SetBase(source);
+                signalBehaviour.Init(activeSignal, source);
                 signalBehaviour.SetConnectionLossEffect(connectionLossEffect);
             }
+            Base.Core.Game.State.CurrentLevel.Score.SignalsSend++;
+            Base.Core.Game.State.CurrentLevel.SignalsSend++;
         }
 
         private void Awake()
@@ -114,6 +118,8 @@ namespace Assets.Scripts.Scenes.Game
             if (Base.Core.Game.IsRunning)
             {
                 Base.Core.Game.State.TimeElapsed += Time.deltaTime;
+                Base.Core.Game.State.CurrentLevel.Score.LevelTime += Time.deltaTime;
+                Base.Core.Game.State.CurrentLevel.TimeElapsed += Time.deltaTime;
             }
         }
 
@@ -127,7 +133,7 @@ namespace Assets.Scripts.Scenes.Game
             tmpTarget.gameObject.SetActive(true);
             target = tmpTarget.GetComponent<TargetBehaviour>();
 
-            signal = SpawnObject(Base.Core.Game.State.CurrentLevel.Signal, signalTemplate).gameObject;
+            signalObject = SpawnObject(Base.Core.Game.State.CurrentLevel.Signal, signalTemplate).gameObject;
 
             clickAction.performed += OnLeftMouseClicked;
             clickAction.Enable();
