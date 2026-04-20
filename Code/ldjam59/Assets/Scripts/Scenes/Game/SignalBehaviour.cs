@@ -70,12 +70,12 @@ namespace Assets.Scripts.Scenes.Game
                 {
                     if(shouldBeActive)
                     {
-                        Debug.Log("Set Connection Loss effect active");
+                        //Debug.Log("Set Connection Loss effect active");
                         connectionLossEffect.SetConnected(false);
                     }
                     else
                     {
-                        Debug.Log("Set Connection Loss effect inactive");
+                        //Debug.Log("Set Connection Loss effect inactive");
                         connectionLossEffect.SetConnected(true);
                     }
                 }

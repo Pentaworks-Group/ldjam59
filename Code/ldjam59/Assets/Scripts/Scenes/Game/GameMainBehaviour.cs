@@ -112,10 +112,16 @@ namespace Assets.Scripts.Scenes.Game
             audioEngine.Play();
         }
 
+        private void Update()
+        {
+            if (Base.Core.Game.IsRunning)
+            {
+                Base.Core.Game.State.TimeElapsed += Time.deltaTime;
+            }
+        }
+
         private void Init()
         {
-            Debug.Log("Main Init");
-
             var tmpSource = SpawnObject(Base.Core.Game.State.CurrentLevel.Source, objectTemplate).gameObject;
             tmpSource.SetActive(true);
             tmpSource.AddComponent<MouseTracker>();

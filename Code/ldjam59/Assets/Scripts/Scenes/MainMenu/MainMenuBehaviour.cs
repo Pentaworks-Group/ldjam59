@@ -31,7 +31,8 @@ namespace Assets.Scripts.Scenes.MainMenu
         }
         public void OnOpenGameMode()
         {
-            GameModesPopup.SetActive(true);
+            //GameModesPopup.SetActive(true);
+            Base.Core.Game.Start();
         }
         public void OnQuit()
         {
