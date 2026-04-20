@@ -2,8 +2,6 @@ using Assets.Scripts.Core.Persistence;
 
 using GameFrame.Core.Extensions;
 
-using TMPro;
-
 using UnityEngine.UI;
 
 namespace Assets.Scripts.Prefabs.Menu.SavedGames
@@ -24,11 +22,11 @@ namespace Assets.Scripts.Prefabs.Menu.SavedGames
         {
             if (this.content.IsEmpty)
             {
-                this.indicatorImage.color = UnityEngine.Color.green;
+                this.indicatorImage.color = UnityEngine.Color.red;
             }
             else
             {
-                this.indicatorImage.color = UnityEngine.Color.red;
+                this.indicatorImage.color = UnityEngine.Color.green;
             }
         }
     }

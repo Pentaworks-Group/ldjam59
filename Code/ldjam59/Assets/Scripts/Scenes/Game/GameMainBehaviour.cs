@@ -60,7 +60,7 @@ namespace Assets.Scripts.Scenes.Game
 
         private void OnLeftMouseClicked(InputAction.CallbackContext context)
         {
-            GameFrame.Base.Audio.Effects.Play("Launch");
+            GameFrame.Base.Audio.Effects.Play("Launch3");
 
             var activeSignal = new Signal();
             Base.Core.Game.State.CurrentLevel.ActiveSignals.Add(activeSignal);

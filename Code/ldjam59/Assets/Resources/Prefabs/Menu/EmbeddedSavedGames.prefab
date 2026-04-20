@@ -179,8 +179,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 0a5c2bc8cb985e749841410f8e2bbde5, type: 2}
+  m_sharedMaterial: {fileID: -8045338515155523816, guid: 0a5c2bc8cb985e749841410f8e2bbde5, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1201,6 +1201,22 @@ PrefabInstance:
       propertyPath: m_text
       value: Load
       objectReference: {fileID: 0}
+    - target: {fileID: 2063845002331517611, guid: a6d651a2b08c0ad488a88d83083147c2, type: 3}
+      propertyPath: m_fontColor.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2063845002331517611, guid: a6d651a2b08c0ad488a88d83083147c2, type: 3}
+      propertyPath: m_fontColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2063845002331517611, guid: a6d651a2b08c0ad488a88d83083147c2, type: 3}
+      propertyPath: m_fontColor.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2063845002331517611, guid: a6d651a2b08c0ad488a88d83083147c2, type: 3}
+      propertyPath: m_fontColor32.rgba
+      value: 4294967295
+      objectReference: {fileID: 0}
     - target: {fileID: 3402183196574848830, guid: a6d651a2b08c0ad488a88d83083147c2, type: 3}
       propertyPath: m_Name
       value: LoadButton
@@ -1398,6 +1414,22 @@ PrefabInstance:
       propertyPath: m_text
       value: Write
       objectReference: {fileID: 0}
+    - target: {fileID: 2063845002331517611, guid: a6d651a2b08c0ad488a88d83083147c2, type: 3}
+      propertyPath: m_fontColor.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2063845002331517611, guid: a6d651a2b08c0ad488a88d83083147c2, type: 3}
+      propertyPath: m_fontColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2063845002331517611, guid: a6d651a2b08c0ad488a88d83083147c2, type: 3}
+      propertyPath: m_fontColor.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2063845002331517611, guid: a6d651a2b08c0ad488a88d83083147c2, type: 3}
+      propertyPath: m_fontColor32.rgba
+      value: 4294967295
+      objectReference: {fileID: 0}
     - target: {fileID: 3402183196574848830, guid: a6d651a2b08c0ad488a88d83083147c2, type: 3}
       propertyPath: m_Name
       value: SaveButton
@@ -1594,6 +1626,22 @@ PrefabInstance:
     - target: {fileID: 2063845002331517611, guid: a6d651a2b08c0ad488a88d83083147c2, type: 3}
       propertyPath: m_text
       value: Erase
+      objectReference: {fileID: 0}
+    - target: {fileID: 2063845002331517611, guid: a6d651a2b08c0ad488a88d83083147c2, type: 3}
+      propertyPath: m_fontColor.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2063845002331517611, guid: a6d651a2b08c0ad488a88d83083147c2, type: 3}
+      propertyPath: m_fontColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2063845002331517611, guid: a6d651a2b08c0ad488a88d83083147c2, type: 3}
+      propertyPath: m_fontColor.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2063845002331517611, guid: a6d651a2b08c0ad488a88d83083147c2, type: 3}
+      propertyPath: m_fontColor32.rgba
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 3402183196574848830, guid: a6d651a2b08c0ad488a88d83083147c2, type: 3}
       propertyPath: m_Name

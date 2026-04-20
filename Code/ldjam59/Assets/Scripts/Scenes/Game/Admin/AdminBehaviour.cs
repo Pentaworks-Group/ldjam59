@@ -1,43 +1,44 @@
-using Assets.Scripts.Core.Models;
-using Newtonsoft.Json;
 using System.Linq;
+
+using Assets.Scripts.Core.Models;
+
+using Newtonsoft.Json;
+
 using TMPro;
+
 using UnityEngine;
 using UnityEngine.UI;
-using static UnityEngine.InputSystem.InputSettings;
 
 
 namespace Assets.Scripts.Scenes.Game.Admin
 {
-	public class AdminBehaviour : MonoBehaviour
-	{
-		[SerializeField]
-		private GameObject panel;
-		[SerializeField]
-		private GameObject button;
-		[SerializeField]
-		private TMP_InputField jsonField;
+    public class AdminBehaviour : MonoBehaviour
+    {
+        [SerializeField]
+        private GameObject panel;
+        [SerializeField]
+        private GameObject button;
+        [SerializeField]
+        private TMP_InputField jsonField;
         [SerializeField]
         private Button nextLevelButton;
         [SerializeField]
         private Button previousLevelButton;
 
-
-		private int currentLevelIndex;
-
+        private int currentLevelIndex;
 
         private void Awake()
         {
-			Base.Core.Game.ExecuteAfterInstantation(InitBehaviour);
+            Base.Core.Game.ExecuteAfterInstantation(InitBehaviour);
         }
 
         private void InitBehaviour()
-		{
-			EnableDisableLevelButtons();
+        {
+            EnableDisableLevelButtons();
         }
 
         public void GenerateJson()
-		{
+        {
 
             Base.Core.Game.OnModelUpdate.Invoke();
 
@@ -47,12 +48,11 @@ namespace Assets.Scripts.Scenes.Game.Admin
             jsonField.text = json;
         }
 
-
         public void LoadJson()
         {
-			var json = jsonField.text;
+            var json = jsonField.text;
 
-			var tt = GameFrame.Core.Json.Handler.Deserialize<Level>(json);
+            var tt = GameFrame.Core.Json.Handler.Deserialize<Level>(json);
             Core.GameState state = Base.Core.Game.State;
             state.CurrentLevel = tt;
             if (!state.LevelScores.TryGetValue(tt.Reference, out var levelScore))
@@ -65,36 +65,36 @@ namespace Assets.Scripts.Scenes.Game.Admin
         }
 
         public void OpenPanel()
-		{
-			panel.SetActive(true);
-			button.SetActive(false);
-		}
+        {
+            panel.SetActive(true);
+            button.SetActive(false);
+        }
 
-		public void ClosePanel()
-		{
-			panel.SetActive(false);
-			button.SetActive(true);
-		}
+        public void ClosePanel()
+        {
+            panel.SetActive(false);
+            button.SetActive(true);
+        }
 
-		private void EnableDisableLevelButtons()
+        private void EnableDisableLevelButtons()
         {
             var levels = Base.Core.Game.State.Mode.Levels;
             var currentLevel = Base.Core.Game.State.CurrentLevel;
-			var levelDefinition = levels.FirstOrDefault(l => l.Reference == currentLevel.Reference);
-			currentLevelIndex = levels.IndexOf(levelDefinition);
+            var levelDefinition = levels.FirstOrDefault(l => l.Reference == currentLevel.Reference);
+            currentLevelIndex = levels.IndexOf(levelDefinition);
 
-			if (currentLevelIndex > 0)
-			{
-				previousLevelButton.interactable = true;
-			}
-			else
-			{
-				previousLevelButton.interactable = false;
-			}
+            if (currentLevelIndex > 0)
+            {
+                previousLevelButton.interactable = true;
+            }
+            else
+            {
+                previousLevelButton.interactable = false;
+            }
 
-			if (currentLevelIndex < levels.Count - 1)
-			{
-				nextLevelButton.interactable = true;
+            if (currentLevelIndex < levels.Count - 1)
+            {
+                nextLevelButton.interactable = true;
             }
             else
             {
@@ -102,21 +102,20 @@ namespace Assets.Scripts.Scenes.Game.Admin
             }
         }
 
-		public void LoadNextLevel()
-		{
-			LoadLevel(currentLevelIndex + 1);
-		}
+        public void LoadNextLevel()
+        {
+            LoadLevel(currentLevelIndex + 1);
+        }
 
         public void LoadPreviousLevel()
         {
             LoadLevel(currentLevelIndex - 1);
         }
 
-        public void LoadLevel(int index)
-		{
-			Base.Core.Game.LoadLevelByIndex(index);
+        private void LoadLevel(int index)
+        {
+            Base.Core.Game.PlayButtonSound();
+            Base.Core.Game.LoadLevelByIndex(index);
         }
-
-
-	}
+    }
 }
