@@ -88,7 +88,7 @@ namespace Assets.Scripts.Scenes.Game
 
                 if (connectionLossEffect != null && shouldBeActive != connectionLossEffect.IsEffectActive)
                 {
-                    connectionLossEffect.SetConnected(shouldBeActive);
+                    connectionLossEffect.SetConnected(!shouldBeActive);
                 }
             }
         }
