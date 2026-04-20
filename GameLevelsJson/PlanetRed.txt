@@ -1,0 +1,49 @@
+    {
+      "PlanetLayer": {
+        "RotationSpeed": 0.3,
+        "Texture": "Planet_texture_3_1",
+        "Color": {
+          "Red": 0.735849,
+          "Green": 0.006941857,
+          "Blue": 0.006941857,
+          "Alpha": 1.0
+        }
+      },
+      "SurfaceLayer": {
+        "RotationSpeed": 0.23,
+        "Texture": "Planet_texture_1_5",
+        "Color": {
+          "Red": 0.7490195,
+          "Green": 0.419450879,
+          "Blue": 0.4569018,
+          "Alpha": 0.98
+        }
+      },
+      "CloudLayer": {
+        "RotationSpeed": 0.31,
+        "Texture": "Planet_texture_1",
+        "Color": {
+          "Red": 0.7490195,
+          "Green": 0.7490195,
+          "Blue": 0.7490195,
+          "Alpha": 0.9
+        }
+      },
+      "Axis": {
+        "X": 0.13052623,
+        "Y": 0.0
+      },
+      "Name": "Tut",
+      "Id": null,
+      "Size": 8.0,
+      "Gravity": 5.0,
+      "Position": {
+        "X": -10.0,
+        "Y": 0.0
+      },
+      "Speed": {
+        "X": 0.0,
+        "Y": 0.0
+      },
+      "Orbiters": null
+    }
