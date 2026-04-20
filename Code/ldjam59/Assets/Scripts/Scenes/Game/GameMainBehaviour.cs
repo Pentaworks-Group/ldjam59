@@ -22,6 +22,8 @@ namespace Assets.Scripts.Scenes.Game
         private Transform signalContainer;
         [SerializeField]
         private AudioEngine audioEngine;
+        [SerializeField]
+        private ConnectionLossEffect connectionLossEffect;
 
         private GameObject signal;
         private Transform source;
@@ -93,6 +95,7 @@ namespace Assets.Scripts.Scenes.Game
             {
                 signalBehaviour.SetBase(source);
                 signalBehaviour.SetAudioEngine(audioEngine);
+                signalBehaviour.SetConnectionLossEffect(connectionLossEffect);
             }
         }
 
