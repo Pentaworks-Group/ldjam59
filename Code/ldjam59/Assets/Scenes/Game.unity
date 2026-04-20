@@ -295,11 +295,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Assets.Scripts.Scenes.Game.TargetBehaviour
   main: {fileID: 1499582781}
---- !u!1 &688232603 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3676251881421882308, guid: aa035058fe6e8904e8295f95e36beec4, type: 3}
-  m_PrefabInstance: {fileID: 377927280794655787}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &842504307 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1582485058921675140, guid: e3e2a7ba553dc424f9f4b5f6f4ac3c9c, type: 3}
@@ -316,17 +311,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 09e4c9edcce256944aca6799d2ac9392, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlanetBehaviour
---- !u!114 &1136638297 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7818924428618225237, guid: aa035058fe6e8904e8295f95e36beec4, type: 3}
-  m_PrefabInstance: {fileID: 377927280794655787}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 193582eb565917249adc0b233f9e7f66, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Assets.Scripts.Prefabs.PauseMenu.PauseMenuBehaviour
 --- !u!1 &1392765345
 GameObject:
   m_ObjectHideFlags: 0
@@ -879,34 +863,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1569495390020429071, guid: aa035058fe6e8904e8295f95e36beec4, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1569495390020429071, guid: aa035058fe6e8904e8295f95e36beec4, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1569495390020429071, guid: aa035058fe6e8904e8295f95e36beec4, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 1136638297}
-    - target: {fileID: 1569495390020429071, guid: aa035058fe6e8904e8295f95e36beec4, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 1569495390020429071, guid: aa035058fe6e8904e8295f95e36beec4, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: OpenPauseMenu
-      objectReference: {fileID: 0}
-    - target: {fileID: 1569495390020429071, guid: aa035058fe6e8904e8295f95e36beec4, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: Assets.Scripts.Prefabs.Menu.Pause.PauseMenuBehaviour, Assembly-CSharp
-      objectReference: {fileID: 0}
-    - target: {fileID: 1569495390020429071, guid: aa035058fe6e8904e8295f95e36beec4, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
     - target: {fileID: 4669049476703044455, guid: aa035058fe6e8904e8295f95e36beec4, type: 3}
       propertyPath: main
       value: 
@@ -915,14 +871,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: StaticUI
       objectReference: {fileID: 0}
-    - target: {fileID: 7818924428618225237, guid: aa035058fe6e8904e8295f95e36beec4, type: 3}
-      propertyPath: hideOnPause.Array.size
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 7818924428618225237, guid: aa035058fe6e8904e8295f95e36beec4, type: 3}
-      propertyPath: 'hideOnPause.Array.data[2]'
-      value: 
-      objectReference: {fileID: 688232603}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

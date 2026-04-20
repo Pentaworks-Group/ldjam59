@@ -1,17 +1,16 @@
-﻿using System;
-
-using Assets.Scripts.Core.Models;
-
+﻿using Assets.Scripts.Core.Models;
+using System;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
+using UnityEngine.SocialPlatforms.Impl;
 
 namespace Assets.Scripts.Scenes.Game
 {
     public class GameMainBehaviour : MonoBehaviour
     {
         public UnityEvent OnTargetHit { get; set; } = new UnityEvent();
-        
+
         [SerializeField]
         private SimpleObjectBehaviour objectTemplate;
         [SerializeField]
@@ -92,6 +91,8 @@ namespace Assets.Scripts.Scenes.Game
                 signalBehaviour.SetBase(source);
                 signalBehaviour.SetConnectionLossEffect(connectionLossEffect);
             }
+            Base.Core.Game.State.CurrentLevel.Score.SignalsSend++;
+            Base.Core.Game.State.CurrentLevel.SignalsSend++;
         }
 
         private void Awake()
@@ -114,6 +115,8 @@ namespace Assets.Scripts.Scenes.Game
             if (Base.Core.Game.IsRunning)
             {
                 Base.Core.Game.State.TimeElapsed += Time.deltaTime;
+                Base.Core.Game.State.CurrentLevel.Score.LevelTime += Time.deltaTime;
+                Base.Core.Game.State.CurrentLevel.TimeElapsed += Time.deltaTime;
             }
         }
 
@@ -136,6 +139,21 @@ namespace Assets.Scripts.Scenes.Game
             escapeAction.Enable();
 
             Base.Core.Game.PauseToggled.AddListener(OnPauseToggled);
+            OnTargetHit.AddListener(HitHandler);
+        }
+
+        private void HitHandler()
+        {
+            var currentLevel = Base.Core.Game.State.CurrentLevel;
+            var score = currentLevel.Score;
+            if (score.LeastSent > currentLevel.SignalsSend)
+            {
+                score.LeastSent = currentLevel.SignalsSend;
+            }
+            if (score.ShortestHitDuration > currentLevel.TimeElapsed)
+            {
+                score.ShortestHitDuration = currentLevel.TimeElapsed;
+            }
         }
 
         private SimpleObjectBehaviour SpawnObject(SimpleSpaceObject simpleSpaceObject, SimpleObjectBehaviour usedObjectTemplate)

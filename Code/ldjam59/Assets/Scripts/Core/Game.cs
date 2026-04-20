@@ -1,5 +1,6 @@
 using Assets.Scripts.Core.Definitions;
 using Assets.Scripts.Core.Definitions.Loaders;
+using Assets.Scripts.Core.Models;
 using Assets.Scripts.Core.Persistence;
 using Assets.Scripts.Scenes.Game;
 using GameFrame.Core;
@@ -37,6 +38,12 @@ namespace Assets.Scripts.Core
         {
             var firstLevel = this.State.Mode.Levels[index];
             this.State.CurrentLevel = new LevelConverter().Convert(firstLevel);
+            if (!this.State.LevelScores.TryGetValue(State.CurrentLevel.Reference, out var levelScore))
+            {
+                levelScore = new LevelScore();
+                this.State.LevelScores[State.CurrentLevel.Reference] = levelScore;
+            }
+            this.State.CurrentLevel.Score = levelScore;
             Base.Core.Game.ChangeScene(Constants.Scenes.Game, false);
         }
 
