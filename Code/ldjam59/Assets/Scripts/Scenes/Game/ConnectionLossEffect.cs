@@ -36,6 +36,7 @@ namespace Assets.Scripts.Scenes.Game
 			_targetBlend = CurrentBlend;
 
 			var shader = Shader.Find("Hidden/ConnectionLoss");
+
 			if (shader != null)
 			{
 				Debug.Log("Shader found OK");
