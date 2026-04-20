@@ -143,9 +143,6 @@ namespace Assets.Scripts.Scenes.Game
             objectBehaviour.gameObject.name = simpleSpaceObject.Name;
             objectBehaviour.Init(simpleSpaceObject);
 
-            Base.Audio.AudioEngine.TrackObject(objectBehaviour.transform, trackIndices);
-            //TODO: untrack if the object gets removed
-
             return objectBehaviour;
         }
 
@@ -163,7 +160,7 @@ namespace Assets.Scripts.Scenes.Game
             }
 
             instance.name = "pew";
-            
+
             instance.SetActive(true);
 
             if (instance.TryGetComponent<Rigidbody>(out var rigidbody))
@@ -192,9 +189,21 @@ namespace Assets.Scripts.Scenes.Game
 
             if (instance.TryGetComponent<SignalBehaviour>(out var signalBehaviour))
             {
-                signalBehaviour.Init(signal, source);
-                signalBehaviour.SetConnectionLossEffect(connectionLossEffect);
+                signalBehaviour.Init(signal);
+
+                if (Base.Core.Game.State.Mode.Audio.IsConnectionLossEnabled == true)
+                {
+                    signalBehaviour.InitConnectionLoss(source, connectionLossEffect);
+                }
             }
+
+            // Should be enabled, but as we have more than one object, not supported!
+            /*
+            if (Base.Core.Game.State.Mode.Audio?.IsTrackingObjects == true)
+            {
+                Base.Audio.AudioEngine.TrackObject(instance.transform, trackIndices);
+            }
+            */
         }
     }
 }

@@ -1,7 +1,6 @@
-﻿using Assets.Scripts.Core.Models;
+﻿using System.Collections.Generic;
 
 using GameFrame.Core.Definitions.Loaders;
-using System.Collections.Generic;
 
 namespace Assets.Scripts.Core.Definitions.Loaders
 {
@@ -10,7 +9,7 @@ namespace Assets.Scripts.Core.Definitions.Loaders
 
         public GameModeLoader(DefinitionCache<GameMode> gameModeCache) : base(gameModeCache)
         {
-            
+
         }
 
         protected override void OnDefinitionsLoaded(List<GameMode> gameModeDefinitions)
@@ -25,9 +24,23 @@ namespace Assets.Scripts.Core.Definitions.Loaders
                     {
                         IsDefault = loadedGameMode.IsDefault,
                         Reference = loadedGameMode.Reference,
-                        Name = loadedGameMode.Name,                       
-                        Levels = new List<LevelDefinition>(),                 
+                        Name = loadedGameMode.Name,
+                        Levels = new List<LevelDefinition>(),
+                        Audio = new AudioDefinition()
                     };
+
+                    if (loadedGameMode.Audio != default)
+                    {
+                        if (loadedGameMode.Audio.IsTrackingObjects.HasValue)
+                        {
+                            newGameMode.Audio.IsTrackingObjects = loadedGameMode.Audio.IsTrackingObjects.Value;
+                        }
+
+                        if (loadedGameMode.Audio.IsConnectionLossEnabled.HasValue)
+                        {
+                            newGameMode.Audio.IsConnectionLossEnabled = loadedGameMode.Audio.IsConnectionLossEnabled.Value;
+                        }
+                    }
 
                     if (loadedGameMode.Levels != default)
                     {
@@ -48,7 +61,7 @@ namespace Assets.Scripts.Core.Definitions.Loaders
                     {
                         Reference = loadedItem.Reference,
                         Name = loadedItem.Name,
-                        Description = loadedItem.Description,    
+                        Description = loadedItem.Description,
                         Planets = new List<PlanetDefinition>()
                     };
 
@@ -71,5 +84,4 @@ namespace Assets.Scripts.Core.Definitions.Loaders
             }
         }
     }
-
 }
