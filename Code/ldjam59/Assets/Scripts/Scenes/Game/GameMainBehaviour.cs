@@ -142,21 +142,6 @@ namespace Assets.Scripts.Scenes.Game
             escapeAction.Enable();
 
             Base.Core.Game.PauseToggled.AddListener(OnPauseToggled);
-            OnTargetHit.AddListener(HitHandler);
-        }
-
-        private void HitHandler()
-        {
-            var currentLevel = Base.Core.Game.State.CurrentLevel;
-            var score = currentLevel.Score;
-            if (score.LeastSent > currentLevel.SignalsSend)
-            {
-                score.LeastSent = currentLevel.SignalsSend;
-            }
-            if (score.ShortestHitDuration > currentLevel.TimeElapsed)
-            {
-                score.ShortestHitDuration = currentLevel.TimeElapsed;
-            }
         }
 
         private SimpleObjectBehaviour SpawnObject(SimpleSpaceObject simpleSpaceObject, SimpleObjectBehaviour usedObjectTemplate)

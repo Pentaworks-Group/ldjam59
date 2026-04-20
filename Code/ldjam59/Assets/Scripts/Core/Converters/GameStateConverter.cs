@@ -29,13 +29,14 @@ namespace Assets.Scripts.Core
                 var firstLevel = this.mode.Levels[0];
 
                 gameState.CurrentLevel = new LevelConverter().Convert(firstLevel);
+
                 if (!gameState.LevelScores.TryGetValue(gameState.CurrentLevel.Reference, out var levelScore))
                 {
                     levelScore = new LevelScore();
                     gameState.LevelScores[gameState.CurrentLevel.Reference] = levelScore;
                 }
-                gameState.CurrentLevel.Score = levelScore;
 
+                gameState.CurrentLevel.Score = levelScore;
             }
             else
             {

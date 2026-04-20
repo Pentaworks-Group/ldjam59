@@ -1,4 +1,7 @@
+using System;
+
 using TMPro;
+
 using UnityEngine;
 namespace Assets.Scripts.Scenes.Game
 {
@@ -30,13 +33,27 @@ namespace Assets.Scripts.Scenes.Game
         {
             previousTimeScale = Time.timeScale;
             Time.timeScale = 0f;
+
+            var currentLevel = Base.Core.Game.State.CurrentLevel;
+            var score = currentLevel.Score;
+
+            if (score.LeastSent > currentLevel.SignalsSend)
+            {
+                score.LeastSent = currentLevel.SignalsSend;
+            }
+
+            if (score.ShortestHitDuration > currentLevel.TimeElapsed)
+            {
+                score.ShortestHitDuration = currentLevel.TimeElapsed;
+            }
+            
             container.SetActive(true);
             pauseButton.SetActive(false);
-            var levelScore = Base.Core.Game.State.CurrentLevel.Score;
-            fastestHitTxt.text = levelScore.ShortestHitDuration.ToString();
-            leastHitTxt.text = levelScore.LeastSent.ToString();
-            totalLevelTxt.text = levelScore.LevelTime.ToString();
-            totalSentTxt.text = levelScore.SignalsSend.ToString();
+
+            fastestHitTxt.text = String.Format("{0:####0.0}s", score.ShortestHitDuration);
+            leastHitTxt.text = score.LeastSent.ToString();
+            totalLevelTxt.text = String.Format("{0:####0.0}s", score.LevelTime);
+            totalSentTxt.text = score.SignalsSend.ToString();
         }
 
         public void CloseHitWindow()
