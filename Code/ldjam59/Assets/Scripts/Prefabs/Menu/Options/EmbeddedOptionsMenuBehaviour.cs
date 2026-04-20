@@ -3,7 +3,7 @@ using System;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Assets.Scripts.Prefabs.Menu
+namespace Assets.Scripts.Prefabs.Menu.Options
 {
 	public class EmbeddedOptionsMenuBehaviour : MonoBehaviour
 	{

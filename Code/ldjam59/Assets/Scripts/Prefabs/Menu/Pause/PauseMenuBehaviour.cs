@@ -9,7 +9,7 @@ using UnityEditor.Analytics;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-namespace Assets.Scripts.Prefabs.PauseMenu
+namespace Assets.Scripts.Prefabs.Menu.Pause
 {
     public class PauseMenuBehaviour : MonoBehaviour
     {

@@ -2,7 +2,7 @@
 
 using UnityEngine;
 
-namespace Assets.Scripts.Prefabs.PauseMenu
+namespace Assets.Scripts.Prefabs.Menu.Pause
 {
     public class PauseSubMenuBehaviour : MonoBehaviour
     {
