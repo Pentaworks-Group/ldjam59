@@ -11,7 +11,7 @@ namespace Assets.Scripts.Scenes.MainMenu
     {
         [SerializeField] private TMP_Text textField;
         [SerializeField] private int height = 10;
-        [SerializeField] private int width = 16;
+        //[SerializeField] private int width = 16;
         [SerializeField] private float updateInterval = 1;
         private string[] lines;
         private int nextIndex = 0;
