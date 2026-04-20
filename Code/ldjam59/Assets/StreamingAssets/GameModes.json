@@ -216,7 +216,7 @@
           "Size": 1,
           "Gravity": 1,
           "Position": {
-            "x": -15,
+            "x": -17,
             "y": 0
           },
           "Speed": {
@@ -488,9 +488,9 @@
             "Name": "SuckSuck",
             "Id": null,
             "Size": 6,
-            "Gravity": 7,
+            "Gravity": 8,
             "Position": {
-              "X": -13.10428,
+              "X": -9.10428,
               "Y": -8.76861
             },
             "Speed": {
@@ -537,7 +537,7 @@
             "Name": "Tut",
             "Id": null,
             "Size": 8,
-            "Gravity": 5,
+            "Gravity": 7,
             "Position": {
               "X": -9.60428,
               "Y": 1.88861
@@ -663,7 +663,7 @@
             "Size": 2,
             "Gravity": 10,
             "Position": {
-              "X": 3.02572,
+              "X": 2.02572,
               "Y": 0
             },
             "Speed": {
@@ -759,9 +759,9 @@
             "Name": "SuckSuck",
             "Id": null,
             "Size": 6,
-            "Gravity": 5,
+            "Gravity": 7,
             "Position": {
-              "X": -4.47428,
+              "X": -3.47428,
               "Y": 11.98861
             },
             "Speed": {
@@ -808,7 +808,7 @@
             "Name": "Tut",
             "Id": null,
             "Size": 8,
-            "Gravity": 5,
+            "Gravity": 8,
             "Position": {
               "X": -10,
               "Y": 0
@@ -935,7 +935,7 @@
             "Gravity": 5,
             "Position": {
               "X": -5,
-              "Y": -12.000001
+              "Y": -10.000001
             },
             "Speed": {
               "X": 0,
@@ -983,7 +983,7 @@
             "Size": 2,
             "Gravity": 10,
             "Position": {
-              "X": 3.02572,
+              "X": 2.02572,
               "Y": 0
             },
             "Speed": {
@@ -1079,9 +1079,9 @@
             "Name": "SuckSuck",
             "Id": null,
             "Size": 6,
-            "Gravity": 5,
+            "Gravity": 7,
             "Position": {
-              "X": -10.10428,
+              "X": -8.10428,
               "Y": 14.76861
             },
             "Speed": {
@@ -1128,7 +1128,7 @@
             "Name": "Tut",
             "Id": null,
             "Size": 8,
-            "Gravity": 5,
+            "Gravity": 7,
             "Position": {
               "X": -10,
               "Y": 0
@@ -1252,7 +1252,7 @@
             "Name": "Tut2",
             "Id": null,
             "Size": 8,
-            "Gravity": 5,
+            "Gravity": 7,
             "Position": {
               "X": -0.08428,
               "Y": -10.44139
@@ -1301,10 +1301,10 @@
             "Name": "SuckSuck2",
             "Id": null,
             "Size": 6,
-            "Gravity": 5,
+            "Gravity": 7,
             "Position": {
-              "X": -10,
-              "Y": -16.000001
+              "X": -8,
+              "Y": -14.000001
             },
             "Speed": {
               "X": 0,
@@ -1352,7 +1352,7 @@
             "Size": 2,
             "Gravity": 10,
             "Position": {
-              "X": 3.02572,
+              "X": 2.02572,
               "Y": 0
             },
             "Speed": {
