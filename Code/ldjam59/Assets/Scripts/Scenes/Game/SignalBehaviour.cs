@@ -12,6 +12,8 @@ namespace Assets.Scripts.Scenes.Game
 {
     public class SignalBehaviour : MonoBehaviour
     {
+        private static GameObject explosionPrefab;
+
         [SerializeField]
         private Collider borderCollider;
 
@@ -27,10 +29,15 @@ namespace Assets.Scripts.Scenes.Game
         private void Awake()
         {
             OnImpact.AddListener(DestroySignal);
-            
+
             if (TryGetComponent<Rigidbody>(out var rigidbody))
             {
                 activeRigidbody = rigidbody;
+            }
+
+            if (explosionPrefab == null)
+            {
+                explosionPrefab = Resources.Load<GameObject>("Prefabs/Explosion");
             }
         }
 
@@ -48,6 +55,13 @@ namespace Assets.Scripts.Scenes.Game
         public void Explode()
         {
             GameFrame.Base.Audio.Effects.Play("Boom");
+
+            if (explosionPrefab != null)
+            {
+                var explosion = Instantiate(explosionPrefab, transform.parent);
+                explosion.transform.position = transform.position;
+            }
+
             OnImpact.Invoke(this);
         }
 
@@ -135,7 +149,7 @@ namespace Assets.Scripts.Scenes.Game
                 Base.Audio.AudioEngine.TrackObject(default);
             }
             */
-            
+
             Destroy(gameObject);
         }
     }
