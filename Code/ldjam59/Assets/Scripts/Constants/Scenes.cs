@@ -75,7 +75,7 @@ namespace Assets.Scripts.Constants
             }
         }
 
-        public const String AudioTestName = "GameTest";
+        public const String AudioTestName = "AudioTest";
         private static Scene audioTest;
         public static Scene AudioTest
         {
