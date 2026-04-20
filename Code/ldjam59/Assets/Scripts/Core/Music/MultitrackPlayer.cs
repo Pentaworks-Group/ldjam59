@@ -1,4 +1,3 @@
-using System.IO;
 using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.SceneManagement;
@@ -18,6 +17,8 @@ public class MultitrackPlayer : MonoBehaviour
 
     private void Awake()
     {
+        Debug.Log("Player awake");
+
         if (!isLoaded)
         {
             Init();
@@ -27,6 +28,7 @@ public class MultitrackPlayer : MonoBehaviour
     private void Init()
     {
         isLoaded = true;
+
         DontDestroyOnLoad(gameObject);
         SceneManager.sceneLoaded += OnSceneLoaded;
 
@@ -59,7 +61,8 @@ public class MultitrackPlayer : MonoBehaviour
     void InitializeSources()
     {
         // Cleanup old AudioSources
-        foreach (Transform child in transform) {
+        foreach (Transform child in transform)
+        {
             Destroy(child.gameObject);
         }
 
@@ -77,7 +80,7 @@ public class MultitrackPlayer : MonoBehaviour
             sources[i].loop = trackData.loop || state.loopAll;
 
             // Assign mixer group if available for this track index
-            if ( mixerGroups != null && i < mixerGroups.Length && mixerGroups[i] != null)
+            if (mixerGroups != null && i < mixerGroups.Length && mixerGroups[i] != null)
                 sources[i].outputAudioMixerGroup = mixerGroups[i];
 
             ApplyTrackSettings(i);
@@ -88,7 +91,7 @@ public class MultitrackPlayer : MonoBehaviour
     {
         if (sources == null)
         {
-            Debug.LogError("Can't Play! no sources provided.");
+            Debug.LogWarning("Can't Play! no sources provided.");
             return;
         }
 
@@ -102,7 +105,7 @@ public class MultitrackPlayer : MonoBehaviour
 
         double dspStart = AudioSettings.dspTime + 0.1;
 
-        for (int i = 0;i < sources.Length;i++)
+        for (int i = 0; i < sources.Length; i++)
         {
             ApplyTrackSettings(i);
             sources[i].PlayScheduled(dspStart);
@@ -142,7 +145,7 @@ public class MultitrackPlayer : MonoBehaviour
     public void SetLoopAll(bool loop)
     {
         state.loopAll = loop;
-        for (int i= 0; i < sources.Length; i++)
+        for (int i = 0; i < sources.Length; i++)
             sources[i].loop = loop || state.tracks[i].loop;
     }
 
@@ -161,12 +164,12 @@ public class MultitrackPlayer : MonoBehaviour
         src.volume = effectiveVolume;
         src.panStereo = data.pan;
         src.loop = data.loop || state.loopAll;
-    }    
+    }
 
     public void SetMasterVolume(float volume)
     {
         state.masterVolume = Mathf.Clamp01(volume);
-        for (int i= 0;i < sources.Length;i++)
+        for (int i = 0; i < sources.Length; i++)
             ApplyTrackSettings(i);
     }
 
@@ -197,7 +200,7 @@ public class MultitrackPlayer : MonoBehaviour
             if (t.clip != null && t.clip.length > max)
                 max = t.clip.length;
         return max;
-    }    
+    }
 
     public AudioSource GetSource(int index)
     {

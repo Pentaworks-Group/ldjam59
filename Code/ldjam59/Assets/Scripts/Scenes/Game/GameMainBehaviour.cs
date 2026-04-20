@@ -45,8 +45,6 @@ namespace Assets.Scripts.Scenes.Game
             if (Base.Core.Game.IsRunning)
             {
                 Base.Core.Game.Pause();
-
-                
             }
         }
 
@@ -105,6 +103,8 @@ namespace Assets.Scripts.Scenes.Game
             escapeAction = InputSystem.actions.FindAction("Escape");
 
             Base.Core.Game.ExecuteAfterInstantation(Init);
+
+            audioEngine = Base.Audio.AudioEngine;
 
             audioEngine.SetCombination("Level_0", 1.0f);
             string[] combinations = { "Level_0", "Level_1", "Level_2", "Level_3" };

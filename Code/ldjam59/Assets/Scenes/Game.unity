@@ -307,6 +307,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: AudioSystem
       objectReference: {fileID: 0}
+    - target: {fileID: 1645107443026002723, guid: e7f03cefcc1be50458ea7dfa7dca5684, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5076052899299764448, guid: e7f03cefcc1be50458ea7dfa7dca5684, type: 3}
       propertyPath: m_LocalPosition.x
       value: 1.14739
@@ -930,6 +934,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1033251580486487475, guid: aa035058fe6e8904e8295f95e36beec4, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4048924454268212352, guid: aa035058fe6e8904e8295f95e36beec4, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 11.499985
+      objectReference: {fileID: 0}
+    - target: {fileID: 4048924454268212352, guid: aa035058fe6e8904e8295f95e36beec4, type: 3}
+      propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4669049476703044455, guid: aa035058fe6e8904e8295f95e36beec4, type: 3}
