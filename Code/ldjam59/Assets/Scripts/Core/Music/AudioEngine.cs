@@ -94,9 +94,12 @@ public class AudioEngine : MonoBehaviour
     /// </summary>
     public void TrackObject(Transform target, int[] trackIndices = null)
     {
-        panner.SetTarget(target);
+        this.panner.SetTarget(target);
+
         if (trackIndices != null)
+        {
             panner.SetTracksToAffect(trackIndices);
+        }
     }
 
     /// <summary>Stop spatial tracking. </summary>

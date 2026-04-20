@@ -27,6 +27,7 @@ namespace Assets.Scripts.Prefabs.Menu.SavedGames
 
             if (this.currentSlot != default)
             {
+                Base.Core.Game.PlayButtonSound();
                 Base.Core.Game.OverwriteSavedGame(this.currentSlot.Key);
             }
 

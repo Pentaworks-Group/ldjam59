@@ -19,7 +19,7 @@ namespace Assets.Scripts.Scenes.Game
 
         private ConnectionLossEffect connectionLossEffect;
 
-        private Transform baseObject;
+        private Transform connectionTarget;
         private Rigidbody activeRigidbody;
 
         public Signal Signal { get; private set; }
@@ -34,14 +34,14 @@ namespace Assets.Scripts.Scenes.Game
             }
         }
 
-        public void Init(Signal signal, Transform baseObject)
+        public void Init(Signal signal)
         {
             this.Signal = signal;
-            this.baseObject = baseObject;
         }
 
-        public void SetConnectionLossEffect(ConnectionLossEffect connectionLossEffect)
+        public void InitConnectionLoss(Transform connectionTarget, ConnectionLossEffect connectionLossEffect)
         {
+            this.connectionTarget = connectionTarget;
             this.connectionLossEffect = connectionLossEffect;
         }
 
@@ -52,21 +52,22 @@ namespace Assets.Scripts.Scenes.Game
                 if (this.Signal != default)
                 {
                     this.Signal.Position = transform.position.ToFrame();
-                    this.Signal.Force = this.activeRigidbody.GetAccumulatedForce().ToFrame();
+                    this.Signal.Rotation = this.activeRigidbody.rotation.ToFrame();
+                    this.Signal.Force = this.activeRigidbody.linearVelocity.ToFrame();
                 }
             }
 
             //TODO: this approach fails if there are multiple objects
-            if (baseObject != null)
+            if (connectionTarget != null)
             {
                 // Calculate direction and distance to the target
-                float distance = UVector3.Distance(transform.position, baseObject.position);
+                float distance = UVector3.Distance(transform.position, connectionTarget.position);
 
                 bool shouldBeActive = false;
 
-                if (Physics.Raycast(transform.position, baseObject.position, out var hit, distance))
+                if (Physics.Raycast(transform.position, connectionTarget.position, out var hit, distance))
                 {
-                    if (hit.transform != baseObject)
+                    if (hit.transform != connectionTarget)
                     {
                         shouldBeActive = true;
                     }
@@ -120,6 +121,14 @@ namespace Assets.Scripts.Scenes.Game
         {
             OnImpact.RemoveAllListeners();
             Base.Core.Game.State.CurrentLevel.ActiveSignals.Remove(behaviour.Signal);
+
+            // Should be enabled, but as we have more than one object, not supported!
+            /*
+            if (Base.Core.Game.State.Mode.Audio.IsTrackingObjects == true)
+            {
+                Base.Audio.AudioEngine.TrackObject(default);
+            }
+            */
 
             Destroy(gameObject);
         }
