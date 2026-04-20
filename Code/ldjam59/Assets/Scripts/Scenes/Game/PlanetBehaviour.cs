@@ -76,8 +76,6 @@ namespace Assets.Scripts.Scenes.Game
             propBlock.SetTexture(textureName, texture);
         }
 
-
-
         private void FixedUpdate()
         {
             if (this.affectedBodies.Count > 0)

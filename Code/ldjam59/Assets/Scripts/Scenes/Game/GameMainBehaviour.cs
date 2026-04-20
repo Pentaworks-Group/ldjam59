@@ -22,7 +22,7 @@ namespace Assets.Scripts.Scenes.Game
         [SerializeField]
         private ConnectionLossEffect connectionLossEffect;
 
-        private GameObject signal;
+        private GameObject signalObject;
         private Transform source;
         private TargetBehaviour target;
 
@@ -63,12 +63,15 @@ namespace Assets.Scripts.Scenes.Game
         {
             Base.Core.Game.PlayButtonSound();
 
-            var instance = GameObject.Instantiate(signal, signalContainer);
+            var instance = GameObject.Instantiate(signalObject, signalContainer);
             instance.transform.position = source.position;
 
             instance.name = "pew";
 
             instance.SetActive(true);
+
+            var activeSignal = new Signal();
+            Base.Core.Game.State.CurrentLevel.ActiveSignals.Add(activeSignal);
 
             if (instance.TryGetComponent<Rigidbody>(out var rigidbody))
             {
@@ -88,7 +91,7 @@ namespace Assets.Scripts.Scenes.Game
 
             if (instance.TryGetComponent<SignalBehaviour>(out var signalBehaviour))
             {
-                signalBehaviour.SetBase(source);
+                signalBehaviour.Init(activeSignal, source);
                 signalBehaviour.SetConnectionLossEffect(connectionLossEffect);
             }
             Base.Core.Game.State.CurrentLevel.Score.SignalsSend++;
@@ -130,7 +133,7 @@ namespace Assets.Scripts.Scenes.Game
             tmpTarget.gameObject.SetActive(true);
             target = tmpTarget.GetComponent<TargetBehaviour>();
 
-            signal = SpawnObject(Base.Core.Game.State.CurrentLevel.Signal, signalTemplate).gameObject;
+            signalObject = SpawnObject(Base.Core.Game.State.CurrentLevel.Signal, signalTemplate).gameObject;
 
             clickAction.performed += OnLeftMouseClicked;
             clickAction.Enable();
