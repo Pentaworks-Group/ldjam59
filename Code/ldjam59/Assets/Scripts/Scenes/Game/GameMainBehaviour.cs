@@ -1,4 +1,5 @@
 ﻿using Assets.Scripts.Core.Models;
+using Assets.Scripts.Prefabs.Menu.Pause;
 using System;
 using UnityEngine;
 using UnityEngine.Events;
@@ -21,6 +22,10 @@ namespace Assets.Scripts.Scenes.Game
         private Transform signalContainer;
         [SerializeField]
         private ConnectionLossEffect connectionLossEffect;
+        [SerializeField]
+        private PauseMenuBehaviour pauseMenuBehaviour;
+        [SerializeField]
+        private PauseSubMenuBehaviour hitSubMenuBehaviour;
 
         private GameObject signalObject;
         private Transform source;
@@ -34,15 +39,6 @@ namespace Assets.Scripts.Scenes.Game
         private void OnDisable()
         {
             clickAction.performed -= OnLeftMouseClicked;
-            escapeAction.performed -= OnEscapePressed;
-        }
-
-        private void OnEscapePressed(InputAction.CallbackContext context)
-        {
-            if (Base.Core.Game.IsRunning)
-            {
-                Base.Core.Game.Pause();
-            }
         }
 
         private void OnPauseToggled(Boolean isPaused)
@@ -50,12 +46,10 @@ namespace Assets.Scripts.Scenes.Game
             if (!isPaused)
             {
                 clickAction.performed += OnLeftMouseClicked;
-                escapeAction.performed += OnEscapePressed;
             }
             else
             {
                 clickAction.performed -= OnLeftMouseClicked;
-                escapeAction.performed -= OnEscapePressed;
             }
         }
 
@@ -111,7 +105,11 @@ namespace Assets.Scripts.Scenes.Game
             string[] combinations = { "Level_0", "Level_1", "Level_2", "Level_3" };
             audioEngine.StartRandomCycling(combinations, 1, 7, 0.2f);
             audioEngine.Play();
+
+            OnTargetHit.AddListener(TargetHit);
         }
+
+
 
         private void Update()
         {
@@ -138,7 +136,6 @@ namespace Assets.Scripts.Scenes.Game
             clickAction.performed += OnLeftMouseClicked;
             clickAction.Enable();
 
-            escapeAction.performed += OnEscapePressed;
             escapeAction.Enable();
 
             Base.Core.Game.PauseToggled.AddListener(OnPauseToggled);
@@ -156,6 +153,24 @@ namespace Assets.Scripts.Scenes.Game
             //TODO: untrack if the object gets removed
 
             return objectBehaviour;
+        }
+
+        private void TargetHit()
+        {
+            var currentLevel = Base.Core.Game.State.CurrentLevel;
+            var score = currentLevel.Score;
+
+            if (score.LeastSent > currentLevel.SignalsSend)
+            {
+                score.LeastSent = currentLevel.SignalsSend;
+            }
+
+            if (score.ShortestHitDuration > currentLevel.TimeElapsed)
+            {
+                score.ShortestHitDuration = currentLevel.TimeElapsed;
+            }
+
+            pauseMenuBehaviour.OpenMenu(hitSubMenuBehaviour);
         }
     }
 }

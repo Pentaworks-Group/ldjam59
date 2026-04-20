@@ -364,10 +364,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   pauseMenuContainer: {fileID: 2009665817038998457}
-  backButton: {fileID: 8920077693847795533}
   defaultMenu: {fileID: 6765617196730808351}
-  optionsMenu: {fileID: 3244397607034757398}
-  saveGameMenu: {fileID: 3622731225554664054}
   titleText: {fileID: 4176092514157363066}
 --- !u!1 &5145445094044575532
 GameObject:
@@ -590,12 +587,28 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7732971037934112183, guid: a6d651a2b08c0ad488a88d83083147c2, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7732971037934112183, guid: a6d651a2b08c0ad488a88d83083147c2, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 6665593590233697200}
     - target: {fileID: 7732971037934112183, guid: a6d651a2b08c0ad488a88d83083147c2, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: OnOpenOptions
+      value: OpenMenu
+      objectReference: {fileID: 0}
+    - target: {fileID: 7732971037934112183, guid: a6d651a2b08c0ad488a88d83083147c2, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: Assets.Scripts.Prefabs.Menu.Pause.PauseMenuBehaviour, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 7732971037934112183, guid: a6d651a2b08c0ad488a88d83083147c2, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 3244397607034757398}
+    - target: {fileID: 7732971037934112183, guid: a6d651a2b08c0ad488a88d83083147c2, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: Assets.Scripts.Prefabs.Menu.Pause.PauseSubMenuBehaviour, Assembly-CSharp
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -728,11 +741,6 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 5505386378042482058, guid: e2953dd3928d39049a882a7da8cf4950, type: 3}
   m_PrefabInstance: {fileID: 1870105684832641521}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &8920077693847795533 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7077838169425417916, guid: e2953dd3928d39049a882a7da8cf4950, type: 3}
-  m_PrefabInstance: {fileID: 1870105684832641521}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2605875379922015165
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -826,9 +834,29 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7732971037934112183, guid: a6d651a2b08c0ad488a88d83083147c2, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7732971037934112183, guid: a6d651a2b08c0ad488a88d83083147c2, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 6665593590233697200}
+    - target: {fileID: 7732971037934112183, guid: a6d651a2b08c0ad488a88d83083147c2, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OpenMenu
+      objectReference: {fileID: 0}
+    - target: {fileID: 7732971037934112183, guid: a6d651a2b08c0ad488a88d83083147c2, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: Assets.Scripts.Prefabs.Menu.Pause.PauseMenuBehaviour, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 7732971037934112183, guid: a6d651a2b08c0ad488a88d83083147c2, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 3622731225554664054}
+    - target: {fileID: 7732971037934112183, guid: a6d651a2b08c0ad488a88d83083147c2, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: Assets.Scripts.Prefabs.Menu.Pause.PauseSubMenuBehaviour, Assembly-CSharp
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
