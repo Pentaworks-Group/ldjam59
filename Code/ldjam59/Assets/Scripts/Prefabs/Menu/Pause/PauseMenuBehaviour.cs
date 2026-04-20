@@ -15,50 +15,28 @@ namespace Assets.Scripts.Prefabs.Menu.Pause
     {
         private readonly Dictionary<GameObject, Boolean> oldActiveValues = new Dictionary<GameObject, Boolean>();
 
-        private Boolean isPaused;
+
         private PauseSubMenuBehaviour openMenu;
         private InputAction escapeAction;
 
         public List<GameObject> hideOnPause = new List<GameObject>();
         public GameObject pauseMenuContainer;
-        public GameObject backButton;
         public PauseSubMenuBehaviour defaultMenu;
-        public PauseSubMenuBehaviour optionsMenu;
-        public PauseSubMenuBehaviour saveGameMenu;
         public TMP_Text titleText;
 
-        public void OnPauseToggled(Boolean isPaused)
+        private bool isOpen = false;
+
+        private void OnDisable()
         {
-            this.isPaused = isPaused;
-
-            if (!this.isPaused)
-            {
-                ShowItems();
-                pauseMenuContainer.SetActive(false);
-            }
-            else
-            {
-                escapeAction.performed+= OnEscapePressed;
-
-                HideItems();
-
-                titleText.text = defaultMenu.title;
-                defaultMenu.gameObject.SetActive(true);
-                pauseMenuContainer.SetActive(true);
-            }
+            escapeAction.performed -= OnEscapePressedInMenu;
+            escapeAction.performed -= OnEscapePressedOutsideMenu;
         }
 
-        public void OpenPauseMenu()
-        {
-            Base.Core.Game.Pause();
-        }
-
-        private void OnEscapePressed(InputAction.CallbackContext context)
+        private void OnEscapePressedInMenu(InputAction.CallbackContext context)
         {
             if (openMenu == default)
             {
-                escapeAction.performed -= OnEscapePressed;
-                Base.Core.Game.UnPause();
+                ClosePauseMenu();
             }
             else
             {
@@ -66,13 +44,45 @@ namespace Assets.Scripts.Prefabs.Menu.Pause
             }
         }
 
+        private void OnEscapePressedOutsideMenu(InputAction.CallbackContext context)
+        {
+            OpenPauseMenu();
+        }
+
+        public void ClosePauseMenu()
+        {
+            isOpen = false;
+            escapeAction.performed -= OnEscapePressedInMenu;
+            escapeAction.performed += OnEscapePressedOutsideMenu;
+            ShowItems();
+            pauseMenuContainer.SetActive(false);
+            Base.Core.Game.UnPause();
+        }
+
+        public void OpenPauseMenu()
+        {
+            isOpen = true;
+            escapeAction.performed += OnEscapePressedInMenu;
+            escapeAction.performed -= OnEscapePressedOutsideMenu;
+
+            HideItems();
+
+            titleText.text = defaultMenu.title;
+            defaultMenu.gameObject.SetActive(true);
+            pauseMenuContainer.SetActive(true);
+            Base.Core.Game.Pause();
+        }
+
         public void OnBack()
         {
+            if (openMenu == default)
+            {
+                ClosePauseMenu();
+                return;
+            }
             OpenMenu(default);
         }
 
-        public void OnOpenOptions() => OpenMenu(optionsMenu);
-        public void OnOpenSaveGames() => OpenMenu(saveGameMenu);
 
         public void OnQuit()
         {
@@ -84,8 +94,12 @@ namespace Assets.Scripts.Prefabs.Menu.Pause
             Time.timeScale = 1;
         }
 
-        private void OpenMenu(PauseSubMenuBehaviour newValue)
+        public void OpenMenu(PauseSubMenuBehaviour newValue)
         {
+            if (!isOpen)
+            {
+                OpenPauseMenu();
+            }
             if (openMenu != null)
             {
                 openMenu.gameObject.SetActive(false);
@@ -97,13 +111,11 @@ namespace Assets.Scripts.Prefabs.Menu.Pause
             {
                 titleText.text = newValue.title;
 
-                backButton.SetActive(true);
                 newValue.gameObject.SetActive(true);
                 defaultMenu.gameObject.SetActive(false);
             }
             else
             {
-                backButton.SetActive(false);
                 defaultMenu.gameObject.SetActive(true);
                 titleText.text = defaultMenu.title;
             }
@@ -135,16 +147,17 @@ namespace Assets.Scripts.Prefabs.Menu.Pause
             }
         }
 
-        private void Init()
-        {
-            Base.Core.Game.PauseToggled.AddListener(OnPauseToggled);
-        }
+        //private void Init()
+        //{
+        //    Base.Core.Game.PauseToggled.AddListener(OnPauseToggled);
+        //}
 
         private void Awake()
         {
             escapeAction = InputSystem.actions.FindAction("Escape");
+            escapeAction.performed += OnEscapePressedOutsideMenu;
 
-            Base.Core.Game.ExecuteAfterInstantation(Init);
+            //Base.Core.Game.ExecuteAfterInstantation(Init);
         }
     }
 }

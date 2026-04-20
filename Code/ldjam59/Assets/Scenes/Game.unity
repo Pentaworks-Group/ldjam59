@@ -295,6 +295,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Assets.Scripts.Scenes.Game.TargetBehaviour
   main: {fileID: 1499582781}
+--- !u!114 &637919864 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7818924428618225237, guid: aa035058fe6e8904e8295f95e36beec4, type: 3}
+  m_PrefabInstance: {fileID: 377927280794655787}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 193582eb565917249adc0b233f9e7f66, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Assets.Scripts.Prefabs.PauseMenu.PauseMenuBehaviour
 --- !u!4 &842504307 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1582485058921675140, guid: e3e2a7ba553dc424f9f4b5f6f4ac3c9c, type: 3}
@@ -311,6 +322,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 09e4c9edcce256944aca6799d2ac9392, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlanetBehaviour
+--- !u!114 &958068011 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2672334885581243873, guid: aa035058fe6e8904e8295f95e36beec4, type: 3}
+  m_PrefabInstance: {fileID: 377927280794655787}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
+--- !u!114 &1235884423 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3645393513663335123, guid: aa035058fe6e8904e8295f95e36beec4, type: 3}
+  m_PrefabInstance: {fileID: 377927280794655787}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a62b00579bc883b46b03c6a3f5edf9d6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Assets.Scripts.Prefabs.PauseMenu.PauseSubMenuBehaviour
 --- !u!1 &1392765345
 GameObject:
   m_ObjectHideFlags: 0
@@ -649,6 +682,8 @@ MonoBehaviour:
   targetTemplate: {fileID: 7832156709757100665}
   signalContainer: {fileID: 1684383653}
   connectionLossEffect: {fileID: 1392765350}
+  pauseMenuBehaviour: {fileID: 637919864}
+  hitSubMenuBehaviour: {fileID: 1235884423}
 --- !u!1 &1684383652
 GameObject:
   m_ObjectHideFlags: 0
@@ -783,6 +818,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1004253949100347894, guid: aa035058fe6e8904e8295f95e36beec4, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1033251580486487475, guid: aa035058fe6e8904e8295f95e36beec4, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -863,10 +902,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4669049476703044455, guid: aa035058fe6e8904e8295f95e36beec4, type: 3}
-      propertyPath: main
+    - target: {fileID: 3062415230499588982, guid: aa035058fe6e8904e8295f95e36beec4, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3161896593963292252, guid: aa035058fe6e8904e8295f95e36beec4, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3761675744272201743, guid: aa035058fe6e8904e8295f95e36beec4, type: 3}
+      propertyPath: launchButton
       value: 
-      objectReference: {fileID: 1499582781}
+      objectReference: {fileID: 958068011}
     - target: {fileID: 5544167248510248345, guid: aa035058fe6e8904e8295f95e36beec4, type: 3}
       propertyPath: m_Name
       value: StaticUI

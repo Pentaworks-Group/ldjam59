@@ -1,18 +1,14 @@
+using Assets.Scripts.Core.Models;
 using System;
 
 using TMPro;
 
 using UnityEngine;
+using UnityEngine.UI;
 namespace Assets.Scripts.Scenes.Game
 {
     public class HitUIBehaviour : MonoBehaviour
     {
-        [SerializeField]
-        private GameMainBehaviour main;
-        [SerializeField]
-        private GameObject container;
-        [SerializeField]
-        private GameObject pauseButton;
         [SerializeField]
         private TMP_Text fastestHitTxt;
         [SerializeField]
@@ -21,46 +17,43 @@ namespace Assets.Scripts.Scenes.Game
         private TMP_Text totalLevelTxt;
         [SerializeField]
         private TMP_Text totalSentTxt;
+        [SerializeField]
+        private GameObject launchButtonOpen;
+        [SerializeField]
+        private GameObject launchButtonClose;
 
-        protected float? previousTimeScale;
 
-        private void Awake()
+
+        private void OnEnable()
         {
-            main.OnTargetHit.AddListener(TargetHit);
-        }
-
-        private void TargetHit()
-        {
-            previousTimeScale = Time.timeScale;
-            Time.timeScale = 0f;
-
-            var currentLevel = Base.Core.Game.State.CurrentLevel;
-            var score = currentLevel.Score;
-
-            if (score.LeastSent > currentLevel.SignalsSend)
+            if ( Base.Core.Game.IsLoaded)
             {
-                score.LeastSent = currentLevel.SignalsSend;
-            }
+                var score = Base.Core.Game.State.CurrentLevel.Score;
 
-            if (score.ShortestHitDuration > currentLevel.TimeElapsed)
-            {
-                score.ShortestHitDuration = currentLevel.TimeElapsed;
+                if (score.ShortestHitDuration == Double.MaxValue)
+                {
+                    launchButtonClose.SetActive(true);
+                    launchButtonOpen.SetActive(false);
+                    fastestHitTxt.text = "-";
+                }
+                else
+                {
+                    launchButtonClose.SetActive(false);
+                    launchButtonOpen.SetActive(true);
+                    fastestHitTxt.text = String.Format("{0:####0.0}s", score.ShortestHitDuration);
+                }
+                if (score.LeastSent == int.MaxValue)
+                {
+                    leastHitTxt.text = "-";
+                }
+                else
+                {
+                    leastHitTxt.text = score.LeastSent.ToString();
+                }
+                totalLevelTxt.text = String.Format("{0:####0.0}s", score.LevelTime);
+                totalSentTxt.text = score.SignalsSend.ToString();
             }
-            
-            container.SetActive(true);
-            pauseButton.SetActive(false);
-
-            fastestHitTxt.text = String.Format("{0:####0.0}s", score.ShortestHitDuration);
-            leastHitTxt.text = score.LeastSent.ToString();
-            totalLevelTxt.text = String.Format("{0:####0.0}s", score.LevelTime);
-            totalSentTxt.text = score.SignalsSend.ToString();
         }
 
-        public void CloseHitWindow()
-        {
-            container.SetActive(false);
-            pauseButton.SetActive(true);
-            Time.timeScale = (previousTimeScale.HasValue ? previousTimeScale.Value : 1f);
-        }
     }
 }
