@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd31cf24c563ce04092887c26978e1f0, type: 3}
   m_Name: ConnectionLossFeature
   m_EditorClassIdentifier: Assembly-CSharp::ConnectionLossFeature
-  m_Active: 0
+  m_Active: 1
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
