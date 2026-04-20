@@ -80,6 +80,8 @@ namespace Assets.Scripts.Prefabs.Menu.Pause
 
             Base.Core.Game.Stop();
             Base.Core.Game.ChangeScene(Constants.Scenes.MainMenu);
+
+            Time.timeScale = 1;
         }
 
         private void OpenMenu(PauseSubMenuBehaviour newValue)

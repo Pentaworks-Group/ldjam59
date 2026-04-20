@@ -1,19 +1,24 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+
 using TMPro;
+
 using UnityEngine;
 
 namespace Assets.Scripts.Scenes.MainMenu
 {
-    public class CreditsBehaviour : MonoBehaviour
+    [RequireComponent(typeof(TMP_Text))]
+    public class ScrolltextBehaviour : MonoBehaviour
     {
         [SerializeField] private TMP_Text textField;
         [SerializeField] private int height = 10;
         //[SerializeField] private int width = 16;
         [SerializeField] private float updateInterval = 1;
+
         private string[] lines;
         private int nextIndex = 0;
-        private List<string> currentLines = new List<string>();
+        private readonly List<string> currentLines = new List<string>();
 
         private void Start()
         {
@@ -24,8 +29,11 @@ namespace Assets.Scripts.Scenes.MainMenu
             {
                 currentLines.Add(lines[i]);
             }
+
             textField.text = string.Join("\n", currentLines);
+
             nextIndex = end;
+
             if (end == height)
             {
                 StartCoroutine(Timer());
@@ -35,6 +43,7 @@ namespace Assets.Scripts.Scenes.MainMenu
         private IEnumerator Timer()
         {
             WaitForSeconds wait = new WaitForSeconds(updateInterval);
+
             while (true)
             {
                 UpdateText();
@@ -53,8 +62,11 @@ namespace Assets.Scripts.Scenes.MainMenu
         {
             currentLines.RemoveAt(0);
             currentLines.Add(lines[nextIndex]);
+
             textField.text = string.Join("\n", currentLines);
+
             nextIndex++;
+
             if (nextIndex >= lines.Length)
             {
                 nextIndex = 0;
