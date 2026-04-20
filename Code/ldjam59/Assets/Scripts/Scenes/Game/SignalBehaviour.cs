@@ -52,7 +52,8 @@ namespace Assets.Scripts.Scenes.Game
                 if (this.Signal != default)
                 {
                     this.Signal.Position = transform.position.ToFrame();
-                    this.Signal.Force = this.activeRigidbody.GetAccumulatedForce().ToFrame();
+                    this.Signal.Rotation = this.activeRigidbody.rotation.ToFrame();
+                    this.Signal.Force = this.activeRigidbody.linearVelocity.ToFrame();
                 }
             }
 

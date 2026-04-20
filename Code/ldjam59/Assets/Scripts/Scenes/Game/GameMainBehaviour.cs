@@ -1,9 +1,14 @@
-﻿using Assets.Scripts.Core.Models;
-using System;
+﻿using System;
+
+using Assets.Scripts.Core.Models;
+
+using GameFrame.Core.Extensions;
+
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
-using UnityEngine.SocialPlatforms.Impl;
+
+using UnityVector3 = UnityEngine.Vector3;
 
 namespace Assets.Scripts.Scenes.Game
 {
@@ -63,37 +68,11 @@ namespace Assets.Scripts.Scenes.Game
         {
             Base.Core.Game.PlayButtonSound();
 
-            var instance = GameObject.Instantiate(signalObject, signalContainer);
-            instance.transform.position = source.position;
-
-            instance.name = "pew";
-
-            instance.SetActive(true);
-
             var activeSignal = new Signal();
             Base.Core.Game.State.CurrentLevel.ActiveSignals.Add(activeSignal);
 
-            if (instance.TryGetComponent<Rigidbody>(out var rigidbody))
-            {
-                Vector3 mousePosition = Pointer.current.position.ReadValue();
-                mousePosition.z = Camera.main.transform.position.y;
+            SpawnSignal(activeSignal, false);
 
-                var viewedMousePosition = Camera.main.ScreenToWorldPoint(mousePosition);
-                viewedMousePosition.y = 0f;
-
-                var startPosition = new Vector3(source.position.x, 0f, source.position.z);
-
-                var vector = viewedMousePosition - startPosition;
-                rigidbody.rotation = Quaternion.LookRotation(vector);
-
-                rigidbody.AddForce(vector.normalized * 2, ForceMode.Impulse);
-            }
-
-            if (instance.TryGetComponent<SignalBehaviour>(out var signalBehaviour))
-            {
-                signalBehaviour.Init(activeSignal, source);
-                signalBehaviour.SetConnectionLossEffect(connectionLossEffect);
-            }
             Base.Core.Game.State.CurrentLevel.Score.SignalsSend++;
             Base.Core.Game.State.CurrentLevel.SignalsSend++;
         }
@@ -125,15 +104,27 @@ namespace Assets.Scripts.Scenes.Game
 
         private void Init()
         {
-            var tmpSource = SpawnObject(Base.Core.Game.State.CurrentLevel.Source, objectTemplate).gameObject;
+            var currentLevel = Base.Core.Game.State.CurrentLevel;
+
+            var tmpSource = SpawnObject(currentLevel.Source, objectTemplate).gameObject;
             tmpSource.SetActive(true);
             tmpSource.AddComponent<MouseTracker>();
+
             source = tmpSource.transform;
-            var tmpTarget = SpawnObject(Base.Core.Game.State.CurrentLevel.Target, targetTemplate).transform;
+
+            var tmpTarget = SpawnObject(currentLevel.Target, targetTemplate).transform;
             tmpTarget.gameObject.SetActive(true);
             target = tmpTarget.GetComponent<TargetBehaviour>();
 
-            signalObject = SpawnObject(Base.Core.Game.State.CurrentLevel.Signal, signalTemplate).gameObject;
+            signalObject = SpawnObject(currentLevel.Signal, signalTemplate).gameObject;
+
+            if (currentLevel.ActiveSignals?.Count > 0)
+            {
+                foreach (var signal in currentLevel.ActiveSignals)
+                {
+                    SpawnSignal(signal, true);
+                }
+            }
 
             clickAction.performed += OnLeftMouseClicked;
             clickAction.Enable();
@@ -156,6 +147,54 @@ namespace Assets.Scripts.Scenes.Game
             //TODO: untrack if the object gets removed
 
             return objectBehaviour;
+        }
+
+        private void SpawnSignal(Signal signal, Boolean isRestore)
+        {
+            var instance = GameObject.Instantiate(signalObject, signalContainer);
+
+            if (isRestore)
+            {
+                instance.transform.position = signal.Position.ToUnity();
+            }
+            else
+            {
+                instance.transform.position = source.position;
+            }
+
+            instance.name = "pew";
+            
+            instance.SetActive(true);
+
+            if (instance.TryGetComponent<Rigidbody>(out var rigidbody))
+            {
+                if (!isRestore)
+                {
+                    UnityVector3 mousePosition = Pointer.current.position.ReadValue();
+                    mousePosition.z = Camera.main.transform.position.y;
+
+                    var viewedMousePosition = Camera.main.ScreenToWorldPoint(mousePosition);
+                    viewedMousePosition.y = 0f;
+
+                    var startPosition = new UnityVector3(source.position.x, 0f, source.position.z);
+
+                    var vector = viewedMousePosition - startPosition;
+                    rigidbody.rotation = Quaternion.LookRotation(vector);
+
+                    rigidbody.AddForce(vector.normalized * 2, ForceMode.Impulse);
+                }
+                else
+                {
+                    rigidbody.rotation = signal.Rotation.ToUnityQuaternion();
+                    rigidbody.linearVelocity = signal.Force.ToUnity();
+                }
+            }
+
+            if (instance.TryGetComponent<SignalBehaviour>(out var signalBehaviour))
+            {
+                signalBehaviour.Init(signal, source);
+                signalBehaviour.SetConnectionLossEffect(connectionLossEffect);
+            }
         }
     }
 }
