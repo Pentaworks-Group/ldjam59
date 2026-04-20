@@ -104,12 +104,16 @@ public class ConnectionLossFeature : ScriptableRendererFeature
 
     public override void Create()
     {
+        Debug.Log("Loading Shader");
+
         var shader = Shader.Find("Hidden/ConnectionLoss");
+
         if (shader == null)
         {
             Debug.LogError("Hidden/ConnectionLoss shader not found!");
             return;
         }
+
         _mat = new Material(shader);
         _pass = new ConnectionLossFeaturePass(_mat);
     }
