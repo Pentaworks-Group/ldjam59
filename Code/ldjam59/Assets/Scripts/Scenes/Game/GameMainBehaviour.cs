@@ -1,4 +1,6 @@
-﻿using Assets.Scripts.Core.Models;
+﻿using System;
+
+using Assets.Scripts.Core.Models;
 
 using UnityEngine;
 using UnityEngine.Events;
@@ -10,7 +12,6 @@ namespace Assets.Scripts.Scenes.Game
     {
         public UnityEvent OnTargetHit { get; set; } = new UnityEvent();
 
-
         [SerializeField]
         private SimpleObjectBehaviour objectTemplate;
         [SerializeField]
@@ -21,18 +22,46 @@ namespace Assets.Scripts.Scenes.Game
         private Transform signalContainer;
         [SerializeField]
         private AudioEngine audioEngine;
+        [SerializeField]
+        private ConnectionLossEffect connectionLossEffect;
 
         private GameObject signal;
         private Transform source;
         private TargetBehaviour target;
 
         private InputAction clickAction;
+        private InputAction escapeAction;
 
         private int[] trackIndices = { 0, 3 }; //Track indices of soundTracks which track the Object
 
         private void OnDisable()
         {
             clickAction.performed -= OnLeftMouseClicked;
+            escapeAction.performed -= OnEscapePressed;
+        }
+
+        private void OnEscapePressed(InputAction.CallbackContext context)
+        {
+            if (Base.Core.Game.IsRunning)
+            {
+                Base.Core.Game.Pause();
+
+                
+            }
+        }
+
+        private void OnPauseToggled(Boolean isPaused)
+        {
+            if (!isPaused)
+            {
+                clickAction.performed += OnLeftMouseClicked;
+                escapeAction.performed += OnEscapePressed;
+            }
+            else
+            {
+                clickAction.performed -= OnLeftMouseClicked;
+                escapeAction.performed -= OnEscapePressed;
+            }
         }
 
         private void OnLeftMouseClicked(InputAction.CallbackContext context)
@@ -66,12 +95,14 @@ namespace Assets.Scripts.Scenes.Game
             {
                 signalBehaviour.SetBase(source);
                 signalBehaviour.SetAudioEngine(audioEngine);
+                signalBehaviour.SetConnectionLossEffect(connectionLossEffect);
             }
         }
 
         private void Awake()
         {
             clickAction = InputSystem.actions.FindAction("Click");
+            escapeAction = InputSystem.actions.FindAction("Escape");
 
             Base.Core.Game.ExecuteAfterInstantation(Init);
 
@@ -81,10 +112,16 @@ namespace Assets.Scripts.Scenes.Game
             audioEngine.Play();
         }
 
+        private void Update()
+        {
+            if (Base.Core.Game.IsRunning)
+            {
+                Base.Core.Game.State.TimeElapsed += Time.deltaTime;
+            }
+        }
+
         private void Init()
         {
-            Debug.Log("Main Init");
-
             var tmpSource = SpawnObject(Base.Core.Game.State.CurrentLevel.Source, objectTemplate).gameObject;
             tmpSource.SetActive(true);
             tmpSource.AddComponent<MouseTracker>();
@@ -93,14 +130,16 @@ namespace Assets.Scripts.Scenes.Game
             tmpTarget.gameObject.SetActive(true);
             target = tmpTarget.GetComponent<TargetBehaviour>();
 
-
             signal = SpawnObject(Base.Core.Game.State.CurrentLevel.Signal, signalTemplate).gameObject;
-
 
             clickAction.performed += OnLeftMouseClicked;
             clickAction.Enable();
-        }
 
+            escapeAction.performed += OnEscapePressed;
+            escapeAction.Enable();
+
+            Base.Core.Game.PauseToggled.AddListener(OnPauseToggled);
+        }
 
         private SimpleObjectBehaviour SpawnObject(SimpleSpaceObject simpleSpaceObject, SimpleObjectBehaviour usedObjectTemplate)
         {

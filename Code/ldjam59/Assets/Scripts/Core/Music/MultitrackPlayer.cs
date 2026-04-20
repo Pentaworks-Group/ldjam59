@@ -14,19 +14,28 @@ public class MultitrackPlayer : MonoBehaviour
     private AudioSource[] sources;
     private bool isPlaying = false;
 
+    private bool isLoaded = false;
+
     private void Awake()
     {
-        Assets.Scripts.Base.Core.Game.ExecuteAfterInstantation(Init);
+        if (!isLoaded)
+        {
+            Init();
+        }
     }
 
     private void Init()
     {
+        isLoaded = true;
         DontDestroyOnLoad(gameObject);
         SceneManager.sceneLoaded += OnSceneLoaded;
 
-        if (state.masterVolume != GameFrame.Base.Audio.Background.Volume)
+        if (GameFrame.Base.Audio.Background != default)
         {
-            state.masterVolume = GameFrame.Base.Audio.Background.Volume;
+            if (state.masterVolume != GameFrame.Base.Audio.Background.Volume)
+            {
+                state.masterVolume = GameFrame.Base.Audio.Background.Volume;
+            }
         }
 
         InitializeSources();
@@ -77,7 +86,17 @@ public class MultitrackPlayer : MonoBehaviour
 
     public void Play()
     {
-        if (isPlaying) return;
+        if (sources == null)
+        {
+            Debug.LogError("Can't Play! no sources provided.");
+            return;
+        }
+
+        if (isPlaying)
+        {
+            return;
+        }
+
         isPlaying = true;
         state.isPlaying = true;
 

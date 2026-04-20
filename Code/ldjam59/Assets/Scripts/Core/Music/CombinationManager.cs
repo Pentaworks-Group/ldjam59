@@ -15,13 +15,18 @@ public class CombinationManager : MonoBehaviour
     private Coroutine[] fadeCoroutines;
     private int activeCobinationIndex = -1;
 
-    void Awake()
+    private bool isLoaded = false;
+    private void Awake()
     {
-        Assets.Scripts.Base.Core.Game.ExecuteAfterInstantation(Init);
+        if (!isLoaded)
+        {
+            Init();
+        }
     }
 
     private void Init()
     {
+        isLoaded = true;
         fadeCoroutines = new Coroutine[state.tracks.Length];
     }
 
@@ -94,12 +99,15 @@ public class CombinationManager : MonoBehaviour
 
     private void startFade(int trackIndex, float targetVolume, float targetPan, float duration)
     {
-        if (fadeCoroutines[trackIndex] != null)
-            StopCoroutine(fadeCoroutines[trackIndex]);
+        if (fadeCoroutines != null)
+        {
+            if (fadeCoroutines[trackIndex] != null)
+            {
+                StopCoroutine(fadeCoroutines[trackIndex]);
+            }
 
-        fadeCoroutines[trackIndex] = StartCoroutine(
-            fadeTrack(trackIndex, targetVolume, targetPan, duration)
-        );
+            fadeCoroutines[trackIndex] = StartCoroutine(fadeTrack(trackIndex, targetVolume, targetPan, duration));
+        }
     }
 
     private IEnumerator fadeTrack(int trackIndex, float targetVolume, float targetPan, float duration)

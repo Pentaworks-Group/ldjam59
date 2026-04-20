@@ -7,15 +7,17 @@ namespace Assets.Scripts.Scenes.Game
     {
         private void Update()
         {
-            
-            Vector3 mousePosition = Pointer.current.position.ReadValue();
-            mousePosition.z = Camera.main.transform.position.y;
-            var viewedMousePosition = Camera.main.ScreenToWorldPoint(mousePosition);
+            if (Base.Core.Game.IsRunning)
+            {
+                Vector3 mousePosition = Pointer.current.position.ReadValue();
+                mousePosition.z = Camera.main.transform.position.y;
+                var viewedMousePosition = Camera.main.ScreenToWorldPoint(mousePosition);
 
-            viewedMousePosition.y = transform.position.y;
+                viewedMousePosition.y = transform.position.y;
 
-            var targetRotation = Quaternion.LookRotation(transform.position - viewedMousePosition);
-            transform.rotation = targetRotation;
+                var targetRotation = Quaternion.LookRotation(transform.position - viewedMousePosition);
+                transform.rotation = targetRotation;
+            }
         }
     }
 }

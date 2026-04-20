@@ -48,13 +48,18 @@ public class DistortionEffect : MonoBehaviour
     // Cached per-track mixer state
     private MixerParams[] cachedParams;
 
-    void Awake()
+    private bool isLoaded = false;
+    private void Awake()
     {
-        Assets.Scripts.Base.Core.Game.ExecuteAfterInstantation(Init);
+        if (!isLoaded)
+        {
+            Init();
+        }
     }
 
     private void Init()
     {
+        isLoaded = true;
         trackAffected = new bool[state.tracks.Length];
 
         // Initialize cache to neutral so fades always start from a valid value,
@@ -85,7 +90,7 @@ public class DistortionEffect : MonoBehaviour
 
     public void DisableRadioEffect(bool fade = true, float duration = -1f)
     {
-        stopAllFades(); 
+        stopAllFades();
         if (crackleCoroutine != null)
         {
             StopCoroutine(crackleCoroutine);
@@ -165,7 +170,7 @@ public class DistortionEffect : MonoBehaviour
         float elapsed = 0f;
         while (elapsed < half)
         {
-            float drop = Random.Range(-40f, - 3f) * intensity;
+            float drop = Random.Range(-40f, -3f) * intensity;
             for (int i = 0; i < state.tracks.Length; i++)
             {
                 if (!trackAffected[i]) continue;
@@ -194,13 +199,13 @@ public class DistortionEffect : MonoBehaviour
             float wait = Random.Range(0.01f, 0.4f / (crackleRate + 0.01f));
             yield return new WaitForSeconds(wait);
 
-            if (!effectActive ) yield break;
+            if (!effectActive) yield break;
 
             // Short volume dip on affected tracks
             float dip = Random.Range(-40f, -2f) * intensity;
             float dipTime = Random.Range(0.1f, 0.5f);
 
-            for (int i = 0;i < state.tracks.Length;i++)
+            for (int i = 0; i < state.tracks.Length; i++)
             {
                 if (!trackAffected[i]) continue;
                 var p = getCurrentParams(i);
@@ -211,7 +216,7 @@ public class DistortionEffect : MonoBehaviour
             yield return new WaitForSeconds(dipTime);
 
             // Restore volume to wahtever the cache says the non-dipped value should be.
-            for (int i = 0; i < state.tracks.Length;i++)
+            for (int i = 0; i < state.tracks.Length; i++)
             {
                 if (!trackAffected[i]) continue;
                 var p = getCurrentParams(i);
