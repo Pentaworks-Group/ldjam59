@@ -1,0 +1,49 @@
+    {
+      "PlanetLayer": {
+        "RotationSpeed": 0.2,
+        "Texture": "Planet_texture_3_1",
+        "Color": {
+          "Red": 0.299999982,
+          "Green": 0.04,
+          "Blue": 1.0,
+          "Alpha": 1.0
+        }
+      },
+      "SurfaceLayer": {
+        "RotationSpeed": 0.22,
+        "Texture": "Planet_texture_1_ocean",
+        "Color": {
+          "Red": 0.09999997,
+          "Green": 1.0,
+          "Blue": 0.8,
+          "Alpha": 0.98
+        }
+      },
+      "CloudLayer": {
+        "RotationSpeed": 0.25,
+        "Texture": "Planet_texture_2_1",
+        "Color": {
+          "Red": 0.9,
+          "Green": 0.399999976,
+          "Blue": 0.5,
+          "Alpha": 0.9
+        }
+      },
+      "Axis": {
+        "X": 0.258819073,
+        "Y": 0.0
+      },
+      "Name": "SuckSuck",
+      "Id": null,
+      "Size": 6.0,
+      "Gravity": 5.0,
+      "Position": {
+        "X": 0.0,
+        "Y": 15.000001
+      },
+      "Speed": {
+        "X": 0.0,
+        "Y": 0.0
+      },
+      "Orbiters": null
+    },

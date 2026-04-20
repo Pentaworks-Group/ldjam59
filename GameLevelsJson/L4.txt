@@ -1,0 +1,319 @@
+{
+  "Reference": "L4",
+  "Name": "L4",
+  "Description": "AnotherBlablaMod",
+  "Seed": null,
+  "Planets": [
+    {
+      "PlanetLayer": {
+        "RotationSpeed": 0.2,
+        "Texture": "Planet_texture_3_1",
+        "Color": {
+          "Red": 0.299999982,
+          "Green": 0.04,
+          "Blue": 1.0,
+          "Alpha": 1.0
+        }
+      },
+      "SurfaceLayer": {
+        "RotationSpeed": 0.22,
+        "Texture": "Planet_texture_1_ocean",
+        "Color": {
+          "Red": 0.09999997,
+          "Green": 1.0,
+          "Blue": 0.8,
+          "Alpha": 0.98
+        }
+      },
+      "CloudLayer": {
+        "RotationSpeed": 0.25,
+        "Texture": "Planet_texture_2_1",
+        "Color": {
+          "Red": 0.9,
+          "Green": 0.399999976,
+          "Blue": 0.5,
+          "Alpha": 0.9
+        }
+      },
+      "Axis": {
+        "X": 0.258819073,
+        "Y": 0.0
+      },
+      "Name": "SuckSuck2",
+      "Id": null,
+      "Size": 6.0,
+      "Gravity": 5.0,
+      "Position": {
+        "X": 0.0,
+        "Y": 10.000001
+      },
+      "Speed": {
+        "X": 0.0,
+        "Y": 0.0
+      },
+      "Orbiters": null
+    },
+  {
+      "PlanetLayer": {
+        "RotationSpeed": 0.1,
+        "Texture": "Planet_texture_3_1",
+        "Color": {
+          "Red": 0.0,
+          "Green": 0.0,
+          "Blue": 1.0,
+          "Alpha": 1.0
+        }
+      },
+      "SurfaceLayer": {
+        "RotationSpeed": 0.11,
+        "Texture": "Planet_texture_2_1",
+        "Color": {
+          "Red": 0.5,
+          "Green": 0.299999982,
+          "Blue": 0.09999997,
+          "Alpha": 0.98
+        }
+      },
+      "CloudLayer": {
+        "RotationSpeed": 0.15,
+        "Texture": "Planet_texture_1_continents",
+        "Color": {
+          "Red": 0.5874662,
+          "Green": 0.7490195,
+          "Blue": 0.7490195,
+          "Alpha": 0.9
+        }
+      },
+      "Axis": {
+        "X": -0.258819073,
+        "Y": 0.0
+      },
+      "Name": "Zenter",
+      "Id": null,
+      "Size": 2.0,
+      "Gravity": 10.0,
+      "Position": {
+        "X": 3.02572,
+        "Y": 0.0
+      },
+      "Speed": {
+        "X": 0.0,
+        "Y": 0.0
+      },
+      "Orbiters": null
+    },
+    {
+      "PlanetLayer": {
+        "RotationSpeed": 0.1,
+        "Texture": "Planet_texture_3_1",
+        "Color": {
+          "Red": 0.0,
+          "Green": 0.0,
+          "Blue": 1.0,
+          "Alpha": 1.0
+        }
+      },
+      "SurfaceLayer": {
+        "RotationSpeed": 0.11,
+        "Texture": "Planet_texture_2_1",
+        "Color": {
+          "Red": 0.5,
+          "Green": 0.299999982,
+          "Blue": 0.09999997,
+          "Alpha": 0.98
+        }
+      },
+      "CloudLayer": {
+        "RotationSpeed": 0.15,
+        "Texture": "Planet_texture_1_continents",
+        "Color": {
+          "Red": 0.5874662,
+          "Green": 0.7490195,
+          "Blue": 0.7490195,
+          "Alpha": 0.9
+        }
+      },
+      "Axis": {
+        "X": -0.258819073,
+        "Y": 0.0
+      },
+      "Name": "Zenter",
+      "Id": null,
+      "Size": 2.0,
+      "Gravity": 10.0,
+      "Position": {
+        "X": 7.02572,
+        "Y": 3.84861
+      },
+      "Speed": {
+        "X": 0.0,
+        "Y": 0.0
+      },
+      "Orbiters": null
+    },
+    {
+      "PlanetLayer": {
+        "RotationSpeed": 0.2,
+        "Texture": "Planet_texture_3_1",
+        "Color": {
+          "Red": 0.299999982,
+          "Green": 0.04,
+          "Blue": 1.0,
+          "Alpha": 1.0
+        }
+      },
+      "SurfaceLayer": {
+        "RotationSpeed": 0.22,
+        "Texture": "Planet_texture_1_ocean",
+        "Color": {
+          "Red": 0.09999997,
+          "Green": 1.0,
+          "Blue": 0.8,
+          "Alpha": 0.98
+        }
+      },
+      "CloudLayer": {
+        "RotationSpeed": 0.25,
+        "Texture": "Planet_texture_2_1",
+        "Color": {
+          "Red": 0.9,
+          "Green": 0.399999976,
+          "Blue": 0.5,
+          "Alpha": 0.9
+        }
+      },
+      "Axis": {
+        "X": 0.258819073,
+        "Y": 0.0
+      },
+      "Name": "SuckSuck",
+      "Id": null,
+      "Size": 6.0,
+      "Gravity": 5.0,
+      "Position": {
+        "X": -10.10428,
+        "Y": 16.76861
+      },
+      "Speed": {
+        "X": 0.0,
+        "Y": 0.0
+      },
+      "Orbiters": null
+    },
+    {
+      "PlanetLayer": {
+        "RotationSpeed": 0.3,
+        "Texture": "Planet_texture_3_1",
+        "Color": {
+          "Red": 0.735849,
+          "Green": 0.006941857,
+          "Blue": 0.006941857,
+          "Alpha": 1.0
+        }
+      },
+      "SurfaceLayer": {
+        "RotationSpeed": 0.23,
+        "Texture": "Planet_texture_1_5",
+        "Color": {
+          "Red": 0.7490195,
+          "Green": 0.419450879,
+          "Blue": 0.4569018,
+          "Alpha": 0.98
+        }
+      },
+      "CloudLayer": {
+        "RotationSpeed": 0.31,
+        "Texture": "Planet_texture_1",
+        "Color": {
+          "Red": 0.7490195,
+          "Green": 0.7490195,
+          "Blue": 0.7490195,
+          "Alpha": 0.9
+        }
+      },
+      "Axis": {
+        "X": 0.13052623,
+        "Y": 0.0
+      },
+      "Name": "Tut",
+      "Id": null,
+      "Size": 8.0,
+      "Gravity": 5.0,
+      "Position": {
+        "X": -10.0,
+        "Y": 0.0
+      },
+      "Speed": {
+        "X": 0.0,
+        "Y": 0.0
+      },
+      "Orbiters": null
+    }
+  ],
+  "Source": {
+    "Sprite": "white-arrow",
+    "Color": {
+      "Red": 0.0,
+      "Green": 0.0,
+      "Blue": 1.0,
+      "Alpha": 1.0
+    },
+    "Name": "TheFlyer",
+    "Id": null,
+    "Size": 0.5,
+    "Gravity": 1.0,
+    "Position": {
+      "X": 15.0,
+      "Y": 0.0
+    },
+    "Speed": {
+      "X": 0.0,
+      "Y": 0.0
+    },
+    "Orbiters": null
+  },
+  "Target": {
+    "Sprite": "hole",
+    "Color": {
+      "Red": 0.0,
+      "Green": 1.0,
+      "Blue": 0.0,
+      "Alpha": 1.0
+    },
+    "Name": "Sink",
+    "Id": null,
+    "Size": 1.0,
+    "Gravity": 1.0,
+    "Position": {
+      "X": -15.0,
+      "Y": 0.0
+    },
+    "Speed": {
+      "X": 0.0,
+      "Y": 0.0
+    },
+    "Orbiters": null
+  },
+  "Signal": {
+    "Sprite": "Pill",
+    "Color": {
+      "Red": 0.5,
+      "Green": 0.5,
+      "Blue": 0.5,
+      "Alpha": 1.0
+    },
+    "Name": "Signal",
+    "Id": null,
+    "Size": 0.1,
+    "Gravity": 1.0,
+    "Position": {
+      "X": 5.0,
+      "Y": 5.0
+    },
+    "Speed": {
+      "X": 0.0,
+      "Y": 0.0
+    },
+    "Orbiters": null
+  }
+}
