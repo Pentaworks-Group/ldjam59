@@ -301,7 +301,7 @@
           {
             "Name": "SuckSuck",
             "Size": 6,
-            "Gravity": 5,
+            "Gravity": 7,
             "Position": {
               "x": 0,
               "y": 15
@@ -348,7 +348,7 @@
           {
             "Name": "Tut",
             "Size": 8,
-            "Gravity": 5,
+            "Gravity": 8,
             "Position": {
               "x": -10,
               "y": 0
@@ -441,7 +441,7 @@
             "Size": 2,
             "Gravity": 10,
             "Position": {
-              "X": 10,
+              "X": 8,
               "Y": 0
             },
             "Speed": {
@@ -488,9 +488,9 @@
             "Name": "SuckSuck",
             "Id": null,
             "Size": 6,
-            "Gravity": 5,
+            "Gravity": 7,
             "Position": {
-              "X": -15.10428,
+              "X": -13.10428,
               "Y": -8.76861
             },
             "Speed": {
