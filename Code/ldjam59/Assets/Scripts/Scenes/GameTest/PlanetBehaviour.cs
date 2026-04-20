@@ -45,11 +45,11 @@ namespace Assets.Scripts.Scenes.GameTest
 
         private void OnTriggerEnter(Collider other)
         {
-            if (other.transform.parent.TryGetComponent<SignalBehaviour>(out var bullet))
+            if (other.transform.parent.TryGetComponent<SignalBehaviour>(out var signalBehaviour))
             {
-                if (bullet.TryGetComponent<Rigidbody>(out var bulletRigitBody))
+                if (signalBehaviour.TryGetComponent<Rigidbody>(out var bulletRigitBody))
                 {
-                    bullet.OnImpact.AddListener(OnBulletImpact);
+                    signalBehaviour.OnImpact.AddListener(OnSignalImpact);
                     affectedBodies.Add(bulletRigitBody);
                 }
             }
@@ -86,7 +86,7 @@ namespace Assets.Scripts.Scenes.GameTest
             }
         }
 
-        public void OnBulletImpact(SignalBehaviour bullet)
+        public void OnSignalImpact(SignalBehaviour bullet)
         {
             if (bullet != default)
             {

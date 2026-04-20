@@ -1,6 +1,12 @@
 ﻿
+using Assets.Scripts.Core.Models;
+
+using GameFrame.Core.Extensions;
+
 using UnityEngine;
 using UnityEngine.Events;
+
+using UVector3 = UnityEngine.Vector3;
 
 namespace Assets.Scripts.Scenes.Game
 {
@@ -14,15 +20,23 @@ namespace Assets.Scripts.Scenes.Game
         private ConnectionLossEffect connectionLossEffect;
 
         private Transform baseObject;
+        private Rigidbody activeRigidbody;
+
+        public Signal Signal { get; private set; }
 
         private void Awake()
         {
             OnImpact.AddListener(DestroySignal);
+            
+            if (TryGetComponent<Rigidbody>(out var rigidbody))
+            {
+                activeRigidbody = rigidbody;
+            }
         }
 
-        
-        public void SetBase(Transform baseObject)
+        public void Init(Signal signal, Transform baseObject)
         {
+            this.Signal = signal;
             this.baseObject = baseObject;
         }
 
@@ -33,17 +47,27 @@ namespace Assets.Scripts.Scenes.Game
 
         private void Update()
         {
+            if (Base.Core.Game.IsRunning)
+            {
+                if (this.Signal != default)
+                {
+                    this.Signal.Position = transform.position.ToFrame();
+                    this.Signal.Force = this.activeRigidbody.GetAccumulatedForce().ToFrame();
+                }
+            }
+
             //TODO: this approach fails if there are multiple objects
-            if(baseObject != null)
+            if (baseObject != null)
             {
                 // Calculate direction and distance to the target
-                float distance = Vector3.Distance(transform.position, baseObject.position);
+                float distance = UVector3.Distance(transform.position, baseObject.position);
 
                 bool shouldBeActive = false;
 
                 if (Physics.Raycast(transform.position, baseObject.position, out var hit, distance))
                 {
-                    if(hit.transform != baseObject) {
+                    if (hit.transform != baseObject)
+                    {
                         shouldBeActive = true;
                     }
                 }
@@ -52,7 +76,7 @@ namespace Assets.Scripts.Scenes.Game
 
                 if (audioEngine.IsRadioEffectActive != shouldBeActive)
                 {
-                    if(shouldBeActive)
+                    if (shouldBeActive)
                     {
                         audioEngine.EnableRadioEffect(true, 0.2f);
                     }
@@ -62,29 +86,26 @@ namespace Assets.Scripts.Scenes.Game
                     }
                 }
 
-                if (connectionLossEffect != null && shouldBeActive!=connectionLossEffect.IsEffectActive)
+                if (connectionLossEffect != null && shouldBeActive != connectionLossEffect.IsEffectActive)
                 {
-                    if(shouldBeActive)
-                        connectionLossEffect.SetConnected(false);
-                    else
-                        connectionLossEffect.SetConnected(true);
+                    connectionLossEffect.SetConnected(shouldBeActive);
                 }
             }
         }
 
         private void OnCollisionEnter(Collision collision)
         {
-            
+
         }
 
         private void OnCollisionExit(Collision collision)
         {
-            
+
         }
 
         private void OnTriggerEnter(Collider other)
         {
-            
+
         }
 
         private void OnTriggerExit(Collider other)
@@ -98,6 +119,8 @@ namespace Assets.Scripts.Scenes.Game
         private void DestroySignal(SignalBehaviour behaviour)
         {
             OnImpact.RemoveAllListeners();
+            Base.Core.Game.State.CurrentLevel.ActiveSignals.Remove(behaviour.Signal);
+
             Destroy(gameObject);
         }
     }

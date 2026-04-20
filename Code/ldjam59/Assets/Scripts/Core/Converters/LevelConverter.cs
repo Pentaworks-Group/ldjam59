@@ -21,6 +21,7 @@ namespace Assets.Scripts.Core
                 Description = levelDefinition.Description,
                 Seed = levelDefinition.Seed,
                 Planets = new List<Planet>(),
+                ActiveSignals = new List<Signal>(),
             };
 
             if (levelDefinition.Planets?.Count > 0)

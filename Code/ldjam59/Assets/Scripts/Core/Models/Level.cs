@@ -20,6 +20,8 @@ namespace Assets.Scripts.Core.Models
         public SimpleSpaceObject Signal { get; set; }
 
         //public List<EventDefinitions> Events { get; set; }
+
+        public List<Signal> ActiveSignals { get; set; }
         public LevelScore Score { get; set; }
         public Double TimeElapsed { get; set; } = 0.0;
         public Int32 SignalsSend { get; set; } = 0;
