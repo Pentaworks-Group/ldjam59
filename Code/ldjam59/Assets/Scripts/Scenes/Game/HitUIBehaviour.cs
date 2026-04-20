@@ -1,4 +1,5 @@
 using Assets.Scripts.Core.Models;
+using Assets.Scripts.Scenes.Game.Level;
 using System;
 
 using TMPro;
@@ -9,6 +10,8 @@ namespace Assets.Scripts.Scenes.Game
 {
     public class HitUIBehaviour : MonoBehaviour
     {
+        [SerializeField]
+        private LevelLoaderBehaviour levelLoader;
         [SerializeField]
         private TMP_Text fastestHitTxt;
         [SerializeField]
@@ -38,8 +41,12 @@ namespace Assets.Scripts.Scenes.Game
                 }
                 else
                 {
-                    launchButtonClose.SetActive(false);
-                    launchButtonOpen.SetActive(true);
+
+                    if (levelLoader.IsNextLevelAvailable())
+                    {
+                        launchButtonClose.SetActive(false);
+                        launchButtonOpen.SetActive(true);
+                    }
                     fastestHitTxt.text = String.Format("{0:####0.0}s", score.ShortestHitDuration);
                 }
                 if (score.LeastSent == int.MaxValue)

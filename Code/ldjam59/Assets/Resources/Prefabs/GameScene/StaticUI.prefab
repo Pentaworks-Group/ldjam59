@@ -731,6 +731,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 468720be75bedba468e2c57910739965, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Assets.Scripts.Scenes.Game.StaticUIBehaviour
+  levelLoader: {fileID: 0}
   fastestHitTxt: {fileID: 401110558662277337}
   leastHitTxt: {fileID: 3727781517250413334}
   totalLevelTxt: {fileID: 4335769976286390227}
@@ -2558,8 +2559,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 8394037815912942968}
-        m_TargetAssemblyTypeName: Assets.Scripts.Scenes.Game.Admin.AdminBehaviour,
+      - m_Target: {fileID: 7315445831351923186}
+        m_TargetAssemblyTypeName: Assets.Scripts.Scenes.Game.Level.LevelLoaderBehaviour,
           Assembly-CSharp
         m_MethodName: LoadNextLevel
         m_Mode: 1
@@ -2809,6 +2810,7 @@ GameObject:
   - component: {fileID: 4651496488145696972}
   - component: {fileID: 8200572572651957585}
   - component: {fileID: 4676690695216042336}
+  - component: {fileID: 7315445831351923186}
   m_Layer: 5
   m_Name: StaticUI
   m_TagString: Untagged
@@ -2901,6 +2903,18 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &7315445831351923186
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5544167248510248345}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 090cb3243b2127946b3b1cfbf3f42240, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Assets.Scripts.Scenes.Game.Level.LevelLoaderBehaviour
 --- !u!1 &5546925808934482860
 GameObject:
   m_ObjectHideFlags: 0
@@ -4886,6 +4900,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1033251580486487475}
     m_Modifications:
+    - target: {fileID: 108187878481624684, guid: ad01e7daeb5c8494d8d9cd4500ed45e2, type: 3}
+      propertyPath: levelLoader
+      value: 
+      objectReference: {fileID: 7315445831351923186}
+    - target: {fileID: 142436908035721753, guid: ad01e7daeb5c8494d8d9cd4500ed45e2, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 7315445831351923186}
     - target: {fileID: 5536212407534356995, guid: ad01e7daeb5c8494d8d9cd4500ed45e2, type: 3}
       propertyPath: m_Name
       value: AdminUI
@@ -4974,6 +4996,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7411813848394852914, guid: ad01e7daeb5c8494d8d9cd4500ed45e2, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 7315445831351923186}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4989,14 +5015,3 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 5536212407534356995, guid: ad01e7daeb5c8494d8d9cd4500ed45e2, type: 3}
   m_PrefabInstance: {fileID: 8502163494656389908}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &8394037815912942968 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 108187878481624684, guid: ad01e7daeb5c8494d8d9cd4500ed45e2, type: 3}
-  m_PrefabInstance: {fileID: 8502163494656389908}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4118915129091537175}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6fa25c1015b7b7f4dbe85a4337f629a0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Assets.Scripts.Scenes.Game.Admin.AdminBehaviour

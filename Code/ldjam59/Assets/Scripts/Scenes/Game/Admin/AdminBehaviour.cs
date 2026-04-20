@@ -1,7 +1,5 @@
-using System.Linq;
-
 using Assets.Scripts.Core.Models;
-
+using Assets.Scripts.Scenes.Game.Level;
 using Newtonsoft.Json;
 
 using TMPro;
@@ -15,6 +13,8 @@ namespace Assets.Scripts.Scenes.Game.Admin
     public class AdminBehaviour : MonoBehaviour
     {
         [SerializeField]
+        private LevelLoaderBehaviour levelLoader;
+        [SerializeField]
         private GameObject panel;
         [SerializeField]
         private GameObject button;
@@ -25,16 +25,32 @@ namespace Assets.Scripts.Scenes.Game.Admin
         [SerializeField]
         private Button previousLevelButton;
 
-        private int currentLevelIndex;
 
-        private void Awake()
-        {
-            Base.Core.Game.ExecuteAfterInstantation(InitBehaviour);
-        }
-
-        private void InitBehaviour()
+        private void OnEnable()
         {
             EnableDisableLevelButtons();
+        }
+
+        private void EnableDisableLevelButtons()
+        {
+
+            if (levelLoader.IsPreviousLevelAvailable())
+            {
+                previousLevelButton.interactable = true;
+            }
+            else
+            {
+                previousLevelButton.interactable = false;
+            }
+
+            if (levelLoader.IsNextLevelAvailable())
+            {
+                nextLevelButton.interactable = true;
+            }
+            else
+            {
+                nextLevelButton.interactable = false;
+            }
         }
 
         public void GenerateJson()
@@ -52,7 +68,7 @@ namespace Assets.Scripts.Scenes.Game.Admin
         {
             var json = jsonField.text;
 
-            var tt = GameFrame.Core.Json.Handler.Deserialize<Level>(json);
+            var tt = GameFrame.Core.Json.Handler.Deserialize<Assets.Scripts.Core.Models.Level>(json);
             Core.GameState state = Base.Core.Game.State;
             state.CurrentLevel = tt;
             if (!state.LevelScores.TryGetValue(tt.Reference, out var levelScore))
@@ -76,46 +92,6 @@ namespace Assets.Scripts.Scenes.Game.Admin
             button.SetActive(true);
         }
 
-        private void EnableDisableLevelButtons()
-        {
-            var levels = Base.Core.Game.State.Mode.Levels;
-            var currentLevel = Base.Core.Game.State.CurrentLevel;
-            var levelDefinition = levels.FirstOrDefault(l => l.Reference == currentLevel.Reference);
-            currentLevelIndex = levels.IndexOf(levelDefinition);
 
-            if (currentLevelIndex > 0)
-            {
-                previousLevelButton.interactable = true;
-            }
-            else
-            {
-                previousLevelButton.interactable = false;
-            }
-
-            if (currentLevelIndex < levels.Count - 1)
-            {
-                nextLevelButton.interactable = true;
-            }
-            else
-            {
-                nextLevelButton.interactable = false;
-            }
-        }
-
-        public void LoadNextLevel()
-        {
-            LoadLevel(currentLevelIndex + 1);
-        }
-
-        public void LoadPreviousLevel()
-        {
-            LoadLevel(currentLevelIndex - 1);
-        }
-
-        private void LoadLevel(int index)
-        {
-            Base.Core.Game.PlayButtonSound();
-            Base.Core.Game.LoadLevelByIndex(index);
-        }
     }
 }

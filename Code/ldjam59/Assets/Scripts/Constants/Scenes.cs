@@ -51,6 +51,30 @@ namespace Assets.Scripts.Constants
             }
         }
 
+        public const String StartName = "Start";
+        private static Scene start;
+        public static Scene Start
+        {
+            get
+            {
+                if (start == default)
+                {
+                    start = new Scene()
+                    {
+                        Name = StartName,
+                        IsStoppingBackgroundMusic = true,
+                        //AmbienceClips = new List<String>()
+                        //{
+                        //    "WoodSound"
+                        //},
+                        BackgroundClips = new List<String>() { }
+                    };
+                }
+
+                return start;
+            }
+        }
+
         public const String AudioTestName = "AudioTests";
         private static Scene audioTest;
         public static Scene AudioTest
@@ -76,6 +100,7 @@ namespace Assets.Scripts.Constants
         {
             return new List<Scene>()
             {
+                Start,
                 MainMenu,
                 Game
             };

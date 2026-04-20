@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
 
-namespace Assets.Scripts.Scenes.Game.LevelPreview
+namespace Assets.Scripts.Scenes.Game.Level
 {
     public class LevelListContainerBehaviour : GameFrame.Core.UI.List.ListContainerBehaviour<LevelPreview>
     {
@@ -35,7 +34,7 @@ namespace Assets.Scripts.Scenes.Game.LevelPreview
                 };
                 previews.Add(preview);
             }
-
+            previews.Reverse();
             SetContentList(previews);
         }
 
