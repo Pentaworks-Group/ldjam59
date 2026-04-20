@@ -1,6 +1,7 @@
 ﻿using System;
 
 using Assets.Scripts.Core.Models;
+using Assets.Scripts.Prefabs.Menu.Pause;
 
 using GameFrame.Core.Extensions;
 
