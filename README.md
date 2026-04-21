@@ -1,7 +1,9 @@
+# S.L.O.P - Signals lost on planets
+
 ## About
 
 A little coded by friends in 72 hours for LDJam 59.
-Play on itch.io ![itch.io](https://pentaworks.itch.io/slop-ldjam59).
+Play on ![itch.io](https://pentaworks.itch.io/slop-ldjam59).
 
 You are controlling a satellite. You have to think big - think interstellar. Send out signals to probe the black holes far away.
 
@@ -40,5 +42,5 @@ Reason unknown and debugging was not possible due to the lack of a iPhone.
 |------------|---------|------------
 | 21.04.2026 | LDJam   | Jam release to be rated
 
-
-![Title](https://github.com/Pentaworks-Group/ldjam59/blob/main/Data/Screenshots/Pentaworks.png?raw=true)
+ - Created by -
+![Pentaworks](https://github.com/Pentaworks-Group/ldjam59/blob/main/Data/Pentaworks.png?raw=true)
