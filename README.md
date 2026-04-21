@@ -1,9 +1,9 @@
 # S.L.O.P - Signals lost on planets
 
-## About
-
 A little coded by friends in 72 hours for LDJam 59.
 Play on ![itch.io](https://pentaworks.itch.io/slop-ldjam59).
+
+## About
 
 You are controlling a satellite. You have to think big - think interstellar. Send out signals to probe the black holes far away.
 
