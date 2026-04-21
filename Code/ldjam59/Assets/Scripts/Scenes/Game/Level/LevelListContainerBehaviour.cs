@@ -8,9 +8,11 @@ namespace Assets.Scripts.Scenes.Game.Level
         {
             UpdateList();
         }
-
-        private void OnEnable()
+        
+        protected override void CustomOnEnable()
         {
+            base.CustomOnEnable();
+
             UpdateList();
         }
 
