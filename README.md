@@ -1,5 +1,8 @@
 ## About
 
+A little coded by friends in 72 hours for LDJam 59.
+Play on itch.io ![itch.io](https://pentaworks.itch.io/slop-ldjam59).
+
 You are controlling a satellite. You have to think big - think interstellar. Send out signals to probe the black holes far away.
 
 ## How to play
@@ -11,10 +14,10 @@ Aim the satellite into the intended direction and launch a signal.
 
 |  What  | Description |
 | ------- | ----------- |
-| You   | ![Player](https://github.com/Pentaworks-Group/ldjamTemplate/blob/main/Data/Screenshots/Player.png?raw=true) |
-| Target | ![Target](https://github.com/Pentaworks-Group/ldjamTemplate/blob/main/Data/Screenshots/Target.png?raw=true) |
-| Signal | ![Signal](https://github.com/Pentaworks-Group/ldjamTemplate/blob/main/Data/Screenshots/Signal.png?raw=true) |
-| Space Junk | ![Planet](https://github.com/Pentaworks-Group/ldjamTemplate/blob/main/Data/Screenshots/SpaceJunk1.png?raw=true) |
+| You   | ![Player](https://github.com/Pentaworks-Group/ldjam59/blob/main/Data/Screenshots/Player.png?raw=true) |
+| Target | ![Target](https://github.com/Pentaworks-Group/ldjam59/blob/main/Data/Screenshots/Target.png?raw=true) |
+| Signal | ![Signal](https://github.com/Pentaworks-Group/ldjam59/blob/main/Data/Screenshots/Signal.png?raw=true) |
+| Space Junk | ![Planet](https://github.com/Pentaworks-Group/ldjam59/blob/main/Data/Screenshots/SpaceJunk1.png?raw=true) |
 
 Some people have the audacity to call Space Junk "Planets" - no clue why though.
 
@@ -38,4 +41,4 @@ Reason unknown and debugging was not possible due to the lack of a iPhone.
 | 21.04.2026 | LDJam   | Jam release to be rated
 
 
-![Title](https://github.com/Pentaworks-Group/ldjamTemplate/blob/main/Data/Pentaworks.png?raw=true)
+![Title](https://github.com/Pentaworks-Group/ldjam59/blob/main/Data/Screenshots/Pentaworks.png?raw=true)
