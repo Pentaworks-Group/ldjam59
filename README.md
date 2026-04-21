@@ -1,6 +1,7 @@
 # S.L.O.P - Signals lost on planets
 
-A little coded by friends in 72 hours for LDJam 59.
+A little coded by friends in 72 hours for ![Ludum Dare Jam 59](https://ldjam.com/events/ludum-dare/59/$424387).
+
 Play on ![itch.io](https://pentaworks.itch.io/slop-ldjam59).
 
 ## About
