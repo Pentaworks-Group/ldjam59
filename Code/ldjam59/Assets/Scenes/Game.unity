@@ -918,6 +918,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: StaticUI
       objectReference: {fileID: 0}
+    - target: {fileID: 8705491782111519830, guid: aa035058fe6e8904e8295f95e36beec4, type: 3}
+      propertyPath: gameMainBehaviour
+      value: 
+      objectReference: {fileID: 1499582781}
     m_RemovedComponents:
     - {fileID: 7315445831351923186, guid: aa035058fe6e8904e8295f95e36beec4, type: 3}
     m_RemovedGameObjects: []

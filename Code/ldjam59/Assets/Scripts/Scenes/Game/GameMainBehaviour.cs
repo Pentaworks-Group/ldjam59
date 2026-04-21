@@ -54,8 +54,18 @@ namespace Assets.Scripts.Scenes.Game
             }
             else
             {
-                clickAction.performed -= OnLeftMouseClicked;
+                DisableClick();
             }
+        }
+
+        public void DisableClick()
+        {
+            clickAction.performed -= OnLeftMouseClicked;
+        }
+
+        public void EnableClick()
+        {
+            clickAction.performed += OnLeftMouseClicked;
         }
 
         private void OnLeftMouseClicked(InputAction.CallbackContext context)
