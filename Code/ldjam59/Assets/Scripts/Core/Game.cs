@@ -34,20 +34,6 @@ namespace Assets.Scripts.Core
         }
 
 
-        public void LoadLevelByIndex(int index)
-        {
-            var firstLevel = this.State.Mode.Levels[index];
-            this.State.CurrentLevel = new LevelConverter().Convert(firstLevel);
-
-            if (!this.State.LevelScores.TryGetValue(State.CurrentLevel.Reference, out var levelScore))
-            {
-                levelScore = new LevelScore();
-                this.State.LevelScores[State.CurrentLevel.Reference] = levelScore;
-            }
-
-            this.State.CurrentLevel.Score = levelScore;
-            Base.Core.Game.ChangeScene(Constants.Scenes.Game, false);
-        }
 
         public override void Quit()
         {
@@ -101,5 +87,55 @@ namespace Assets.Scripts.Core
             yield return new GameModeLoader(this.gameModeCache).LoadDefinitions("GameModes.json");
             Debug.Log("loaded definitions");
         }
+
+        private int GetCurrentLevelIndex()
+        {
+            var levels = Base.Core.Game.State.Mode.Levels;
+            var currentLevel = Base.Core.Game.State.CurrentLevel;
+            var levelDefinition = levels.FirstOrDefault(l => l.Reference == currentLevel.Reference);
+            return levels.IndexOf(levelDefinition);
+        }
+
+        public bool IsNextLevelAvailable()
+        {
+            var levels = Base.Core.Game.State.Mode.Levels;
+            int currentLevelIndex = GetCurrentLevelIndex();
+            return currentLevelIndex < levels.Count - 1;
+        }
+
+        public bool IsPreviousLevelAvailable()
+        {
+            var levels = Base.Core.Game.State.Mode.Levels;
+            int currentLevelIndex = GetCurrentLevelIndex();
+            return currentLevelIndex > 0;
+        }
+
+        public void LoadNextLevel()
+        {
+            int currentLevelIndex = GetCurrentLevelIndex();
+            LoadLevelByIndex(currentLevelIndex + 1);
+        }
+
+        public void LoadPreviousLevel()
+        {
+            int currentLevelIndex = GetCurrentLevelIndex();
+            LoadLevelByIndex(currentLevelIndex - 1);
+        }
+
+        public void LoadLevelByIndex(int index)
+        {
+            var firstLevel = this.State.Mode.Levels[index];
+            this.State.CurrentLevel = new LevelConverter().Convert(firstLevel);
+
+            if (!this.State.LevelScores.TryGetValue(State.CurrentLevel.Reference, out var levelScore))
+            {
+                levelScore = new LevelScore();
+                this.State.LevelScores[State.CurrentLevel.Reference] = levelScore;
+            }
+
+            this.State.CurrentLevel.Score = levelScore;
+            Base.Core.Game.ChangeScene(Constants.Scenes.Game, false);
+        }
+
     }
 }

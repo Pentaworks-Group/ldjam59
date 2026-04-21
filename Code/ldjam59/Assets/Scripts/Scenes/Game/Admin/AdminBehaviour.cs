@@ -13,8 +13,6 @@ namespace Assets.Scripts.Scenes.Game.Admin
     public class AdminBehaviour : MonoBehaviour
     {
         [SerializeField]
-        private LevelLoaderBehaviour levelLoader;
-        [SerializeField]
         private GameObject panel;
         [SerializeField]
         private GameObject button;
@@ -34,7 +32,7 @@ namespace Assets.Scripts.Scenes.Game.Admin
         private void EnableDisableLevelButtons()
         {
 
-            if (levelLoader.IsPreviousLevelAvailable())
+            if (Base.Core.Game.IsPreviousLevelAvailable())
             {
                 previousLevelButton.interactable = true;
             }
@@ -43,7 +41,7 @@ namespace Assets.Scripts.Scenes.Game.Admin
                 previousLevelButton.interactable = false;
             }
 
-            if (levelLoader.IsNextLevelAvailable())
+            if (Base.Core.Game.IsNextLevelAvailable())
             {
                 nextLevelButton.interactable = true;
             }
