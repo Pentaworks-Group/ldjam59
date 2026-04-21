@@ -4136,6 +4136,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 9056930365918176829}
     m_Modifications:
+    - target: {fileID: 252471304731195305, guid: 06a2f13dd019fa14fbe0064e65e46657, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 1da59890c42a20d43bfb2adee905b1fe, type: 3}
     - target: {fileID: 1680516529727003704, guid: 06a2f13dd019fa14fbe0064e65e46657, type: 3}
       propertyPath: m_Name
       value: ListContainer
@@ -4224,10 +4228,30 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2518638729547669830, guid: 06a2f13dd019fa14fbe0064e65e46657, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 37c1ed0403764194d8dd97434e672c0d, type: 3}
+    - target: {fileID: 5231241342646405086, guid: 06a2f13dd019fa14fbe0064e65e46657, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 37c1ed0403764194d8dd97434e672c0d, type: 3}
+    - target: {fileID: 6614039686680773431, guid: 06a2f13dd019fa14fbe0064e65e46657, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 1da59890c42a20d43bfb2adee905b1fe, type: 3}
+    - target: {fileID: 6775905373487072342, guid: 06a2f13dd019fa14fbe0064e65e46657, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 1da59890c42a20d43bfb2adee905b1fe, type: 3}
     - target: {fileID: 7941051687927343013, guid: 06a2f13dd019fa14fbe0064e65e46657, type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8215522019471563033, guid: 06a2f13dd019fa14fbe0064e65e46657, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 37c1ed0403764194d8dd97434e672c0d, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
