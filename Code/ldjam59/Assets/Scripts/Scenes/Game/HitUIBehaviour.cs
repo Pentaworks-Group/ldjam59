@@ -1,17 +1,13 @@
-using Assets.Scripts.Core.Models;
-using Assets.Scripts.Scenes.Game.Level;
+
 using System;
 
 using TMPro;
 
 using UnityEngine;
-using UnityEngine.UI;
 namespace Assets.Scripts.Scenes.Game
 {
     public class HitUIBehaviour : MonoBehaviour
     {
-        [SerializeField]
-        private LevelLoaderBehaviour levelLoader;
         [SerializeField]
         private TMP_Text fastestHitTxt;
         [SerializeField]
@@ -25,11 +21,9 @@ namespace Assets.Scripts.Scenes.Game
         [SerializeField]
         private GameObject launchButtonClose;
 
-
-
         private void OnEnable()
         {
-            if ( Base.Core.Game.IsLoaded)
+            if (Base.Core.Game.IsLoaded)
             {
                 var score = Base.Core.Game.State.CurrentLevel.Score;
 
@@ -42,7 +36,7 @@ namespace Assets.Scripts.Scenes.Game
                 else
                 {
 
-                    if (levelLoader.IsNextLevelAvailable())
+                    if (Base.Core.Game.IsNextLevelAvailable())
                     {
                         launchButtonClose.SetActive(false);
                         launchButtonOpen.SetActive(true);
@@ -61,6 +55,5 @@ namespace Assets.Scripts.Scenes.Game
                 totalSentTxt.text = score.SignalsSend.ToString();
             }
         }
-
     }
 }
