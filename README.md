@@ -11,10 +11,10 @@ Aim the satellite into the intended direction and launch a signal.
 
 |  What  | Description |
 | ------- | ----------- |
-| You   | ![Player](https://github.com/Pentaworks-Group/ldjamTemplate/blob/main/Data//Screenshots/Player.png?raw=true) |
-| Target | ![Target](https://github.com/Pentaworks-Group/ldjamTemplate/blob/main/Data//Screenshots/Target.png?raw=true) |
-| Signal | ![Signal](https://github.com/Pentaworks-Group/ldjamTemplate/blob/main/Data//Screenshots/Signal.png?raw=true) |
-| Space Junk | ![Planet](https://github.com/Pentaworks-Group/ldjamTemplate/blob/main/Data//Screenshots/SpaceJunk1.png?raw=true) |
+| You   | ![Player](https://github.com/Pentaworks-Group/ldjamTemplate/blob/main/Data/Screenshots/Player.png?raw=true) |
+| Target | ![Target](https://github.com/Pentaworks-Group/ldjamTemplate/blob/main/Data/Screenshots/Target.png?raw=true) |
+| Signal | ![Signal](https://github.com/Pentaworks-Group/ldjamTemplate/blob/main/Data/Screenshots/Signal.png?raw=true) |
+| Space Junk | ![Planet](https://github.com/Pentaworks-Group/ldjamTemplate/blob/main/Data/Screenshots/SpaceJunk1.png?raw=true) |
 
 Some people have the audacity to call Space Junk "Planets" - no clue why though.
 
