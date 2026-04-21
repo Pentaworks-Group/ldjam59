@@ -1,0 +1,31 @@
+## About
+
+You are controlling a satellite. You have to think big - think interstellar. Send out signals to probe the black holes far away.
+
+## How to play
+Play using Keyboard & Mouse or touch. 
+
+Aim the satellite into the intended direction and launch a signal.
+
+### Important things
+
+|  What  | Description |
+| ------- | ----------- |
+| You   | [Screenshot-Player.png] |
+| Target | [Screenshot-Target.png] |
+| Signal | [Screenshot-Signal.png] |
+| Space Junk | [Screenshot-SpaceJunk1.png] |
+
+Some people have the audacity to call Space Junk "Planets" - no clue why though.
+
+Be mindful when aiming - Signals gravitate towads those "planets"!
+
+## Screenshots
+
+![Screenshot 1.png]
+
+![Screenshot 2.png]
+
+## Known issues
+We are aware that in some cases, iOS fails to properly start a new game in WebGL.
+Reason unknown and debugging was not possible due to the lack of a iPhone.
