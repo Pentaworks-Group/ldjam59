@@ -37,7 +37,7 @@ namespace Assets.Scripts.Scenes.Game
 
             if (explosionPrefab == null)
             {
-                explosionPrefab = Resources.Load<GameObject>("Prefabs/Explosion");
+                explosionPrefab = Resources.Load<GameObject>("Prefabs/GameScene/Explosion");
             }
         }
 
