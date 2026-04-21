@@ -182,16 +182,16 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\r\n\r\n\r\nS.L.O.P - Signals lost in planets\r\n\r\n**********************\r\n
-    THANK YOU FOR PLAYING\r\n**********************\r\n\r\nCheck pentaworks.itch.io\r\nfor
-    more games\r\n\r\nDevelopers:\r\n-----------------------\r\n- XpArKeR\r\n- Salasam\r\n-
-    pop\r\n- Lea251\r\n- Zeeka\r\n\r\nArt:\r\n-----------------------\r\n- Wolfhead\r\n\r\nMusic:\r\n-----------------------\r\n-
-    Lea251\r\n\r\nLevel design:\r\n-----------------------\r\n- pop\r\n- salasam\r\n-
-    XpArKeR\r\n\r\nTesters:\r\n-----------------------\r\n- H\xE4xli\r\n\r\nSadly,
-    not many others this time around\r\n\r\nEffects:\r\n-----------------------\r\n-
-    Some effects were created using https://sfxr.me/.\r\n\r\nSpecial Thanks:\r\n-----------------------\r\n-
+  m_text: "\r\nS.L.O.P - Signals lost in planets\r\n\r\nDevelopers:\r\n-----------------------\r\n-
+    XpArKeR\r\n- Salasam\r\n- pop\r\n- Lea251\r\n- Zeeka\r\n\r\nArt:\r\n-----------------------\r\n-
+    Wolfhead\r\n\r\nMusic:\r\n-----------------------\r\n- Lea251\r\n\r\nLevel design:\r\n-----------------------\r\n-
+    pop\r\n- salasam\r\n- XpArKeR\r\n\r\nTesters:\r\n-----------------------\r\n-
+    H\xE4xli\r\n\r\nSadly, not many others this time around\r\n\r\nEffects:\r\n-----------------------\r\n-
+    Effects were created using https://sfxr.me/.\r\n\r\nSpecial Thanks:\r\n-----------------------\r\n-
     Family\r\n- Friends\r\n\r\nAnd as always:\r\n-----------------------\r\nKnowledge
-    is\r\nObviously the\r\nBest way to intrigue\r\nIdiots!\r\n"
+    is\r\nObviously the\r\nBest way to intrigue\r\nIdiots!\r\n\r\n**********************\r\n
+    THANK YOU FOR PLAYING\r\n**********************\r\n\r\nCheck pentaworks.itch.io\r\nfor
+    more games.\r\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 0a5c2bc8cb985e749841410f8e2bbde5, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}

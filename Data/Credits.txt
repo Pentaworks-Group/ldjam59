@@ -1,14 +1,5 @@
 
-
-
 S.L.O.P - Signals lost in planets
-
-**********************
- THANK YOU FOR PLAYING
-**********************
-
-Check pentaworks.itch.io
-for more games
 
 Developers:
 -----------------------
@@ -40,7 +31,7 @@ Sadly, not many others this time around
 
 Effects:
 -----------------------
-- Some effects were created using https://sfxr.me/.
+- Effects were created using https://sfxr.me/.
 
 Special Thanks:
 -----------------------
@@ -53,3 +44,10 @@ Knowledge is
 Obviously the
 Best way to intrigue
 Idiots!
+
+**********************
+ THANK YOU FOR PLAYING
+**********************
+
+Check pentaworks.itch.io
+for more games.
