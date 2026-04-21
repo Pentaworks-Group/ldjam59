@@ -1,5 +1,3 @@
-![Title](https://github.com/Pentaworks-Group/ldjamTemplate/blob/main/Data/Pentaworks.png?raw=true)
-
 ## About
 
 You are controlling a satellite. You have to think big - think interstellar. Send out signals to probe the black holes far away.
@@ -40,3 +38,4 @@ Reason unknown and debugging was not possible due to the lack of a iPhone.
 | 21.04.2026 | LDJam   | Jam release to be rated
 
 
+![Title](https://github.com/Pentaworks-Group/ldjamTemplate/blob/main/Data/Pentaworks.png?raw=true)
