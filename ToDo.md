@@ -1,15 +1,11 @@
-## Color codes:
-----------------------------------
+# Color codes:
  - Text: 
  - Button:  
 
-## Credits:
-----------------------------------
+# Credits:
  - 
 
-## Todo:
----------------------------------- 
-  
+# Todo: 
 ## Bugs: 
  - 
  
@@ -32,20 +28,16 @@
  - Audio volume adjustment (Effects less, Background louder)
  - 
   
-## Refactoring:
-----------------------------------
+# Refactoring:
  - 
 
-## WIP:
-----------------------------------
+# WIP:
  -  
 
-## Nice to have:
-----------------------------------
+# Nice to have:
  - 
   
-## Ideas:
-----------------------------------
+# Ideas:
  -  
   
 
