@@ -9,12 +9,18 @@ namespace Assets.Scripts.Scenes.Game
 
         public void OnPointerEnter(PointerEventData eventData)
         {
-            gameMainBehaviour.DisableClick();
+            if (Base.Core.Game.IsRunning)
+            {
+                gameMainBehaviour.DisableClick();
+            }
         }
 
         public void OnPointerExit(PointerEventData eventData)
         {
-            gameMainBehaviour.EnableClick();
+            if (Base.Core.Game.IsRunning)
+            {
+                gameMainBehaviour.EnableClick();
+            }
         }
     }
 }
