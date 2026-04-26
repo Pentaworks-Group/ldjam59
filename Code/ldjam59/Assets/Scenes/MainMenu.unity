@@ -284,8 +284,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Assets.Scripts.Scenes.MainMenu.CreditsBehaviour
   textField: {fileID: 97172285}
-  height: 24
-  updateInterval: 1
+  startDelay: 1
+  updateInterval: 0.75
 --- !u!224 &132829382 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 5505386378042482058, guid: e2953dd3928d39049a882a7da8cf4950, type: 3}

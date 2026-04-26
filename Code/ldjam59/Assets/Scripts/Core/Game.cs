@@ -1,14 +1,15 @@
-using Assets.Scripts.Core.Definitions;
-using Assets.Scripts.Core.Definitions.Loaders;
-using Assets.Scripts.Core.Models;
-using Assets.Scripts.Core.Persistence;
-using Assets.Scripts.Scenes.Game;
-using GameFrame.Core;
-using GameFrame.Core.Definitions.Loaders;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+
+using Assets.Scripts.Core.Definitions;
+using Assets.Scripts.Core.Definitions.Loaders;
+using Assets.Scripts.Core.Models;
+using Assets.Scripts.Core.Persistence;
+
+using GameFrame.Core.Definitions.Loaders;
+
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -33,8 +34,6 @@ namespace Assets.Scripts.Core
             Start();
         }
 
-
-
         public override void Quit()
         {
 #if UNITY_EDITOR
@@ -49,7 +48,7 @@ namespace Assets.Scripts.Core
         protected override GameState InitializeGameState()
         {
             var gameMode = selectedGameMode;
-                        
+
             if (gameMode == default)
             {
                 gameMode = gameModeCache.Values.FirstOrDefault();

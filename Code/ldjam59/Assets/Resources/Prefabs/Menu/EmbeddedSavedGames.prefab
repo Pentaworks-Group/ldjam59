@@ -123,6 +123,7 @@ GameObject:
   - component: {fileID: 4995601705751517746}
   - component: {fileID: 8848150523707529802}
   - component: {fileID: 5640019847839024603}
+  - component: {fileID: 5556586382480934461}
   m_Layer: 5
   m_Name: DisplayText
   m_TagString: Untagged
@@ -223,7 +224,7 @@ MonoBehaviour:
   m_charWidthMaxAdj: 0
   m_TextWrappingMode: 1
   m_wordWrappingRatios: 0.4
-  m_overflowMode: 0
+  m_overflowMode: 3
   m_linkedTextComponent: {fileID: 0}
   parentLinkedComponent: {fileID: 0}
   m_enableKerning: 0
@@ -249,6 +250,21 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &5556586382480934461
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2691247229717093651}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 453687b3bcfaa444a839934d5f84d45d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Assets.Scripts.Scenes.MainMenu.ScrollingTextBehaviour
+  textField: {fileID: 5640019847839024603}
+  startDelay: 1
+  updateInterval: 0.75
 --- !u!1 &3271483638785968570
 GameObject:
   m_ObjectHideFlags: 0
