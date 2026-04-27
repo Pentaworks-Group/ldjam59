@@ -84,7 +84,7 @@ namespace Assets.Scripts.Prefabs.Menu.SavedGames
                 if (selectedSlot.IsEmpty)
                 {
                     contentBuilder.AppendLine("Empty");
-                    
+
                     eraseButton.interactable = false;
                     loadButton.interactable = false;
                 }
@@ -93,7 +93,18 @@ namespace Assets.Scripts.Prefabs.Menu.SavedGames
                     eraseButton.interactable = true;
                     loadButton.interactable = true;
 
-                    contentBuilder.AppendLine(String.Format("The selected drive contains some silly data.\r\nIt appears to have been stored on {0:d} at {0:t}.\r\nThe data suggests information such as \"Level\" ({1}) and \"Time wasted\" ({2:###0.0}s).", currentSlot.SavedOn, currentSlot.Level, currentSlot.TimeElapsed));
+                    contentBuilder.AppendLine("The selected drive contains some silly data.");
+                    contentBuilder.AppendLine("Suggested information:");
+                    contentBuilder.AppendLine("-------------");
+                    contentBuilder.AppendLine("Created on:");
+                    contentBuilder.AppendLine(String.Format("{0:d} at {0:t}.", currentSlot.SavedOn));
+                    contentBuilder.AppendLine("");
+                    contentBuilder.AppendLine("Level:");
+                    contentBuilder.AppendLine(String.Format("{0}", currentSlot.Level));
+                    contentBuilder.AppendLine("");
+                    contentBuilder.AppendLine("Time wasted:");
+                    contentBuilder.AppendLine(String.Format("{0:###0.0}s", currentSlot.TimeElapsed));
+                    contentBuilder.AppendLine("-------------");
                 }
 
                 displayText.text = contentBuilder.ToString();
