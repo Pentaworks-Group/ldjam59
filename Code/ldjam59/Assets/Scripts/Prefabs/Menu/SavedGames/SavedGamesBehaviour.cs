@@ -93,6 +93,7 @@ namespace Assets.Scripts.Prefabs.Menu.SavedGames
                     eraseButton.interactable = true;
                     loadButton.interactable = true;
 
+                    contentBuilder.AppendLine("-------------");
                     contentBuilder.AppendLine("The selected drive contains some silly data.");
                     contentBuilder.AppendLine("Suggested information:");
                     contentBuilder.AppendLine("-------------");
