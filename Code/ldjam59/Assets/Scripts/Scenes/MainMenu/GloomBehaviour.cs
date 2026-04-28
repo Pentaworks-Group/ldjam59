@@ -32,6 +32,8 @@ namespace Assets.Scripts.Scenes.MainMenu
                 AddTrigger(trigger, EventTriggerType.PointerEnter, Pause);
                 AddTrigger(trigger, EventTriggerType.PointerExit, Resume);
 
+                currentAlpha = this.MaskImage.color.a;
+
                 StartCoroutine(Gloom());
             }
         }
@@ -61,7 +63,6 @@ namespace Assets.Scripts.Scenes.MainMenu
 
         private IEnumerator Gloom()
         {
-            currentAlpha = this.MaskImage.color.a;
 
             while (true)
             {
@@ -72,7 +73,7 @@ namespace Assets.Scripts.Scenes.MainMenu
                     while (isPaused) yield return null;
 
                     this.MaskImage.color = new Color(this.MaskImage.color.r, this.MaskImage.color.g, this.MaskImage.color.b, currentAlpha);
-                    yield return new WaitForSeconds(.05f);
+                    yield return new WaitForSecondsRealtime(.05f);
                     currentAlpha += speed;
                 }
 
@@ -82,7 +83,7 @@ namespace Assets.Scripts.Scenes.MainMenu
 
                 this.MaskImage.color = new Color(this.MaskImage.color.r, this.MaskImage.color.g, this.MaskImage.color.b, currentAlpha);
 
-                yield return new WaitForSeconds(.1f);
+                yield return new WaitForSecondsRealtime(.1f);
 
                 while (currentAlpha > 0)
                 {
@@ -91,7 +92,7 @@ namespace Assets.Scripts.Scenes.MainMenu
                     while (isPaused) yield return null;
 
                     this.MaskImage.color = new Color(this.MaskImage.color.r, this.MaskImage.color.g, this.MaskImage.color.b, currentAlpha);
-                    yield return new WaitForSeconds(.05f);
+                    yield return new WaitForSecondsRealtime(.05f);
                     currentAlpha -= speed;
                 }
 
@@ -100,7 +101,7 @@ namespace Assets.Scripts.Scenes.MainMenu
                 while (isPaused) yield return null;
 
                 this.MaskImage.color = new Color(this.MaskImage.color.r, this.MaskImage.color.g, this.MaskImage.color.b, currentAlpha);
-                yield return new WaitForSeconds(.5f);
+                yield return new WaitForSecondsRealtime(.5f);
             }
         }
     }
