@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 
 using TMPro;
@@ -19,6 +20,8 @@ namespace Assets.Scripts.Scenes.MainMenu
         private Boolean checkedScroll = false;
         private String currentText;
         private Boolean isInvoking = false;
+
+        private IEnumerator timer;
 
         private void InitializeText(String text)
         {
@@ -49,9 +52,13 @@ namespace Assets.Scripts.Scenes.MainMenu
             {
                 if (checkedScroll)
                 {
-                    //CancelInvoke(nameof(UpdateText));
-                    CancelInvoke();
-                    isInvoking = false;
+                    if (this.timer != default)
+                    {
+                        StopCoroutine(this.timer);
+                        this.timer = default;
+
+                        isInvoking = false;
+                    }
                 }
 
                 InitializeText(textField.text);
@@ -74,14 +81,20 @@ namespace Assets.Scripts.Scenes.MainMenu
                 {
                     if (!isInvoking)
                     {
-                        InvokeRepeating(nameof(UpdateText), startDelay, updateInterval);
+                        this.timer = Timer();
+                        StartCoroutine(this.timer);
                         isInvoking = true;
                     }
                 }
                 else
                 {
-                    CancelInvoke();
-                    isInvoking = false;
+                    if (this.timer != default)
+                    {
+                        StopCoroutine(this.timer);
+                        this.timer = default;
+
+                        isInvoking = false;
+                    }
                 }
             }
         }
@@ -108,6 +121,19 @@ namespace Assets.Scripts.Scenes.MainMenu
         private static String[] SplitToLines(String rawText)
         {
             return rawText.Split(new String[] { "\r\n", "\r", "\n" }, System.StringSplitOptions.None);
+        }
+
+        private IEnumerator Timer()
+        {
+            yield return new WaitForSecondsRealtime(startDelay);
+
+            var wait = new WaitForSecondsRealtime(updateInterval);
+
+            while (true)
+            {
+                UpdateText();
+                yield return wait;
+            }
         }
     }
 }
