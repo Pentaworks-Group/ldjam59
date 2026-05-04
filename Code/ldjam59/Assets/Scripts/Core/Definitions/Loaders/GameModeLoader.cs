@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Diagnostics;
 
 using GameFrame.Core.Definitions.Loaders;
 
@@ -24,10 +25,14 @@ namespace Assets.Scripts.Core.Definitions.Loaders
                     {
                         IsDefault = loadedGameMode.IsDefault,
                         Reference = loadedGameMode.Reference,
+                        Type = loadedGameMode.Type,
                         Name = loadedGameMode.Name,
                         Levels = new List<LevelDefinition>(),
                         Audio = new AudioDefinition()
                     };
+
+                    UnityEngine.Debug.Log($"Loaded GameMode {loadedGameMode} with type {loadedGameMode.Type}");
+                    UnityEngine.Debug.Log($"New GameMode {newGameMode} with type {newGameMode.Type}");
 
                     if (loadedGameMode.Audio != default)
                     {

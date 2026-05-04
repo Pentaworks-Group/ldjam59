@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Resources;
 
 using Assets.Scripts.Core.Models;
+using Assets.Scripts.Extensions;
 using Assets.Scripts.Prefabs.Menu.Pause;
 
 using GameFrame.Core.Extensions;
@@ -38,6 +40,10 @@ namespace Assets.Scripts.Scenes.Game
 
         private InputAction clickAction;
         private InputAction escapeAction;
+        
+        private InputAction turnLeftAction;
+        private InputAction turnRightAction;
+        private InputAction accelerateAction;
 
         private int[] trackIndices = { 0, 3 }; //Track indices of soundTracks which track the Object
 
@@ -85,6 +91,10 @@ namespace Assets.Scripts.Scenes.Game
         {
             clickAction = InputSystem.actions.FindAction("Click");
             escapeAction = InputSystem.actions.FindAction("Escape");
+            
+            turnLeftAction = InputSystem.actions.FindAction("Movement-TurnLeft");
+            turnRightAction = InputSystem.actions.FindAction("Movement-TurnRight");
+            accelerateAction = InputSystem.actions.FindAction("Movement-Accelerate");
 
             Base.Core.Game.ExecuteAfterInstantation(Init);
 
@@ -110,11 +120,17 @@ namespace Assets.Scripts.Scenes.Game
 
         private void Init()
         {
-            var currentLevel = Base.Core.Game.State.CurrentLevel;
+            var state = Base.Core.Game.State;
+            var currentLevel = state.CurrentLevel;
 
             var tmpSource = SpawnObject(currentLevel.Source, objectTemplate).gameObject;
+
             tmpSource.SetActive(true);
-            tmpSource.AddComponent<MouseTracker>();
+
+            if (state.Mode.Type == Core.Definitions.GameModeType.Signal)
+            {
+                tmpSource.AddComponent<MouseTracker>();
+            }
 
             source = tmpSource.transform;
 
@@ -122,7 +138,10 @@ namespace Assets.Scripts.Scenes.Game
             tmpTarget.gameObject.SetActive(true);
             target = tmpTarget.GetComponent<TargetBehaviour>();
 
-            signalObject = SpawnObject(currentLevel.Signal, signalTemplate).gameObject;
+            if (currentLevel.Signal != default)
+            {
+                signalObject = SpawnObject(currentLevel.Signal, signalTemplate).gameObject;
+            }
 
             if (currentLevel.ActiveSignals?.Count > 0)
             {
@@ -132,8 +151,17 @@ namespace Assets.Scripts.Scenes.Game
                 }
             }
 
-            clickAction.performed += OnLeftMouseClicked;
-            clickAction.Enable();
+            if (state.Mode.Type == Core.Definitions.GameModeType.Signal)
+            {
+                clickAction.performed += OnLeftMouseClicked;                
+                clickAction.Enable();
+            }
+            else if (state.Mode.Type == Core.Definitions.GameModeType.Satellite)
+            {
+                turnLeftAction.Hook(onPerformed: OnTurnLeft);
+                turnRightAction.Hook(onPerformed: OnTurnRight);
+                accelerateAction.Hook(onPerformed: OnAccelerate);
+            }
 
             escapeAction.Enable();
 
@@ -142,7 +170,7 @@ namespace Assets.Scripts.Scenes.Game
 
         private SimpleObjectBehaviour SpawnObject(SimpleSpaceObject simpleSpaceObject, SimpleObjectBehaviour usedObjectTemplate)
         {
-            var postion = new UnityEngine.Vector3(simpleSpaceObject.Position.Value.X, 0, simpleSpaceObject.Position.Value.Y);
+            var postion = new UnityVector3(simpleSpaceObject.Position.Value.X, 0, simpleSpaceObject.Position.Value.Y);
 
             var objectBehaviour = Instantiate(usedObjectTemplate, postion, usedObjectTemplate.transform.rotation, transform);
             objectBehaviour.gameObject.name = simpleSpaceObject.Name;
@@ -227,6 +255,23 @@ namespace Assets.Scripts.Scenes.Game
             }
 
             pauseMenuBehaviour.OpenMenu(hitSubMenuBehaviour);
+        }
+
+        private void OnTurnLeft(InputAction.CallbackContext context)
+        {
+            var targetRotation = Quaternion.LookRotation(this.source.transform.rotation.eulerAngles - new Vector3(0, 1, 0));
+            this.source.transform.rotation = targetRotation;
+        }
+
+        private void OnTurnRight(InputAction.CallbackContext context)
+        {
+            var targetRotation = Quaternion.LookRotation(this.source.transform.rotation.eulerAngles - new Vector3(0, -1, 0));
+            this.source.transform.rotation = targetRotation;
+        }
+
+        private void OnAccelerate(InputAction.CallbackContext context)
+        {
+
         }
     }
 }

@@ -51,7 +51,14 @@ namespace Assets.Scripts.Core
 
             if (gameMode == default)
             {
-                gameMode = gameModeCache.Values.FirstOrDefault();
+                if (gameModeCache.TryGetValue("satellite", out var desiredGameMode))
+                {
+                    gameMode = desiredGameMode;
+                }
+                else
+                {
+                    gameMode = gameModeCache.Values.FirstOrDefault();
+                }
             }
 
             if (gameMode == default)
@@ -70,9 +77,9 @@ namespace Assets.Scripts.Core
         {
             return new PlayerOptions()
             {
-                EffectsVolume = 0.9f,
+                EffectsVolume = 0.6f,
                 AmbienceVolume = 0.1f,
-                BackgroundVolume = 0.3f,
+                BackgroundVolume = 0.4f,
             };
         }
 

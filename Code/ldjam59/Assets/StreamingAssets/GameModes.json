@@ -3,6 +3,7 @@
     "Name": "Mode1",
     "Reference": "M1",
     "Description": "Default Mode",
+    "Type": "Signal",
     "Levels": [
       {
         "Name": "Level1",
@@ -1867,6 +1868,59 @@
         },
         "TimeElapsed": 89.4141678425949,
         "SignalsSend": 2
+      }
+    ]
+  },
+  {
+    "Name": "Satellite",
+    "Reference": "satellite",
+    "Description": "Mode where you control the satellite",
+    "Type": "Satellite",
+    "Levels": [
+      {
+        "Reference": "Sat-1",
+        "Name": "Level 1",
+        "Description": "Reach the destination",
+        "Source": {
+          "Sprite": "Satellite",
+          "Name": "The Flyer",
+          "Size": 0.5,
+          "Gravity": 1,
+          "Position": {
+            "x": -8,
+            "y": -8
+          },
+          "Speed": {
+            "x": 0,
+            "y": 0
+          },
+          "Color": {
+            "Red": 0,
+            "Green": 1,
+            "Blue": 1,
+            "Alpha": 1
+          }
+        },
+        "Target": {
+          "Sprite": "Black_Hole",
+          "Name": "Sink",
+          "Size": 1,
+          "Gravity": 1,
+          "Position": {
+            "x": 8,
+            "y": 8
+          },
+          "Speed": {
+            "x": 0,
+            "y": 0
+          },
+          "Color": {
+            "Red": 0,
+            "Green": 1,
+            "Blue": 0,
+            "Alpha": 1
+          }
+        }
       }
     ]
   }
