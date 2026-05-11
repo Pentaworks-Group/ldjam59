@@ -1047,6 +1047,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlanetTemplate
       objectReference: {fileID: 0}
+    - target: {fileID: 6733437409523228886, guid: e3e2a7ba553dc424f9f4b5f6f4ac3c9c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
