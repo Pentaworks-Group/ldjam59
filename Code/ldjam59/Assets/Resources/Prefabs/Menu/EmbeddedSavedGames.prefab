@@ -263,7 +263,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Assets.Scripts.Scenes.MainMenu.ScrollingTextBehaviour
   textField: {fileID: 5640019847839024603}
-  startDelay: 1
+  startDelay: 2
   updateInterval: 0.75
 --- !u!1 &3271483638785968570
 GameObject:
