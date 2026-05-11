@@ -10,14 +10,12 @@ namespace Assets.Scripts.Scenes.Game
 		private SpriteRenderer spriteRenderer;
 		private SimpleSpaceObject simpleSpaceObject;
 
-
         public void Init(SimpleSpaceObject spaceObject)
 		{
 			simpleSpaceObject = spaceObject;
 			UpdateRendering();
             Base.Core.Game.OnModelUpdate.AddListener(UpdateModel);
         }
-
 
 		private void UpdateRendering()
 		{

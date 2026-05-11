@@ -1,5 +1,5 @@
 ﻿using System;
-using System.Resources;
+using System.Collections;
 
 using Assets.Scripts.Core.Models;
 using Assets.Scripts.Extensions;
@@ -40,10 +40,8 @@ namespace Assets.Scripts.Scenes.Game
 
         private InputAction clickAction;
         private InputAction escapeAction;
+
         
-        private InputAction turnLeftAction;
-        private InputAction turnRightAction;
-        private InputAction accelerateAction;
 
         private int[] trackIndices = { 0, 3 }; //Track indices of soundTracks which track the Object
 
@@ -91,10 +89,6 @@ namespace Assets.Scripts.Scenes.Game
         {
             clickAction = InputSystem.actions.FindAction("Click");
             escapeAction = InputSystem.actions.FindAction("Escape");
-            
-            turnLeftAction = InputSystem.actions.FindAction("Movement-TurnLeft");
-            turnRightAction = InputSystem.actions.FindAction("Movement-TurnRight");
-            accelerateAction = InputSystem.actions.FindAction("Movement-Accelerate");
 
             Base.Core.Game.ExecuteAfterInstantation(Init);
 
@@ -131,6 +125,17 @@ namespace Assets.Scripts.Scenes.Game
             {
                 tmpSource.AddComponent<MouseTracker>();
             }
+            else if (state.Mode.Type == Core.Definitions.GameModeType.Satellite)
+            {
+                tmpSource.AddComponent<SatelliteBehaviour>();
+
+                var sourceRigidbody = tmpSource.AddComponent<Rigidbody>();
+                sourceRigidbody.useGravity = false;
+
+                var sourceCollider = tmpSource.AddComponent<CapsuleCollider>();
+
+                sourceCollider.radius = 1;
+            }
 
             source = tmpSource.transform;
 
@@ -153,14 +158,8 @@ namespace Assets.Scripts.Scenes.Game
 
             if (state.Mode.Type == Core.Definitions.GameModeType.Signal)
             {
-                clickAction.performed += OnLeftMouseClicked;                
+                clickAction.performed += OnLeftMouseClicked;
                 clickAction.Enable();
-            }
-            else if (state.Mode.Type == Core.Definitions.GameModeType.Satellite)
-            {
-                turnLeftAction.Hook(onPerformed: OnTurnLeft);
-                turnRightAction.Hook(onPerformed: OnTurnRight);
-                accelerateAction.Hook(onPerformed: OnAccelerate);
             }
 
             escapeAction.Enable();
@@ -255,23 +254,6 @@ namespace Assets.Scripts.Scenes.Game
             }
 
             pauseMenuBehaviour.OpenMenu(hitSubMenuBehaviour);
-        }
-
-        private void OnTurnLeft(InputAction.CallbackContext context)
-        {
-            var targetRotation = Quaternion.LookRotation(this.source.transform.rotation.eulerAngles - new Vector3(0, 1, 0));
-            this.source.transform.rotation = targetRotation;
-        }
-
-        private void OnTurnRight(InputAction.CallbackContext context)
-        {
-            var targetRotation = Quaternion.LookRotation(this.source.transform.rotation.eulerAngles - new Vector3(0, -1, 0));
-            this.source.transform.rotation = targetRotation;
-        }
-
-        private void OnAccelerate(InputAction.CallbackContext context)
-        {
-
         }
     }
 }

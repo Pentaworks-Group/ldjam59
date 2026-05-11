@@ -15,6 +15,12 @@ namespace Assets.Scripts.Scenes.Game
                 signal.OnImpact.Invoke(signal);
                 main.OnTargetHit.Invoke();
             }
+            else if (other.transform.TryGetComponent<SatelliteBehaviour>(out var sattelite))
+            {
+                GameFrame.Base.Audio.Effects.Play("Hit");
+
+                main.OnTargetHit.Invoke();
+            }
         }
     }
 }
