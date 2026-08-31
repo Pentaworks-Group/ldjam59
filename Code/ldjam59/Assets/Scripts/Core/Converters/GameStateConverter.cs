@@ -16,7 +16,6 @@ namespace Assets.Scripts.Core
 
         public GameState Convert()
         {
-
             var gameState = new GameState()
             {
                 CreatedOn = DateTime.Now,

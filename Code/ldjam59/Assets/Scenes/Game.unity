@@ -277,24 +277,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &477942839 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8825535272675962141, guid: 5e224ab131461524c916de74e8223792, type: 3}
-  m_PrefabInstance: {fileID: 3786563039854080631}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &477942844
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 477942839}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a04d5d38f679b974da82546a0b07901a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Assets.Scripts.Scenes.Game.TargetBehaviour
-  main: {fileID: 1499582781}
 --- !u!114 &637919864 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7818924428618225237, guid: aa035058fe6e8904e8295f95e36beec4, type: 3}
@@ -1100,7 +1082,7 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2367893204667927625, guid: 5e224ab131461524c916de74e8223792, type: 3}
+    - target: {fileID: 3342591652445510389, guid: 5e224ab131461524c916de74e8223792, type: 3}
       propertyPath: main
       value: 
       objectReference: {fileID: 1499582781}
@@ -1108,14 +1090,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: TargetTemplate
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 2367893204667927625, guid: 5e224ab131461524c916de74e8223792, type: 3}
+    m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 8825535272675962141, guid: 5e224ab131461524c916de74e8223792, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 477942844}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5e224ab131461524c916de74e8223792, type: 3}
 --- !u!1001 &6466499247725411994
 PrefabInstance:
@@ -1256,6 +1234,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1499582780}
     m_Modifications:
+    - target: {fileID: 349154237209125289, guid: dce56d1f7e89cd0499483f4e309a29ea, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3675000738425348814, guid: dce56d1f7e89cd0499483f4e309a29ea, type: 3}
       propertyPath: m_Name
       value: SignalTemplate
@@ -1263,6 +1245,10 @@ PrefabInstance:
     - target: {fileID: 3675000738425348814, guid: dce56d1f7e89cd0499483f4e309a29ea, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4960277822288789252, guid: dce56d1f7e89cd0499483f4e309a29ea, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5056872416395429176, guid: dce56d1f7e89cd0499483f4e309a29ea, type: 3}
       propertyPath: m_LocalPosition.x

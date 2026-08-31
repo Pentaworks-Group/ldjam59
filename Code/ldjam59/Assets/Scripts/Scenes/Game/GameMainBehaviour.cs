@@ -41,8 +41,6 @@ namespace Assets.Scripts.Scenes.Game
         private InputAction clickAction;
         private InputAction escapeAction;
 
-        
-
         private int[] trackIndices = { 0, 3 }; //Track indices of soundTracks which track the Object
 
         private void OnDisable()
@@ -54,7 +52,7 @@ namespace Assets.Scripts.Scenes.Game
         {
             if (!isPaused)
             {
-                clickAction.performed += OnLeftMouseClicked;
+                EnableClick();
             }
             else
             {
@@ -69,7 +67,10 @@ namespace Assets.Scripts.Scenes.Game
 
         public void EnableClick()
         {
-            clickAction.performed += OnLeftMouseClicked;
+            if (Base.Core.Game.State.Mode.Type == Core.Definitions.GameModeType.Signal)
+            {
+                clickAction.performed += OnLeftMouseClicked;
+            }
         }
 
         private void OnLeftMouseClicked(InputAction.CallbackContext context)
@@ -131,7 +132,7 @@ namespace Assets.Scripts.Scenes.Game
 
                 var sourceRigidbody = tmpSource.AddComponent<Rigidbody>();
                 sourceRigidbody.useGravity = false;
-
+                
                 var sourceCollider = tmpSource.AddComponent<CapsuleCollider>();
 
                 sourceCollider.radius = 1;

@@ -36,6 +36,13 @@ namespace Assets.Scripts.Scenes.Game
             accelerateAction.Hook(onStarted: OnAccelerateStarted, onCancelled: OnAccelerateCancelled);
         }
 
+        private void OnDestroy()
+        {
+            turnLeftAction.UnHook(onStarted: OnTurnLeftStarted, onCancelled: OnTurnLeftCancelled);
+            turnRightAction.UnHook(onStarted: OnTurnRightStarted, onCancelled: OnTurnRightCancelled);
+            accelerateAction.UnHook(onStarted: OnAccelerateStarted, onCancelled: OnAccelerateCancelled);
+        }
+
         private void OnTurnLeftStarted(InputAction.CallbackContext _)
         {
             StartCoroutine(turnLeft);

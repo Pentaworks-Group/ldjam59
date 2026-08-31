@@ -3,9 +3,6 @@ using System.Collections.Generic;
 
 using TMPro;
 
-using UnityEditor;
-using UnityEditor.Analytics;
-
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -14,7 +11,6 @@ namespace Assets.Scripts.Prefabs.Menu.Pause
     public class PauseMenuBehaviour : MonoBehaviour
     {
         private readonly Dictionary<GameObject, Boolean> oldActiveValues = new Dictionary<GameObject, Boolean>();
-
 
         private PauseSubMenuBehaviour openMenu;
         private InputAction escapeAction;
