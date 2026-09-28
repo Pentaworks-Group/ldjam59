@@ -105,7 +105,6 @@ GameObject:
   m_Component:
   - component: {fileID: 350210281669925635}
   - component: {fileID: 6330029010141755564}
-  - component: {fileID: 3342591652445510389}
   m_Layer: 0
   m_Name: TargetTemplate
   m_TagString: Untagged
@@ -143,19 +142,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Assets.Scripts.Scenes.Game.SimpleObjectBehaviour
   spriteRenderer: {fileID: 5761774698872470573}
---- !u!114 &3342591652445510389
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6550698545926145864}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a04d5d38f679b974da82546a0b07901a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Assets.Scripts.Scenes.Game.TargetBehaviour
-  main: {fileID: 0}
 --- !u!1 &8825535272675962141
 GameObject:
   m_ObjectHideFlags: 0
@@ -168,6 +154,7 @@ GameObject:
   - component: {fileID: 702634438574520684}
   - component: {fileID: 7006802819874074264}
   - component: {fileID: 762602363302014248}
+  - component: {fileID: 321979455728821455}
   m_Layer: 0
   m_Name: Sphere
   m_TagString: Untagged
@@ -267,3 +254,16 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 1
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &321979455728821455
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8825535272675962141}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a04d5d38f679b974da82546a0b07901a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Assets.Scripts.Scenes.Game.TargetBehaviour
+  main: {fileID: 0}
