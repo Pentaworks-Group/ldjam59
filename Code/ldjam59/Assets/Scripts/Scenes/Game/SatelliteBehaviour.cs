@@ -97,5 +97,10 @@ namespace Assets.Scripts.Scenes.Game
 
             yield break;
         }
+
+        private void OnTriggerEnter(Collider other)
+        {
+            
+        }
     }
 }

@@ -51,14 +51,14 @@ namespace Assets.Scripts.Core
 
             if (gameMode == default)
             {
-                if (gameModeCache.TryGetValue("satellite", out var desiredGameMode))
-                {
-                    gameMode = desiredGameMode;
-                }
-                else
-                {
+                //if (gameModeCache.TryGetValue("satellite", out var desiredGameMode))
+                //{
+                //    gameMode = desiredGameMode;
+                //}
+                //else
+                //{
                     gameMode = gameModeCache.Values.FirstOrDefault();
-                }
+                //}
             }
 
             if (gameMode == default)

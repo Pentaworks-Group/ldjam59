@@ -136,6 +136,7 @@ namespace Assets.Scripts.Scenes.Game
                 var sourceCollider = tmpSource.AddComponent<CapsuleCollider>();
 
                 sourceCollider.radius = 1;
+                sourceCollider.isTrigger = true;
             }
 
             source = tmpSource.transform;

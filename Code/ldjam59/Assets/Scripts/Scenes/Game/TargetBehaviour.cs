@@ -22,5 +22,10 @@ namespace Assets.Scripts.Scenes.Game
                 main.OnTargetHit.Invoke();
             }
         }
+
+        private void OnCollisionEnter(Collision collision)
+        {
+            
+        }
     }
 }

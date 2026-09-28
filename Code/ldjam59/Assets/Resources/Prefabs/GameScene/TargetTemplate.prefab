@@ -155,6 +155,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a04d5d38f679b974da82546a0b07901a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Assets.Scripts.Scenes.Game.TargetBehaviour
+  main: {fileID: 0}
 --- !u!1 &8825535272675962141
 GameObject:
   m_ObjectHideFlags: 0
